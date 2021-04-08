@@ -106,14 +106,34 @@ body {
 
 .title_1 {
 	margin-top: 1.5em;
-	margin-bottom: 1.5em;
+	margin-bottom: 1em;
 	text-align: center;
 	font-size: xx-large;
+}
+
+.title_2 {
+	margin: 1em;
+	text-align: center;
+	font-size: large;	
+}
+
+.title_2 a {
+	padding: .5em 2em;
+	text-decoration: none;
+	color: black;	
+	background-color: var(--light);	
+}
+
+
+.title_2 a:hover {
+	background-color: var(--third);
+	color: var(--bright);
 }
 
 .image {
 	display: block;
 	text-align: center;
+	
 }
 
 .image img {
