@@ -1,0 +1,49 @@
+* {
+	font-family: 'Montserrat', sans-serif;
+}
+
+body {
+	padding: 1em;
+}
+
+/* navigation areas */
+.home{grid-area: home; color: red; border: 1px solid red;}
+.about{grid-area: about; border: 1px solid red;}
+.name{grid-area: name; text-align: right; font-size: xx-large; border: 1px solid red;}
+
+/* section 1 areas */
+.s1_a{grid-area: s1_a; border: 1px solid red;}
+.s1_b{grid-area: s1_b; border: 1px solid red;}
+.s1_c{grid-area: s1_c; border: 1px solid red;}
+
+/* navigation wrapper */
+.wrapper_nav {
+	grid-area: wrap_nav;
+	display: grid;
+	grid-template-columns: 100px 100px auto;
+	grid-template-areas: "home about name";
+	font-size: large;
+
+}
+
+.wrapper_nav a {
+	color: black;
+	text-decoration: none;
+}
+
+/* section 1 wrapper */
+.wrapper_s1 {
+	grid-area: wrap_s1;
+	display: grid;
+	grid-gap: 1em;
+	grid-template-columns: auto auto auto;
+	grid-template-areas: "s1_a s1_b s1_c";
+	font-size: xx-large;
+	text-align: center;
+	cursor: pointer;
+
+}
+
+.title_1 {
+	text-align: center;
+}
