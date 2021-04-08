@@ -1,3 +1,11 @@
+:root {
+	--light: #bed3c3;
+	--medium: #ebaca2;
+	--dark: #212e53;
+	--bright: #ce6a6b;
+	--third: #4a919e;
+  }
+
 * {
 	font-family: 'Montserrat', sans-serif;
 }
@@ -6,29 +14,81 @@ body {
 	padding: 1em;
 }
 
-/* navigation areas */
-.home{grid-area: home; color: red; border: 1px solid red;}
-.about{grid-area: about; border: 1px solid red;}
-.name{grid-area: name; text-align: right; font-size: xx-large; border: 1px solid red;}
+/* navigation and footer areas */
+.home{grid-area: home;}
+.plan{grid-area: plan;}
+.about{grid-area: about;}
+.name{grid-area: name; text-align: right; font-size: xx-large}
+.github{grid-area: github;}
+.spacer1{grid-area: spacer1;}
+.spacer2{grid-area: spacer2;}
+
 
 /* section 1 areas */
-.s1_a{grid-area: s1_a; border: 1px solid red;}
-.s1_b{grid-area: s1_b; border: 1px solid red;}
-.s1_c{grid-area: s1_c; border: 1px solid red;}
+.s1_a{grid-area: s1_a; 
+	background-image:url('../img/jo-szczepanska-bjemWZcNF34-unsplash.jpg');
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
+	object-fit: contain;
+	background-position: center center; 
+	
+	}
+.s1_b{grid-area: s1_b; 
+	background-image:url('../img/chris-lawton-5IHz5WhosQE-unsplash.jpg');
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
+	object-fit: contain;
+	background-position: center center;
+}
+.s1_c{grid-area: s1_c;
+	background-image:url('../img/jason-pofahl-6AQY7pO1lS0-unsplash.jpg');
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
+	object-fit: contain;
+	background-position: center center;
+}
+
+.s1_a:hover,
+.s1_b:hover,
+.s1_c:hover {
+	border: 2px solid var(--bright);
+}
 
 /* navigation wrapper */
+.wrapper_footer {
+	grid-area: wrap_foot;
+	display: grid;
+	grid-template-columns: auto 100px 100px 100px 100px auto;
+	grid-template-areas: "spacer1 home plan about github spacer2";
+	margin-top: 4em;
+	margin-bottom: 2em;
+	font-size: large;
+	text-align: center;
+}
+
 .wrapper_nav {
 	grid-area: wrap_nav;
 	display: grid;
-	grid-template-columns: 100px 100px auto;
-	grid-template-areas: "home about name";
+	grid-template-columns: 100px 100px 100px auto;
+	grid-template-areas: "home plan about name";
 	font-size: large;
-
 }
 
-.wrapper_nav a {
+.wrapper_nav a, 
+.wrapper_footer a {
 	color: black;
 	text-decoration: none;
+}
+
+.wrapper_nav a:hover,
+.wrapper_footer a:hover {
+	color: var(--bright)
 }
 
 /* section 1 wrapper */
@@ -41,9 +101,21 @@ body {
 	font-size: xx-large;
 	text-align: center;
 	cursor: pointer;
-
+	min-height: 200px;
 }
 
 .title_1 {
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
 	text-align: center;
+	font-size: xx-large;
+}
+
+.image {
+	display: block;
+	text-align: center;
+}
+
+.image img {
+	max-height: 400px;
 }
