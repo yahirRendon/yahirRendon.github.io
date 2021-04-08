@@ -96,7 +96,7 @@ body {
 	grid-area: wrap_s1;
 	display: grid;
 	grid-gap: 1em;
-	grid-template-columns: auto auto auto;
+	grid-template-columns: 32% 32% 32%;
 	grid-template-areas: "s1_a s1_b s1_c";
 	font-size: xx-large;
 	text-align: center;
@@ -118,4 +118,6 @@ body {
 
 .image img {
 	max-height: 400px;
+	object-fit: contain;
+	background-position: center center; 
 }
