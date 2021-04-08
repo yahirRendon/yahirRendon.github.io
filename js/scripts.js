@@ -6,5 +6,5 @@ if(goToDesign){
 }
 
 function openDesign() {
-    window.location.href = "design.html";
+    window.location.href = "https://yahirrendon.github.io/design.html";
 }
