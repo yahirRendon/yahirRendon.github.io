@@ -1,3 +1,10 @@
+ <!-- 
+ - Author: 	Yahir Rendon 
+ - Date:	April 2021
+ - Project: ePortfolio
+ -
+ - algorithms and data structures page
+  -->
 
 <!DOCTYPE html>
 <html>
@@ -10,30 +17,36 @@
   
     <body>
 
+        <!-- navigation bar -->
         <nav class="wrapper_nav">
-                <div class="e_nav home" id="homeButton" title="goto home">
-                    <a href="index.html">Home</a>
+            <div class="e_nav menu" id="menuButton" title="toggle menu">
+                    <a href="javascript:void(0);">&#9776</a>
+            </div>
+            <div class="e_nav home" id="homeButton" title="goto home">
+                <a href="index.html">Home</a>
+            </div>
+            <div class="e_nav plan" id="planButton" title="view refinement plan">
+                    <a href="plan.html">Plan</a>
                 </div>
-                <div class="e_nav plan" id="planButton" title="view refinement plan">
-                        <a href="plan.html">Plan</a>
-                    </div>
-                <div class="e_nav about" id="aboutButton" title="about Yahir">
-                    <a href="about.html">About</a>
-                </div>
-                <div class="e_nav name" id="nameButton" title="goto github home">
-                    <a href="https://github.com/yahirRendon">Yahir</a>
-                </div>
-            </nav>
+            <div class="e_nav about" id="aboutButton" title="about Yahir">
+                <a href="about.html">About</a>
+            </div>
+            <div class="e_nav name" id="nameButton" title="goto github home">
+                <a href="https://github.com/yahirRendon">Yahir</a>
+            </div>
+        </nav>
 
+        <!-- visually display project and link to code -->
         <div class="title_1">Algorithms and Data Structures</div>
         <div class="image">
-                <img src="img/emile-perron-xrVDYZRGdw4-unsplash.jpg" alt="project">
+                <img src="img/emile-perron-xrVDYZRGdw4-unsplash_1000.jpg" alt="project">
         </div>
-	
-	<div class="title_2" id="algoProjectButton">
-            <a href="">View Project</a>
+
+        <div class="projectLinks">
+            Click <a href="">here</a> to view project on GitHub
         </div>
         
+        <!-- description, justification, and reflection of project -->
         <div class="title_1">Description</div>
 
 	<p>
@@ -57,26 +70,32 @@
             <br><br>
             Nulla enim velit, lobortis vitae porta eget, pretium lacinia dolor. Nunc maximus sem finibus nibh eleifend viverra. Pellentesque laoreet justo vel libero feugiat semper sit amet consequat justo. Sed a euismod dolor. Fusce ac tellus eros. Pellentesque pellentesque eleifend vehicula. Cras vestibulum euismod lorem sed elementum. Cras posuere vestibulum ex. Nulla commodo facilisis congue. Nullam eu condimentum tortor. Mauris egestas pharetra risus, eget tincidunt nisi vulputate ac. Phasellus eget elementum nibh. Donec mollis nibh lacus, in mattis orci eleifend at. Praesent et malesuada odio. Nunc dignissim quam vitae pellentesque semper.
         </p>
-    
+
+        <div class="button_1" id="algoProjectButton">
+            <a href="">View Project</a>
+        </div>
+
+        <!-- footer navigation bar -->
 	<footer class="wrapper_footer">
-            <div class="e_footer spacer1">
+            <div class="e_footer f_spacer1">
             </div>
-            <div class="e_footer home" id="homeButton" title="goto home">
+            <div class="e_footer f_home" id="homeButton" title="goto home">
                 <a href="index.html">Home</a>
             </div>
-            <div class="e_footer plan" id="planButton" title="view refinement plan">
+            <div class="e_footer f_plan" id="planButton" title="view refinement plan">
                 <a href="plan.html">Plan</a>
             </div>
-            <div class="e_footer about" id="aboutButton" title="about Yahir">
+            <div class="e_footer f_about" id="aboutButton" title="about Yahir">
                 <a href="about.html">About</a>
             </div>
-            <div class="e_footer github" id="githubButton" title="view on github">
+            <div class="e_footer f_github" id="githubButton" title="view on github">
                 <a href="https://github.com/yahirRendon/yahirRendon.github.io">GitHub</a>
             </div>	
-            <div class="e_footer spacer2">
-                </div>	
+            <div class="e_footer f_spacer2">
+            </div>	
         </footer>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/scripts.js"></script>
     </body>
 </html>
