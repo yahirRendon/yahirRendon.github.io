@@ -17,7 +17,6 @@ window.onload = function () {
 	goToDatabasePage();
 
 	goToAlgorithmsGitProject();
-	goToDatabaseGitProject();
 	goToDesignGitProject();
 }
 
@@ -76,17 +75,6 @@ function goToDesignPage() {
 function goToAlgorithmsGitProject() {
 	$("#algorithms_github_button").click(function () {
 		window.location.href = "https://github.com/yahirRendon/weather_station";
-	})
-}
-
-/**
- * on click send user to the github page that contains
- * database project files and code
- */
-// #FIX once projects are in github update link
-function goToDatabaseGitProject() {
-	$("#database_github_button").click(function () {
-		window.location.href = "https://github.com/yahirRendon/yahirRendon.github.io/tree/main/capstone_projects";
 	})
 }
 
