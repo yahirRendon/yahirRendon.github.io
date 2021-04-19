@@ -5,10 +5,13 @@ Three projects were selected to encapsulate my abilities as a software engineer 
 
 The second and third projects were used to demonstrate my database abilities. The first being an Android mobile application from CS-360 that uses a SQLite database for creating a user profile and tracking user weight entries. This project inspired the third artifact of this portfolio which is a weight tracking web application in which a backend and API was created that allowed similar functionality as the mobile app. However, this project took advantage of a more advanced backend to implement improved security and community sharing of weight entries. 
 
-### Link to project repositories
-[Weather Station Project](https://github.com/yahirRendon/weather_station)
+### Project Summaries
+#### [Weather Station Project](https://github.com/yahirRendon/weather_station)
+The artifact I chose to use to demonstrate my software design and engineering abilities is the weather station project from CS-350, Emerging Technologies. This project was created in December 2020 as a columniation of work in the final milestone. It consisted of using a RaspberryPi and the GroovePi HAT/sensors to collect weather data. A JSON file is updated at 30-minute intervals during daylight hours only. The specific data collected consists of temperature, humidity, light sensitivity, and dates. Each reading and the data collected is then displayed in a local web dashboard. After developing a user driven interface for the weather station dashboard that demonstrated my software design and engineering abilities, I decided to use this same project to showcase my skill in algorithms and data structures. 
 
-[Weight Tracker Mobile Project](https://github.com/yahirRendon/my_weight_mobile)
+#### [Weight Tracker Mobile Project](https://github.com/yahirRendon/my_weight_mobile)
+To demonstrate my database abilities, I have selected a mobile application I first developed in CS360 in February of 2021. In this project, I created an Android mobile application that allowed a user to track their weight towards a target weight over time. The mobile app has multiple activities or screens which include a login, profile, settings, and main activity that displays weight data to the user and allows them to enter new weight data. Critical to this project was the use of a database for storing user profile data and user weight entries.
 
-[Weight Tracker Web Project](https://github.com/yahirRendon/my_weight_web)
 
+#### [Weight Tracker Web Project](https://github.com/yahirRendon/my_weight_web)
+To further demonstrate my ability to work with databases I used my work on the mobile weight trackign app as an inspiration for creating a web based version that required the developmentof a backend and API routes to connect the front end with a database. 
