@@ -8,12 +8,12 @@
 
 :root {
 
-	--medium: #909090;
-	--dark: #636363;
+  --medium: #909090;
+  --dark: #636363;
   --darker: #494848;
   --lighter: #EBEDEF;
-	--light: #c6d0de;
-	--blue: #90a7c4;
+  --light: #c6d0de;
+  --blue: #90a7c4;
   --third: #d4d0af;
 }
 
@@ -57,7 +57,6 @@ body {
 
 .wrap_nav a:hover {
   text-decoration: none;
-  /* color:#fff; */
   color: var(--blue);
 }
 
@@ -82,7 +81,7 @@ body {
   align-items: center;
 }
 
-.neomorph_menu:hover{
+/* .neomorph_menu:hover{
   box-shadow: 
   inset  6px  6px  10px  0 rgba(0, 0, 0, 0.2),
          0 0 0 0           rgba(0, 0, 0, 0.2),
@@ -90,7 +89,7 @@ body {
          0 0 0 0           rgba(255, 255, 255, 0.5);
   color: var(--blue);
   cursor: pointer;
-}
+} */
 
 .neomorph_menu:hover a {
   color: var(--blue);
@@ -359,5 +358,17 @@ body {
     align-items: center;
     margin-top: 0;
   }
+}
+
+@media(hover: hover) and (pointer: fine) {
+	.neomorph_menu:hover{
+	  box-shadow: 
+	  inset  6px  6px  10px  0 rgba(0, 0, 0, 0.2),
+		 0 0 0 0           rgba(0, 0, 0, 0.2),
+	  inset -6px -6px 10px 0   rgba(255, 255, 255, 0.5),
+		 0 0 0 0           rgba(255, 255, 255, 0.5);
+	  color: var(--blue);
+	  cursor: pointer;
+	}
 }
 
