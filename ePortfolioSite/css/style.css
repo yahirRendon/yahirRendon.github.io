@@ -17,11 +17,16 @@
   --third: #d4d0af;
 }
 
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
 body {
-  padding: 3rem 4rem 0;
+/*   padding: 3rem 4rem 0; */
+  margin: 2.5vw 5vw;
   background: var(--lighter);
   color: black;
-  font-family: 'Montserrat', sans-serif;
+/*   font-family: 'Montserrat', sans-serif; */
 }
 
 /* ********** *************** ********** */
