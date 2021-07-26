@@ -1,6 +1,7 @@
- <!-- 
+<!-- 
  - Author: 	Yahir Rendon 
  - Date:	April 2021
+ - Update:  July 2021
  - Project: ePortfolio
  -
  - home/index page
@@ -8,9 +9,12 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="ePortfolioSite/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Yahir ePortfolio</title>
 </head>
@@ -20,17 +24,17 @@
     <!-- navigation bar -->
     <nav class="wrap_nav">
         <div class="n_a" id="menuButton" title="Toggle Menu">
-                <div class="neo_holder_menu">
-                        <div class="neomorph_menu v2_menu">
-            <a href="javascript:void(0);">&#9776</a>
+            <div class="neo_holder_menu">
+                <div class="neomorph_menu v2_menu">
+                    <a href="javascript:void(0);">&#9776</a>
+                </div>
             </div>
         </div>
-        </div>
         <div class="e_nav n_b" id="homeButton" title="Go Home">
-                <a href="index.html">Home</a>
+            <a href="index.html">Home</a>
         </div>
-        <div class="e_nav n_c" id="planButton" title="View Refinement Plan">
-                <a href="ePortfolioSite/pages/plan.html">Plan</a>
+        <div class="e_nav n_c" id="planButton" title="View Projects">
+            <a href="ePortfolioSite/pages/projects.html">Projects</a>
         </div>
         <div class="e_nav n_d" id="aboutButton" title="About Yahir">
             <a href="ePortfolioSite/pages/about.html">About</a>
@@ -42,7 +46,10 @@
 
     <!-- introduction -->
     <div class="title_1_sub">Welcome</div>
-    <div class="subTitle">Explore my work in the following computer science categories</div>
+    <div class="subTitle">Explore and enjoy my work in the following categories below
+        <br>or by project by clicking
+        <a href="ePortfolioSite/pages/projects.html">here</a>
+    </div>
 
     <!-- display CS categories -->
     <div class="wrap_cat">
@@ -64,61 +71,85 @@
     </div>
 
     <!-- professional assessment introduction -->
-    <div class="title_1_a">Professional Assessment</div>
+    <!-- <div class="title_1_a">My Projects</div> -->
+
+    <div class="title_1_sub">Self Assessment</div>
+    <div class="subTitle">Discover my journey and motivations</div>
 
     <p class="body_text">
-        My journey at SNHU has provided me with an incredible opportunity to learn about the multitude of areas that make of computer science. This experience has been vital as prior to enrolling I new next to nothing when it came to programming, developing software, or where I even fit into the tech world. I only knew that I wanted to work in Robotics and AI and first enrolled under the Information Technology track. My early courses provided me with an understanding of the IT field and after taking a course that required some coding, I quickly realized my interest lied heavily in the challenge of software development with the hope of one day writing software that utilized robotics and/or AI to interact with the real world. I quickly made the change to Computer Science and have not looked back since. 
+        For the last decade I’ve worked as a paralegal representing and advocating for injured workers. I’ve helped people with a
+        range of industrial injuries with the most severe leading to permanent loss of functionality. I’ve done my best to
+        help these individuals but not all my work results in happy endings. Fortunately, there are enough glimmers of positivity
+        to keep me motivated and fighting for those whose lives are irreparably changed due to injuries. Nonetheless, in
+        all my time as a paralegal I’ve yet to be able to do that which I wish to do most -truly restore the lost functionality
+        to those marred by disabling injuries.
+        <br>
+        <br> In 2010, I was hired by my firm and began engaging with these heartbreaking injuries. Throughout the years my hard
+        work has been rewarded with increased opportunities and the responsibility of managing my own claims while also helping
+        other colleagues on their case load. Despite my increased ability to help injured workers, I continue to find myself
+        wishing to do more. One day in 2016, I stumbled across a TED Talk by Hugh Herr, the head of the MIT Media Lab’s Biomechatronic
+        group. I was mesmerized as he described losing his legs in an accident and his journey to improve prosthetics based
+        on his experience. The images of all the maimed client’s I’ve helped flashed in my mind as he discussed using machine
+        learning and biometric readings to make traditional prosthetics seem crude and lifeless. By making real time adjustments,
+        these new prosthetics, could mimic natural movements including walking and running gaits.
+        <br>
+        <br> Towards the end of the talk, Herr introduced the audience to Adrianne Haslet-Davis, a runner, sister, daughter,
+        dancer, and the victim of the Boston Marathon bombing in which she lost part of her left leg. Despite her recovery,
+        she was near certain traditional prosthetics would never allow her to do one of her favorite activities -dance. Her
+        fears mirrored the endless list of lost abilities I’ve become all to accustomed to hearing in my line of work. To
+        my surprise, Adrianne was welcomed to the stage aided by one of the advanced prosthetics developed at Herr’s lab.
+        She gracefully and beautifully began to do her first dance performance since losing her leg. The hope and optimism
+        imbedded in each expression of joy as she finished her dance was ineffable and uncontrollably contagious. For the
+        first time, I felt an immense personal connection between technology and its ability to restore human function. I
+        knew in that moment my purpose in life had changed and I needed a new skillset to deliver the impact I wished to
+        have in the lives of others.
+        <br>
+        <br> I began the enrollment process at Southern New Hampshire University to complete my undergraduate degree the day
+        after watching Hugh Herr’s TED Talk and on the back of years of advocating for injured workers. It was the perfect
+        place for me to reconnect with academia, demonstrate my dedication to learning, and my commitment to being a catalyst
+        for positive change. Most importantly, while pursuing my education I was able to stay connected to my work as a paralegal.
+        A source of continued motivation towards my goal of using technology to erase the limitations imposed by disabilities.
+        I graduated Summa Cum Laude in early 2021 with a BS in Computer Science from Southern New Hampshire University. While
+        pursuing my undergraduate degree I was also granted a scholarship to complete a Nanodegree through Udacity and its
+        partnership with Google in Android Development. I was recently accepted into the Computer Science Graduate Program
+        at the University of Texas at Austin where I will continue to focus my skills in advanced Computer Science and Machine
+        Learning.
+        <br>
+        <br> I am fully aware of the humble accomplishments on paper that I bring to this pursuit. However, I am encouraged by
+        my ability to demonstrate success no matter the odds. Overcoming challenges as an immigrant, being successful in
+        the demanding profession of industrial injury law and attaining academic excellence at SNHU to name a few. The knowledge
+        and abilities to work biomechatronic may elude me I’ve come to discover that my ability to help others through technology
+        can be vast and varied. Most importantly, I’ve learned that to the biggest challenges require us all to play or own
+        unique and vital role. I look forward to being a part of a team that seeks to develop the software and tools to enhance
+        the human condition for others.
     </p>
 
-    <!-- program reflection -->
-    <div class="title_1">Program Reflection</div>
+    <div class="title_1_sub">Contact</div>
+    <div class="subTitle">If my story, motivations, and/or work are intriguing
+        <br>please feel free to reach out for opportunties, projects, and collaborations</div>
 
-    <p class="body_text">
-        <br><br>
-        The challenges I’ve faced over my four years SNHU have served to make me a better person, problem solver, and software engineer. Reflecting on the journey, I have developed insight into many critical computer science fields, areas, and principles. I’ve learned about the various approaches to the software development lifecycle and the critical role teamwork plays in the process. I’ve incorporated Agile development into much of the work that I do after taking CS-250 because of its benefits in process and ability to deliver ready to use incremental features. Working remotely with others has becoming an increasingly important skill and courses like CS-310 were beneficial in shaping my ability to work in a team in a development setting using Git and other collaborative practices and tools. 
-        <br><br>
-        I’ve always had a fondness for mathematics and enjoyed the various math courses at SNHU such as calculus, applied statistics, applied linear algebra, and discrete mathematics to name a few. These courses were crucial in developing my problem-solving skills and logical thinking that were later applied to courses like CS-260 that worked with algorithms and data structures or CS-410 in which I explored reverse engineering. By overcoming challenges in these foundational practices, I was able to begin thinking like a software engineering. I improved my ability to break problems into smaller ones and find patterns from the small scale that could be applied to a larger scale or problem. While, this ability to find patterns and solve problems is critical it is not sufficient for a software engineer as your solutions must account for the real world and the incorporate the necessary security to meet the threats of today.
-        <br><br>
-        To understand vulnerabilities in code, programing languages, and external threats course like CS-320 and CS-405 which dealt with testing and secure coding respectively were incredibly insightful. I can think like a software engineer, software tester, and a hacker when writing code to account for as many vulnerabilities and threats as possible. Various courses introduced me to different languages which includes their weakness that could be exploited. Coupling this knowledge with design principles from object-oriented design and operating systems I have a strong knowledge of how my software interfaces with itself and other systems to account for errors, bugs, vulnerabilities, and security concerns. 
-        <br><br>
-        In courses like website design and mobile architecture I was able to explore software design concepts that I’ve applied to various aspects in and out of school. Additionally, I’ve applied them towards improving all artifacts of this capstone project. Understanding how various elements of code come together and how to optimize their design to deliver a working project was foundational to my capstone work. Working with SQL and Client/Server Development in DAD-220 and CS-340 were informative when creating my own backed and API. Even courses not traditionally consider computer science related such as English and social studies have been impactful towards my work as a software engineer. I’ve learned how to be a better writer and communicator which are critical when working on a team or with the various shareholders involved in the development process.  
-    </p>
-
-    <!-- portfolio summary -->
-    <div class="title_1">Portfolio Summary</div>
-
-    <p class="body_text">
-        Three projects were selected to encapsulate my abilities as a software engineer in this portfolio. The first is a weather station project from work I did in CS-350, Emerging Systems Architectures and Technologies. The original projects consisted of creating an embedded system using a RaspberryPi and sensors to collect weather data at specified intervals. This data was then displayed to a local web dashboard. This project and its enhancements demonstrate my abilities in software design and engineering by creating a responsive and user driver interface for the web dashboard that is also scalable with more cities and data in the future. This project was also chosen to demonstrate my skill implementing algorithms and working with various data structures. The data collected can be sorted and reversed using algorithms and temperature values can also be searched using two different search algorithms. 
-        <br><br>
-        The second and third projects were used to demonstrate my database abilities. The first being an Android mobile application from CS-360 that uses a SQLite database for creating a user profile and tracking user weight entries. This project inspired the third artifact of this portfolio which is a weight tracking web application in which a backend and API was created that allowed similar functionality as the mobile app. However, this project took advantage of a more advanced backend to implement improved security and community sharing of weight entries. 
-    </p>
-
-    <!-- future endeavors -->
-    <div class="title_1">Future Endeavors</div>
-
-    <p class="body_text">
-        My initial desire to work in robotics and AI remains a driving factor for me. Completing my BA in Computer Science is a step towards that goal. The totality of my educational journey at SNHU has prepared me to enter the software development industry while also pursing my specific career goals. I’ve excelled in all my mathematics and computer science courses that have overlaps with robotics and AI. I specifically selected an artifact for my portfolio that not only utilizes software but sensors that interact with the real world as a reflection of my goals within the industry. 
-        <br><br>
-        Additionally, I am currently enrolled in a Nanodegree from Udacity in Artificial Intelligence using Python and will be applying to graduate school to further improve my knowledge and skills. My work at SNHU has opened many opportunities for me in the future that I look forward to taking on. Despite the inevitable challenges that will come my way I will mee them the same way I meet challenges at SNHU -with hard work and a comment to excellence. 
-    </p>
-
+    <div class="wrap_icon">
+        <a href="www.instagram.com" class="fa fa-instagram"></a>
+        <a href="www.linkedin.com" class="fa fa-linkedin"></a>
+    </div>
     <!-- footer navigation bar -->
     <footer class="wrap_footer">
         <div class="e_footer f_home" id="homeButton" title="Go Home">
             <a href="index.html">Home</a>
         </div>
-        <div class="e_footer f_plan" id="planButton" title="View Refinement Plan">
-            <a href="ePortfolioSite/pages/plan.html">Plan</a>
+        <div class="e_footer f_project" id="planButton" title="View Projects">
+            <a href="ePortfolioSite/pages/projects.html">Projects</a>
         </div>
         <div class="e_footer f_about" id="aboutButton" title="About Yahir">
             <a href="ePortfolioSite/pages/about.html">About</a>
         </div>
         <div class="e_footer f_github" id="githubButton" title="View GitHub Pages">
             <a href="https://github.com/yahirRendon/yahirRendon.github.io">GitHub</a>
-        </div>	
+        </div>
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="ePortfolioSite/js/scripts.js"></script>
 </body>
+
 </html>
