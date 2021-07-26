@@ -1,6 +1,7 @@
 /**
  * Author: 	Yahir Rendon 
  * Date:	April 2021
+ * Update:  July 2021
  * Project: ePortfolio
  * 
  * scripts
@@ -18,6 +19,7 @@ window.onload = function () {
 
 	goToAlgorithmsGitProject();
 	goToDesignGitProject();
+	goToProject();
 }
 
 /**
@@ -26,8 +28,8 @@ window.onload = function () {
 function navigationBarToggle() {
 	// on menuButton click toggle show/hide menu
 	$("#menuButton").click(function () {
-        if ($('.e_nav').css('display') == 'none') {
-            $(".e_nav").css({ display: "flex" }).show();
+		if ($('.e_nav').css('display') == 'none') {
+			$(".e_nav").css({ display: "flex" }).show();
 		} else {
 			$(".e_nav").css({ display: "none" }).hide();
 		}
@@ -71,7 +73,6 @@ function goToDesignPage() {
  * on click send user to the github page that contains
  * algorithm project files and code
  */
-// #FIX once projects are in github update link
 function goToAlgorithmsGitProject() {
 	$("#algorithms_github_button").click(function () {
 		window.location.href = "https://github.com/yahirRendon/weather_station";
@@ -82,10 +83,24 @@ function goToAlgorithmsGitProject() {
  * on click send user to the github page that contains
  * design project files and code
  */
-// #FIX once projects are in github update link
 function goToDesignGitProject() {
 	$("#design_github_button").click(function () {
 		window.location.href = "https://github.com/yahirRendon/weather_station";
 	})
 }
 
+function goToProject() {
+	$(".proj_a").click(function () {
+		window.open('https://github.com/yahirRendon/Creative_Coding/tree/main/Processing/Instagram_Filter_Sine_Particles', '_newtab');
+	})
+
+	$(".proj_b").click(function () {
+		window.open('https://github.com/yahirRendon/Creative_Coding/tree/main/Processing/Visualizer_Rings_Solo_Static_Public', '_newtab');
+	})
+	$(".proj_c").click(function () {
+		window.open('https://github.com/yahirRendon/Creative_Coding/tree/main/Processing/Visualizer_Rings_Solo_Revolve_Public', '_newtab');
+	})
+
+
+
+}
