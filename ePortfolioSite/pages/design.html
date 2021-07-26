@@ -1,6 +1,7 @@
- <!-- 
+<!-- 
  - Author: 	Yahir Rendon 
  - Date:	April 2021
+ = Update:  July 2021
  - Project: ePortfolio
  -
  - design project page
@@ -8,6 +9,7 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
@@ -20,17 +22,17 @@
     <!-- navigation bar -->
     <nav class="wrap_nav">
         <div class="n_a" id="menuButton" title="Toggle Menu">
-                <div class="neo_holder_menu">
-                        <div class="neomorph_menu v2_menu">
-            <a href="javascript:void(0);">&#9776</a>
+            <div class="neo_holder_menu">
+                <div class="neomorph_menu v2_menu">
+                    <a href="javascript:void(0);">&#9776</a>
+                </div>
             </div>
         </div>
-        </div>
         <div class="e_nav n_b" id="homeButton" title="Go Home">
-                <a href="../../index.html">Home</a>
+            <a href="../../index.html">Home</a>
         </div>
-        <div class="e_nav n_c" id="planButton" title="View Refinement Plan">
-                <a href="plan.html">Plan</a>
+        <div class="e_nav n_c" id="projectButton" title="View Projects">
+            <a href="projects.html">Projects</a>
         </div>
         <div class="e_nav n_d" id="aboutButton" title="About Yahir">
             <a href="about.html">About</a>
@@ -48,7 +50,7 @@
     <div class="wrap_cat_main">
         <div class="cat_holder_viewA">
             <div class="v2_cat">
-                <img class="temp" src="../img/weather_station_design.jpg">
+                <img class="temp" src="../img/weatherStation_design.gif">
             </div>
         </div>
         <div class="cat_holder_viewB">
@@ -58,31 +60,58 @@
         </div>
     </div>
 
-     <!-- project explanation and details -->
+    <!-- project explanation and details -->
     <div class="title_1">Description</div>
 
     <p class="body_text">
-        The artifact I chose to use to demonstrate my software design and engineering abilities is the weather station project from CS-350, Emerging Technologies. This project was created in December 2020 as a columniation of work in the final milestone. It consisted of using a RaspberryPi and the GrovePi HAT/sensors to collect weather data. A JSON file is updated at 30-minute intervals during daylight hours only. The specific data collected consists of temperature, humidity, light sensitivity, and dates. Each reading and the data collected is then displayed in a local web dashboard.
+        The artifact I chose to use to demonstrate my software design and engineering abilities is the weather station project from
+        CS-350, Emerging Technologies. This project was created in December 2020 as a columniation of work in the final milestone.
+        It consisted of using a RaspberryPi and the GrovePi HAT/sensors to collect weather data. A JSON file is updated at
+        30-minute intervals during daylight hours only. The specific data collected consists of temperature, humidity, light
+        sensitivity, and dates. Each reading and the data collected is then displayed in a local web dashboard.
     </p>
 
     <div class="title_1">Justification</div>
 
     <p class="body_text">
-        I chose this project as an artifact for my ePortfolio because of the potential for improved complexity. This project demonstrate my ability to work with an embedded system, sensors, work with JSON, write a script in Python, write HTML, CSS, and JavaScript. It was also an opportunity to further work on a project that reflects my goal of working not only with code but with sensors and devices that interact with the world around us. This project had a solid foundation for collecting data but the displaying of that data in a meaningful way was greatly lacking. This presented a great opportunity to showcase my design and engineering skills to deliver a visually appealing and user driven web dashboard.
+        I chose this project as an artifact for my ePortfolio because of the potential for improved complexity. This project demonstrate
+        my ability to work with an embedded system, sensors, work with JSON, write a script in Python, write HTML, CSS, and
+        JavaScript. It was also an opportunity to further work on a project that reflects my goal of working not only with
+        code but with sensors and devices that interact with the world around us. This project had a solid foundation for
+        collecting data but the displaying of that data in a meaningful way was greatly lacking. This presented a great opportunity
+        to showcase my design and engineering skills to deliver a visually appealing and user driven web dashboard.
     </p>
 
     <div class="title_1">Reflection</div>
 
     <p class="body_text">
-        This project posed various challenges that all expanded my knowledge on several aspects of web development. First, creating charts and graphs on the web required me to learn how to use the JavaScript library CanvasJS. This was not something that was addressed in the original course, so I had to spend time reviewing the CanvasJS documentation to understand how to structure my data and render the desired charts that I wanted. This ability to learn a new library by reviewing documentation is an incredibly important skill to have. It is definitely a skill on to itself to be able to take a developer’s notes and incorporate their framework successfully into your own project. 
-        <br><br>
-        Another challenge, that required forethought and intention was the layout and design of the web dashboard. It was important for the dashboard to be responsive as it is important to account for the variety of screen sizes people use in the world. I also wanted it to be a reusable template that can be populated with data from different cities. This led me to explore different ways of using HTML and CSS such to meet the needs of the current enhancements but future growth as well. To test my design and engineering approach I created data for two additional cities to see how scalable my project was. It was challenging to develop a solution that displayed dashboard data but also allowed users to change cities and learn more about the project. However, by session storage and JavaScript functions I was able to write a scalable solution. 
-        <br><br>
-        In the end, this project was greatly improved in its design and engineering by heavily working on the front-end of the web dashboard. The prior HTML file contained JavaScript and CSS has been properly divided into individual files that reference each other. A modern and appealing website layout has been created using CSS grid. My code is written using best practices for each language utilized, it is appropriately commented for communicating intentions, creative solutions are demonstrated in costume functions, and overall employs modular programming concepts that will allow the project to scale as necessary through thoughtful initial design.
+        This project posed various challenges that all expanded my knowledge on several aspects of web development. First, creating
+        charts and graphs on the web required me to learn how to use the JavaScript library CanvasJS. This was not something
+        that was addressed in the original course, so I had to spend time reviewing the CanvasJS documentation to understand
+        how to structure my data and render the desired charts that I wanted. This ability to learn a new library by reviewing
+        documentation is an incredibly important skill to have. It is definitely a skill on to itself to be able to take
+        a developer’s notes and incorporate their framework successfully into your own project.
+        <br>
+        <br> Another challenge, that required forethought and intention was the layout and design of the web dashboard. It was
+        important for the dashboard to be responsive as it is important to account for the variety of screen sizes people
+        use in the world. I also wanted it to be a reusable template that can be populated with data from different cities.
+        This led me to explore different ways of using HTML and CSS such to meet the needs of the current enhancements but
+        future growth as well. To test my design and engineering approach I created data for two additional cities to see
+        how scalable my project was. It was challenging to develop a solution that displayed dashboard data but also allowed
+        users to change cities and learn more about the project. However, by session storage and JavaScript functions I was
+        able to write a scalable solution.
+        <br>
+        <br> In the end, this project was greatly improved in its design and engineering by heavily working on the front-end
+        of the web dashboard. The prior HTML file contained JavaScript and CSS has been properly divided into individual
+        files that reference each other. A modern and appealing website layout has been created using CSS grid. My code is
+        written using best practices for each language utilized, it is appropriately commented for communicating intentions,
+        creative solutions are demonstrated in costume functions, and overall employs modular programming concepts that will
+        allow the project to scale as necessary through thoughtful initial design.
     </p>
 
     <p class="body_text_view">
-        view this project on <a href="https://github.com/yahirRendon/weather_station">GitHub</a>
+        view this project on
+        <a href="https://github.com/yahirRendon/weather_station">GitHub</a>
     </p>
 
     <!-- footer navigation bar -->
@@ -90,18 +119,19 @@
         <div class="e_footer f_home" id="homeButton" title="Go Home">
             <a href="../../index.html">Home</a>
         </div>
-        <div class="e_footer f_plan" id="planButton" title="View Refinement Plan">
-            <a href="plan.html">Plan</a>
+        <div class="e_footer f_project" id="projectButton" title="View Projects">
+            <a href="projects.html">Projects</a>
         </div>
         <div class="e_footer f_about" id="aboutButton" title="About Yahir">
             <a href="about.html">About</a>
         </div>
         <div class="e_footer f_github" id="githubButton" title="View GitHub Pages">
             <a href="https://github.com/yahirRendon/yahirRendon.github.io">GitHub</a>
-        </div>	
+        </div>
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/scripts.js"></script>
 </body>
+
 </html>
