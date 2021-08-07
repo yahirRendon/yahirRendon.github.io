@@ -1,8 +1,8 @@
 /**
  * Author: 	Yahir Rendon 
  * Date:	April 2021
- * Update:  July 2021
- * Project: ePortfolio
+ * Update:      August 2021
+ * Project:     ePortfolio
  * 
  * scripts
  */
@@ -101,6 +101,11 @@ function goToProject() {
 		window.open('https://github.com/yahirRendon/Creative_Coding/tree/main/Processing/Visualizer_Rings_Solo_Revolve_Public', '_newtab');
 	})
 
+	$(".proj_d").click(function () {
+		window.location.href = "file:///C:/Users/yahir/OneDrive/Desktop/GitHub_Portfolio/ePortfolioSite/pages/sketches/gameoflife.html";
+	})
 
-
+	$(".proj_e").click(function () {
+		window.location.href = "file:///C:/Users/yahir/OneDrive/Desktop/GitHub_Portfolio/ePortfolioSite/pages/sketches/gameoflife.html";
+	})
 }
