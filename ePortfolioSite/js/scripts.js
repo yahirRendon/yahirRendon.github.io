@@ -102,10 +102,10 @@ function goToProject() {
 	})
 
 	$(".proj_d").click(function () {
-		window.location.href = "file:///C:/Users/yahir/OneDrive/Desktop/GitHub_Portfolio/ePortfolioSite/pages/sketches/gameoflife.html";
+		window.location.href = "https://yahirrendon.github.io/ePortfolioSite/pages/sketches/gameoflife.html";
 	})
 
 	$(".proj_e").click(function () {
-		window.location.href = "file:///C:/Users/yahir/OneDrive/Desktop/GitHub_Portfolio/ePortfolioSite/pages/sketches/gameoflife.html";
+		window.location.href = "https://yahirrendon.github.io/ePortfolioSite/pages/sketches/gameoflife.html";
 	})
 }
