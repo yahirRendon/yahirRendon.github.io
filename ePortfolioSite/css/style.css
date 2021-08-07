@@ -366,7 +366,7 @@
     margin-top: 5em;
     grid-area: wrap_proj;
     display: grid;
-    grid-gap: 1%;
+    grid-gap: 1em;
     grid-template-columns: 1fr 35vh 1fr;
     grid-template-rows: repeat(6, 35vh);
     /* grid-template-rows: 29.5vw 29.5vw 29.5vw; */
