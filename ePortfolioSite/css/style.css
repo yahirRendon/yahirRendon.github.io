@@ -1,7 +1,7 @@
 /**
  * Author: 	Yahir Rendon 
  * Date:	  April 2021
- * Update:  July 2021
+ * Update:  August 2021
  * Project: ePortfolio
  *
  * style 
@@ -90,6 +90,36 @@
   .neomorph_menu:hover a {
     color: var(--blue);
   }
+
+  /* ********** ***************** ********** */
+  /* ********** p5 JS SKETCH MENU ********** */
+  /* ********** ***************** ********** */
+
+  .sketch_holder {
+    grid-area: sketch_holder;
+    box-shadow: 
+    inset 0 0 0 0             rgba(0, 0, 0, 0.2),
+          12px  12px  24px  0 rgba(0, 0, 0, 0.2),
+    inset 0 0 0 0             rgba(0, 0, 0, 0.2),
+          -12px -12px  24px 0 rgba(255, 255, 255, 0.5);
+  
+    font-size: large;
+    width: 75vw;
+    height: 75vw;
+    border-radius: 40px;
+    overflow: hidden;
+    display: flex;
+    color: var(--dark);
+    transition:box-shadow 300ms, color 300ms;
+  }
+
+  .wrap_sketch {
+    grid-area: w_sketch;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: ". sketch_holder .";
+  }
+
   
   /* ********** ******************* ********** */
   /* ********** CS CATEGORY DISPLAY ********** */
@@ -236,10 +266,16 @@
   .proj_img_a {grid-area: proj_i_a; background-image: url('../img/project_img/instagramFilterSineParticleDemo.gif')}
   .proj_img_b {grid-area: proj_i_b; background-image: url('../img/project_img/Viz_Ring_Fixed_Gif.gif')}
   .proj_img_c {grid-area: proj_i_c; background-image: url('../img/project_img/Viz_Ring_Revolve_Gif.gif')}
+  .proj_img_d {grid-area: proj_i_d; background-image: url('../img/project_img/Game_of_Life_Image_prjgif.gif')}
+  .proj_img_e {grid-area: proj_i_e; background-image: url('../img/project_img/Game_of_Life_shifted_prjgif.gif')}
+  .proj_img_f {grid-area: proj_i_f; background-image: url('../img/project_img/blank_project_third.jpg')}
   
   .proj_img_a,
   .proj_img_b,
-  .proj_img_c {
+  .proj_img_c,
+  .proj_img_d,
+  .proj_img_e,
+  .proj_img_f {
     display: flex;
     justify-content: center; 
     align-items: center;
@@ -251,7 +287,10 @@
   
   .proj_a,
   .proj_b,
-  .proj_c {
+  .proj_c,
+  .proj_d,
+  .proj_e,
+  .proj_f  {
     width: 100%;
     height: 100%;
     transition: backdrop-filter 300ms;
@@ -259,7 +298,10 @@
   
   .proj_title_a,
   .proj_title_b,
-  .proj_title_c {
+  .proj_title_c,
+  .proj_title_d,
+  .proj_title_e,
+  .proj_title_f  {
     margin-bottom: .5em;
     display: flex;
     height: 50%;
@@ -274,7 +316,10 @@
   
   .proj_sub_a,
   .proj_sub_b,
-  .proj_sub_c {
+  .proj_sub_c,
+  .proj_sub_d,
+  .proj_sub_e,
+  .proj_sub_f {
     /* border: 1px solid red; */
     display: flex;
     height: 50%;
@@ -287,7 +332,10 @@
   
   .proj_a:hover,
   .proj_b:hover,
-  .proj_c:hover {
+  .proj_c:hover,
+  .proj_d:hover,
+  .proj_e:hover,
+  .proj_f:hover {
     cursor: pointer;
     backdrop-filter: blur(10px);
     transition: backdrop-filter 300ms; 
@@ -296,14 +344,20 @@
   .proj_a:hover .proj_title_a,
   .proj_a:hover .proj_sub_a, 
   .proj_b:hover .proj_title_b,
-  .proj_b:hover .proj_sub_b {
+  .proj_b:hover .proj_sub_b  {
     color: white;
     transition:color 300ms;  
   }
   
 
   .proj_c:hover .proj_title_c,
-  .proj_c:hover .proj_sub_c {
+  .proj_c:hover .proj_sub_c,
+  .proj_d:hover .proj_title_d,
+  .proj_d:hover .proj_sub_d, 
+  .proj_e:hover .proj_title_e,
+  .proj_e:hover .proj_sub_e,
+  .proj_f:hover .proj_title_f,
+  .proj_f:hover .proj_sub_f  {
     color: black;
     transition:color 300ms;  
   }
@@ -313,10 +367,11 @@
     grid-area: wrap_proj;
     display: grid;
     grid-gap: 1%;
-    grid-template-columns: 1fr 50vh 1fr;
-    grid-template-rows: repeat(3, 50vh);
+    grid-template-columns: 1fr 35vh 1fr;
+    grid-template-rows: repeat(6, 35vh);
     /* grid-template-rows: 29.5vw 29.5vw 29.5vw; */
-    grid-template-areas: ". proj_i_c ." ". proj_i_b ." ". proj_i_a .";
+    grid-template-areas: ". proj_i_f ." ". proj_i_e ." ". proj_i_d ."
+    ". proj_i_c ." ". proj_i_b ." ". proj_i_a .";
   }
   
   /* ********** ********************** ********** */
@@ -479,16 +534,27 @@
 
     .proj_title_a,
     .proj_title_b,
-    .proj_title_c {
+    .proj_title_c,
+    .proj_title_d,
+    .proj_title_e,
+    .proj_title_f {
       font-size: xx-large;
 
     }
 
     .wrap_proj {
-      grid-template-columns: 29.5vw 29.5vw 29.5vw;
-      grid-template-rows: 29.5vw;
-      grid-template-areas: "proj_i_c proj_i_b proj_i_a";
-    }  
+      grid-template-columns: 29vw 29vw 29vw;
+      grid-template-rows: 29vw 29vw;
+      grid-template-areas: "proj_i_f proj_i_e proj_i_d"
+      "proj_i_c proj_i_b proj_i_a";
+    } 
+    
+    .sketch_holder {
+      font-size: xx-large;
+      width: 800px;
+      height: 800px;
+
+    }
   }
   
   @media(hover: hover) and (pointer: fine) {
