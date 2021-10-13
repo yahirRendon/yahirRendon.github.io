@@ -1,7 +1,7 @@
 /**
  * Author: 	Yahir Rendon 
  * Date:	  April 2021
- * Update:  August 2021
+ * Update:  October 2021
  * Project: ePortfolio
  *
  * style 
@@ -23,11 +23,9 @@
   }
   
   body {
-  /*   padding: 3rem 4rem 0; */
     margin: 2.5vw 5vw;
     background: var(--lighter);
     color: black;
-  /*   font-family: 'Montserrat', sans-serif; */
   }
   
   /* ********** *************** ********** */
@@ -261,21 +259,15 @@
   }
 
   /* ********** *************** ********** */
-  /* ********** PROJECT DISPLAY ********** */
+  /* ********** PROJECTS DISPLAY ********* */
   /* ********** *************** ********** */
-  .proj_img_a {grid-area: proj_i_a; background-image: url('../img/project_img/instagramFilterSineParticleDemo.gif')}
-  .proj_img_b {grid-area: proj_i_b; background-image: url('../img/project_img/Viz_Ring_Fixed_Gif.gif')}
-  .proj_img_c {grid-area: proj_i_c; background-image: url('../img/project_img/Viz_Ring_Revolve_Gif.gif')}
-  .proj_img_d {grid-area: proj_i_d; background-image: url('../img/project_img/Game_of_Life_Image_prjgif.gif')}
-  .proj_img_e {grid-area: proj_i_e; background-image: url('../img/project_img/Game_of_Life_shifted_prjgif.gif')}
-  .proj_img_f {grid-area: proj_i_f; background-image: url('../img/project_img/blank_project_third.jpg')}
-  
-  .proj_img_a,
-  .proj_img_b,
-  .proj_img_c,
-  .proj_img_d,
-  .proj_img_e,
-  .proj_img_f {
+  .proj_img_0 {grid-area: proj_i_0; border: 1px solid white;}
+  .proj_img_1 {grid-area: proj_i_1; border: 1px solid white;}
+  .proj_img_2 {grid-area: proj_i_2; border: 1px solid white;}
+
+  .proj_img_0, 
+  .proj_img_1, 
+  .proj_img_2 {
     display: flex;
     justify-content: center; 
     align-items: center;
@@ -283,25 +275,21 @@
     background-position: center center;
     background-size: cover;
     flex-direction: column;
+    border-radius: 30px;
   }
   
-  .proj_a,
-  .proj_b,
-  .proj_c,
-  .proj_d,
-  .proj_e,
-  .proj_f  {
+  .proj_0, 
+  .proj_1, 
+  .proj_2 {
     width: 100%;
     height: 100%;
     transition: backdrop-filter 300ms;
+    border-radius: 30px;
   }
   
-  .proj_title_a,
-  .proj_title_b,
-  .proj_title_c,
-  .proj_title_d,
-  .proj_title_e,
-  .proj_title_f  {
+  .proj_title_0, 
+  .proj_title_1, 
+  .proj_title_2 {
     margin-bottom: .5em;
     display: flex;
     height: 50%;
@@ -314,12 +302,9 @@
     transition:color 300ms; 
   }
   
-  .proj_sub_a,
-  .proj_sub_b,
-  .proj_sub_c,
-  .proj_sub_d,
-  .proj_sub_e,
-  .proj_sub_f {
+  .proj_sub_0, 
+  .proj_sub_1, 
+  .proj_sub_2 {
     /* border: 1px solid red; */
     display: flex;
     height: 50%;
@@ -330,48 +315,60 @@
     transition:color 300ms; 
   }
   
-  .proj_a:hover,
-  .proj_b:hover,
-  .proj_c:hover,
-  .proj_d:hover,
-  .proj_e:hover,
-  .proj_f:hover {
+  .proj_0:hover, 
+  .proj_1:hover, 
+  .proj_2:hover {
     cursor: pointer;
     backdrop-filter: blur(10px);
     transition: backdrop-filter 300ms; 
   }
-
-  .proj_a:hover .proj_title_a,
-  .proj_a:hover .proj_sub_a, 
-  .proj_b:hover .proj_title_b,
-  .proj_b:hover .proj_sub_b  {
-    color: white;
+  
+  .proj_0:hover .proj_sub_0,
+  .proj_1:hover .proj_sub_1,
+  .proj_2:hover .proj_sub_2,  {
     transition:color 300ms;  
   }
-  
 
-  .proj_c:hover .proj_title_c,
-  .proj_c:hover .proj_sub_c,
-  .proj_d:hover .proj_title_d,
-  .proj_d:hover .proj_sub_d, 
-  .proj_e:hover .proj_title_e,
-  .proj_e:hover .proj_sub_e,
-  .proj_f:hover .proj_title_f,
-  .proj_f:hover .proj_sub_f  {
-    color: black;
-    transition:color 300ms;  
-  }
-  
   .wrap_proj {
     margin-top: 5em;
     grid-area: wrap_proj;
     display: grid;
     grid-gap: 1em;
     grid-template-columns: 1fr 35vh 1fr;
-    grid-template-rows: repeat(6, 35vh);
+    grid-template-rows: repeat(3, 35vh);
     /* grid-template-rows: 29.5vw 29.5vw 29.5vw; */
-    grid-template-areas: ". proj_i_f ." ". proj_i_e ." ". proj_i_d ."
-    ". proj_i_c ." ". proj_i_b ." ". proj_i_a .";
+    grid-template-areas: ". proj_i_0 ." ". proj_i_1 ." ". proj_i_2 .";
+  }
+
+   /* project navigation wrapper */
+   .pn_a {grid-area: pn_a;}
+   .pn_b {grid-area: pn_b;}
+   .pn_c {grid-area: pn_c;}
+
+   .pn_a,
+   .pn_b,
+   .pn_c {
+     display: flex;
+    justify-content: center;
+    align-items: center;
+   }
+ 
+   .wrap_proj_nav {
+     margin-top: 5em;
+     grid-area: wp_nav;
+     display: grid;
+     grid-template: 1fr 1fr 1fr 1fr 1fr;
+     grid-template-areas: ". pn_a pn_b pn_c .";
+   }
+
+   .wrap_proj_nav a {
+    text-decoration: none;
+    color: var(--darker);
+   }
+
+  #resetButton {
+    margin-top: 2em;
+    text-align: center;
   }
   
   /* ********** ********************** ********** */
@@ -494,8 +491,10 @@
     display: grid;
     grid-template-columns: 1fr auto auto 1fr;
     grid-gap: 2%;
-    grid-template-areas: ". fa-insta fa-link ."
+    grid-template-areas: ". fa-insta fa-link .";
   }
+
+
   
   /* ********** ************************* ********** */
   /* ********** ***** LARGE SCREENS ***** ********** */
@@ -517,7 +516,7 @@
       text-align: center;
       margin-top: 2em;
       margin-bottom: 2em;
-      }
+    }
   
     .wrap_nav {
       grid-area: w_n;
@@ -532,22 +531,19 @@
       margin-top: 0;
     }
 
-    .proj_title_a,
-    .proj_title_b,
-    .proj_title_c,
-    .proj_title_d,
-    .proj_title_e,
-    .proj_title_f {
+    .proj_title_0,
+    .proj_title_1,
+    .proj_title_2
+    {
       font-size: xx-large;
 
     }
 
     .wrap_proj {
       grid-template-columns: 29vw 29vw 29vw;
-      grid-template-rows: 29vw 29vw;
-      grid-template-areas: "proj_i_f proj_i_e proj_i_d"
-      "proj_i_c proj_i_b proj_i_a";
-    } 
+      grid-template-rows: 29vw;
+      grid-template-areas: "proj_i_0 proj_i_1 proj_i_2";
+    }
     
     .sketch_holder {
       font-size: xx-large;
