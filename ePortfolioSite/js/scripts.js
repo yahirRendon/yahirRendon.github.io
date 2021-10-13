@@ -7,10 +7,6 @@
  * scripts
  */
 
-/**
- * On windowload check navigaton display and
- * set onClick listeners
- */
 
 var numProjects = 5;
 var projectIndex = numProjects;
@@ -76,6 +72,10 @@ var projectData =
 	]
   };
 
+/**
+ * On windowload check navigaton display and
+ * set onClick listeners
+ */
 window.onload = function () {
 	navigationBarToggle();
 	goToDesignPage();
