@@ -77,6 +77,7 @@ var projectData =
  * set onClick listeners
  */
 window.onload = function () {
+	console.log("Loaded");
 	navigationBarToggle();
 	goToDesignPage();
 	goToAlgorithmsPage();
