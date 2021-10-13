@@ -1,8 +1,8 @@
 /**
  * Author: 	Yahir Rendon 
  * Date:	April 2021
- * Update:      August 2021
- * Project:     ePortfolio
+ * Update:  August 2021
+ * Project: ePortfolio
  * 
  * scripts
  */
@@ -11,6 +11,71 @@
  * On windowload check navigaton display and
  * set onClick listeners
  */
+
+var numProjects = 5;
+var projectIndex = numProjects;
+var projectData = 
+{
+	"projects": [
+	  {
+		"id": 0,
+		"style": 1,
+		"title": "Particulate Matter -Photo",
+		"description": "Inspired by an Instagram filter",
+		"imgName": "../img/project_img/instagramFilterSineParticleDemo.gif",
+		"link": "https://github.com/yahirRendon/Creative_Coding/tree/main/Processing/Instagram_Filter_Sine_Particles"
+	  },
+	  {
+		"id": 1,
+		"style": 1,
+		"title": "Ring Visualizer -Static",
+		"description": "Audio vizualizer in ring form",
+		"imgName": "../img/project_img/Viz_Ring_Fixed_Gif.gif",
+		"link": "https://github.com/yahirRendon/Creative_Coding/tree/main/Processing/Visualizer_Rings_Solo_Static_Public"
+	  },
+	  {
+		"id": 2,
+		"style": 0,
+		"title": "Ring Visualizer -Revolve",
+		"description": "Audio visualizer with revolving ring peaks",
+		"imgName": "../img/project_img/Viz_Ring_Revolve_Gif.gif",
+		"link": "https://github.com/yahirRendon/Creative_Coding/tree/main/Processing/Visualizer_Rings_Solo_Revolve_Public"
+	  },
+	  {
+		"id": 3,
+		"style": 0,
+		"title": "Game of Life -Image",
+		"description": "Classic game with a revealing twist",
+		"imgName": "../img/project_img/Game_of_Life_Image_prjgif.gif",
+		"link": "https://yahirrendon.github.io/ePortfolioSite/pages/sketches/gameoflife.html"
+	  },
+	  {
+		"id": 4,
+		"style": 0,
+		"title": "Game of Life -Shift",
+		"description": "Classic game with a shifted twist",
+		"imgName": "../img/project_img/Game_of_Life_shifted_prjgif.gif",
+		"link": "https://yahirrendon.github.io/ePortfolioSite/pages/sketches/gameoflife.html"
+	  },
+	  {
+		"id": 5,
+		"style": 0,
+		"title": "Sweeper",
+		"description": "Classic game in a minimal layout",
+		"imgName": "../img/project_img/sweep_g.gif",
+		"link": "https://yahirrendon.github.io/ePortfolioSite/pages/sketches/sweeper.html"
+	  }
+	//   {
+	// 	"id": 6,
+	// 	"style": 0,
+	// 	"title": "Coming Soon...",
+	// 	"description": "Some cool project",
+	// 	"imgName": "../img/project_img/blank_project_third.jpg",
+	//  "link": ""
+	//   }
+	]
+  };
+
 window.onload = function () {
 	navigationBarToggle();
 	goToDesignPage();
@@ -19,7 +84,9 @@ window.onload = function () {
 
 	goToAlgorithmsGitProject();
 	goToDesignGitProject();
-	goToProject();
+
+	populateProjects();
+	projectNavigationButtons();
 }
 
 /**
@@ -89,23 +156,73 @@ function goToDesignGitProject() {
 	})
 }
 
-function goToProject() {
-	$(".proj_a").click(function () {
-		window.open('https://github.com/yahirRendon/Creative_Coding/tree/main/Processing/Instagram_Filter_Sine_Particles', '_newtab');
-	})
 
-	$(".proj_b").click(function () {
-		window.open('https://github.com/yahirRendon/Creative_Coding/tree/main/Processing/Visualizer_Rings_Solo_Static_Public', '_newtab');
-	})
-	$(".proj_c").click(function () {
-		window.open('https://github.com/yahirRendon/Creative_Coding/tree/main/Processing/Visualizer_Rings_Solo_Revolve_Public', '_newtab');
-	})
+/**
+ * Populate the project page display grid
+ */
+function populateProjects() {
+	let index = projectIndex;
 
-	$(".proj_d").click(function () {
-		window.location.href = "https://yahirrendon.github.io/ePortfolioSite/pages/sketches/gameoflife.html";
-	})
+	for(let i = 0; i < 3; i++, index--) {
+		
+		let projStyle = projectData.projects[index].style;
+		let styleColor = "black";
+		if(projStyle == 1) {
+			styleColor = "white";
+		} 
+		// update background image and text
+		$('.proj_img_' + parseInt(i)).css('background-image', 'url(' + projectData.projects[index].imgName + ')');
+		$('.proj_title_' + parseInt(i)).text(projectData.projects[index].title);
+		$('.proj_sub_' + parseInt(i)).text(projectData.projects[index].description);
+		
+		// update styling
+		$('.proj_' + parseInt(i)).hover(function(){
+			$('.proj_title_' + parseInt(i)).css("color", styleColor);
+			$('.proj_sub_' + parseInt(i)).css("color", styleColor);
+			$('.proj_title_' + parseInt(i)).css("transition", "color 300ms");
+			$('.proj_sub_' + parseInt(i)).css("transition", "color 300ms");
+		}, function() {
+			$('.proj_title_' + parseInt(i)).css("color", "transparent");
+			$('.proj_sub_' + parseInt(i)).css("color", "transparent");
+			$('.proj_title_' + parseInt(i)).css("transition", "color 300ms");
+			$('.proj_sub_' + parseInt(i)).css("transition", "color 300ms");		
+		});	
 
-	$(".proj_e").click(function () {
-		window.location.href = "https://yahirrendon.github.io/ePortfolioSite/pages/sketches/gameoflife.html";
+		
+	}
+}
+
+/**
+ * Cycle through projects and 
+ * on click go to specific project page
+ */
+function projectNavigationButtons() {
+	$("#project_next_button").click(function() {
+		projectIndex -= 3;
+		if(projectIndex  < 3) {
+			projectIndex = 2;
+		}
+		populateProjects();	
+	});
+
+	$("#project_prev_button").click(function() {
+		projectIndex += 3;
+		if(projectIndex > numProjects - 1) {
+			projectIndex = numProjects;
+		}
+		populateProjects();		
+	});
+
+	$('.proj_0').click(function () {
+		window.location.href = projectData.projects[projectIndex].link;
+		console.log("proj_0", projectIndex);
+	})
+	$('.proj_1').click(function () {
+		window.location.href = projectData.projects[projectIndex - 1].link;
+		console.log("proj_1", projectIndex -1);
+	})
+	$('.proj_2').click(function () {
+		window.location.href = projectData.projects[projectIndex - 2].link;
+		console.log("proj_2", projectIndex - 2);
 	})
 }
