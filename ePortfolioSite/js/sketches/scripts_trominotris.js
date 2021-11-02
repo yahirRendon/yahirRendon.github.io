@@ -8,7 +8,7 @@
 var song;
 
 function preload() {
-    song = loadSound('assets/bensound-dreams.mp3')
+    song = loadSound('../../assets/bensound-dreams.mp3')
 
 }
 
