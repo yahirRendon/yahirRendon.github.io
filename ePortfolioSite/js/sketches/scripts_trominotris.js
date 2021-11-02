@@ -13,12 +13,18 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(400, 400)
-    background(200);
+    // set up canvas
+    var parentWidth = document.getElementById('p5Canvas').offsetWidth;
+    var parentHeight = document.getElementById('p5Canvas').offsetHeight;
+    var canvas = createCanvas(800, 800);
+ 
+    // Move the canvas so it’s inside div with id="p5Canvas">.
+    canvas.parent('p5Canvas');
+    
 }
 
 function draw() {
-
+    background(108, 86, 123);
 }
 
 function keyPressed() {
