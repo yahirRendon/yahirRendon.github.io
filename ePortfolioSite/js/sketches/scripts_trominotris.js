@@ -154,7 +154,7 @@ function setup() {
 
 function draw() {
   background(245, 244, 240);
-  textFont('Arial');
+	
   switch(gameScreen) {
     case 0: // intro
       displayGameCore();
