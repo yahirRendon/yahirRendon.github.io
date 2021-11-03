@@ -91,9 +91,11 @@ var upDAS;
 var downDAS;
 
 var soundTheme;
+var soundLand;
 
 function preload() {
     soundTheme = loadSound('../../assets/bensound-slowmotion_loop-modified.mp3')
+    soundLand = loadSound('../../assets/deep_kick.mp3')
 //     myfont = loadFont('assets/MontserratAlternates-Light.otf');
 
 }
@@ -335,6 +337,12 @@ function gameMechanics() {
       if(t.canMoveDown()) {
         t.moveDown();
       } else {
+	// play land sound
+	if(soundLand.isPlaying()) {
+	  soundLand.stop();
+	}
+	soundLand.stop();
+	soundLand.play();
         // block cannot move down 
         // push tromino to block list and create new
         t.startLandAnimation();
