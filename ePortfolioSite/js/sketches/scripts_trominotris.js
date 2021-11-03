@@ -156,7 +156,7 @@ function draw() {
       text("SPACE to start", 400, 400);
     break;
     case 1: // play
-       if(soundTheme.isPlaying()) {
+       if(!soundTheme.isPlaying()) {
            soundTheme.play();
        }
       // update user keyboard inputs
