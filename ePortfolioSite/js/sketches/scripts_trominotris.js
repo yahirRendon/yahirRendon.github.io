@@ -156,6 +156,9 @@ function draw() {
       text("SPACE to start", 400, 400);
     break;
     case 1: // play
+       if(soundTheme.isPlaying()) {
+           soundTheme.play();
+       }
       // update user keyboard inputs
       updateInputs();
       displayGameCore();
@@ -163,6 +166,7 @@ function draw() {
       gameMechanics();
     break;
     case 2: // pause
+      soundTheme.pause();
       displayGameCore();
       displayGameTrominoes();
       textSize(24);
