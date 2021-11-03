@@ -114,7 +114,7 @@ function setup() {
   // Move the canvas so it’s inside div with id="p5Canvas">.
   canvas.parent('p5Canvas');
 
-  textFont(myFont);
+  textFont(myfont);
   // textSize(36);
   // text('p5*js', 10, 50);
   
