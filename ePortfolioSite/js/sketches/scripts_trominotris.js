@@ -90,12 +90,18 @@ var rightDAS;
 var upDAS;
 var downDAS;
 
-var soundTheme;
-var soundLand;
+var soundTheme;			// the game theme song
+var soundLand;			// the tromino land sound
+var soundClear;			// basic row clear sound
+var soundTrominotris;		// trominotris clear sound
+var soundReset;			// restart game sound
 
 function preload() {
     soundTheme = loadSound('../../assets/bensound-slowmotion_loop-modified.mp3')
     soundLand = loadSound('../../assets/deep_kick.mp3')
+    soundClear = loadSound('../../assets/270524__littlerobotsoundfactory__jingle-achievement-00.mp3')
+    soundReset = loadSound('../../assets/562292__colorscrimsontears__heal-rpg.mp3.mp3')
+    soundTrominotris = loadSound('../../assets/171671__leszek-szary__success-1.mp3')
 //     myfont = loadFont('assets/MontserratAlternates-Light.otf');
 
 }
@@ -179,69 +185,6 @@ function draw() {
     
 }
 
-/**
-* rest the game grid, pieces, and score elements
-*/
-function resetGame() {
-  score = 0;
-  level = 0;
-  totalLinesCleared = 0;
-  linesCleared = 0;
-  priorLinesCleared = 0;
-  dropSpeed = 700;
-  dropDecrement = 50;
-  gameOver = false;
-  nextPiece = parseInt(random(0, 2));
-  clearAnimationActive = false;
-  clearAnimationDone = false;
-  gameScreen = 1;
-  
-  // create play area grid
-  cells = [];
-  for(var y = 0; y < gridHeight; y++) {
-    for(var x = 0; x < gridWidth; x++) {
-      append(cells, new Cell(x, y, 0));
-    }
-  }
-  blocks = [];
-  t = new Tromino();
-  timeMarker = millis();
-}
-
-function displayNextPiece() {
-  
-  stroke(169, 176, 182);
-  stroke(115, 138, 152);
-  switch(nextPiece) {
-  case 1:
-    fill(157, 193, 209);
-    rect(62, 350, 50, 50, 10);
-    rect(62, 400, 50, 50, 10);
-    rect(112, 400, 50, 50, 10);
-    break;
-  case 2:
-    fill(61, 98, 124);
-    rect(112, 350, 50, 50, 10);
-    rect(62, 400, 50, 50, 10);
-    rect(62, 450, 50, 50, 10);
-  break;
-  case 3:
-    fill(232, 139, 106);
-    rect(37, 400, 50, 50, 10);
-    rect(87, 450, 50, 50, 10);
-    rect(137, 400, 50, 50, 10);
-  break;
-  default:
-    fill(246, 210, 174);
-    rect(87, 350, 50, 50, 10);
-    rect(87, 400, 50, 50, 10);
-    rect(87, 450, 50, 50, 10);
-    break;
-  }
-}
-
-
-
 /**************************************************************
 KEY PRESSED
  
@@ -323,6 +266,79 @@ function updateInputs() {
   if(downDAS.active) {
     t.moveDown();
   }   
+}
+
+/**
+* rest the game grid, pieces, and score elements
+*/
+function resetGame() {
+  score = 0;
+  level = 0;
+  totalLinesCleared = 0;
+  linesCleared = 0;
+  priorLinesCleared = 0;
+  dropSpeed = 700;
+  dropDecrement = 50;
+  gameOver = false;
+  nextPiece = parseInt(random(0, 2));
+  clearAnimationActive = false;
+  clearAnimationDone = false;
+  gameScreen = 1;
+  
+  // create play area grid
+  cells = [];
+  for(var y = 0; y < gridHeight; y++) {
+    for(var x = 0; x < gridWidth; x++) {
+      append(cells, new Cell(x, y, 0));
+    }
+  }
+  blocks = [];
+  t = new Tromino();
+  
+  if(soundReset.isPlaying()) {
+    soundReset.stop();
+  }
+  soundReset.stop();
+  soundReset.play();
+  if(soundClear.isPlaying()) {
+    soundClear.stop();
+  }
+  soundClear.stop();
+  soundClear.play();
+	
+  timeMarker = millis();
+}
+
+function displayNextPiece() {
+  
+  stroke(169, 176, 182);
+  stroke(115, 138, 152);
+  switch(nextPiece) {
+  case 1:
+    fill(157, 193, 209);
+    rect(62, 350, 50, 50, 10);
+    rect(62, 400, 50, 50, 10);
+    rect(112, 400, 50, 50, 10);
+    break;
+  case 2:
+    fill(61, 98, 124);
+    rect(112, 350, 50, 50, 10);
+    rect(62, 400, 50, 50, 10);
+    rect(62, 450, 50, 50, 10);
+  break;
+  case 3:
+    fill(232, 139, 106);
+    rect(37, 400, 50, 50, 10);
+    rect(87, 450, 50, 50, 10);
+    rect(137, 400, 50, 50, 10);
+  break;
+  default:
+    fill(246, 210, 174);
+    rect(87, 350, 50, 50, 10);
+    rect(87, 400, 50, 50, 10);
+    rect(87, 450, 50, 50, 10);
+    break;
+  }
 }
 
 function gameMechanics() {
@@ -473,10 +489,30 @@ function checkRows() {
   var levelBonus = map(level, 0, 10, 1, 5.0);
   if (tempLinesCleared == 3) {
     score += parseInt(100 * levelBonus);
+    if(soundTrominotris.isPlaying()) {
+      soundTrominotris.stop();
+    }
+    soundTrominotris.stop();
+    soundTrominotris.play();
+    if(soundClear.isPlaying()) {
+      soundClear.stop();
+    }
+    soundClear.stop();
+    soundClear.play();
   } else if (tempLinesCleared == 2) {
     score += parseInt(50 * levelBonus);
+    if(soundClear.isPlaying()) {
+      soundClear.stop();
+    }
+    soundClear.stop();
+    soundClear.play();
   } else if (tempLinesCleared == 1) {
     score += parseInt(25 * levelBonus);
+    if(soundClear.isPlaying()) {
+      soundClear.stop();
+    }
+    soundClear.stop();
+    soundClear.play();
   } 
 }
 
