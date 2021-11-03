@@ -100,7 +100,7 @@ function preload() {
     soundTheme = loadSound('../../assets/bensound-slowmotion_loop-modified.mp3')
     soundLand = loadSound('../../assets/deep_kick.mp3')
     soundClear = loadSound('../../assets/270524__littlerobotsoundfactory__jingle-achievement-00.mp3')
-    soundReset = loadSound('../../assets/562292__colorscrimsontears__heal-rpg.mp3.mp3')
+    soundReset = loadSound('../../assets/562292__colorscrimsontears__heal-rpg.mp3')
     soundTrominotris = loadSound('../../assets/171671__leszek-szary__success-1.mp3')
 //     myfont = loadFont('assets/MontserratAlternates-Light.otf');
 
