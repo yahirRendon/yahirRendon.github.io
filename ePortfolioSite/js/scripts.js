@@ -8,7 +8,8 @@
  */
 
 
-var numProjects = 5;
+
+var numProjects = 6;
 var projectIndex = numProjects;
 var projectData = 
 {
@@ -60,19 +61,19 @@ var projectData =
 		"description": "Classic game in a minimal layout",
 		"imgName": "../img/project_img/sweep_g.gif",
 		"link": "https://yahirrendon.github.io/ePortfolioSite/pages/sketches/sweeper.html"
+	  },
+	  {
+		"id": 6,
+		"style": 0,
+		"title": "Trominotris",
+		"description": "A minimal Tetris game with trominoes",
+		"imgName": "../img/project_img/trominogris_gif.gif",
+	 	"link": "https://yahirrendon.github.io/ePortfolioSite/pages/sketches/trominotris.html"
 	  }
-	//   {
-	// 	"id": 6,
-	// 	"style": 0,
-	// 	"title": "Coming Soon...",
-	// 	"description": "Some cool project",
-	// 	"imgName": "../img/project_img/blank_project_third.jpg",
-	//  "link": ""
-	//   }
 	]
   };
 
-/**
+  /**
  * On windowload check navigaton display and
  * set onClick listeners
  */
