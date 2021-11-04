@@ -1,8 +1,8 @@
 /**************************************************************
  Project:  scripts page for portfolio implementation of the
-           basics of a Minesweeper clone
+           basics of a Tetris clone
  Author:   Yahir
- Date:     October 2021
+ Date:     November 2021
  
  **************************************************************/
 
@@ -18,6 +18,9 @@ window.onload = function () {
 	})
 }
 
+/**
+ * Turn off default functionaliity of space and arrow keys
+ */
 window.addEventListener("keydown", function(e) {
   if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
       e.preventDefault();
@@ -46,6 +49,7 @@ function navigationBarToggle() {
  Notes:
  1. SPACE KEY to start and pause game
  2. Use arrow keys to move and rotate tromino
+ 3. Button to restart
  
 Credits
 Music theme: Benjamin Tissot of Bensound
@@ -58,19 +62,19 @@ Reset Sound: colorsCrimsonTears
   https://freesound.org/people/colorsCrimsonTears/sounds/562292/
 Block Land Sound: Yahir mixed in Ableton Live
 
-Processing 3.5.4
+P5.js
  **************************************************************/
 
-var myfont;
-var cells = []; 
-var blocks = [];
-var gridHeight;
-var gridWidth;
+var myfont;                  // custom font for sketch
+var cells = [];              // the cells that make up the play area
+var blocks = [];             // list of all blocks in the play area
+var gridHeight;              // the number of columns in the play grid
+var gridWidth;               // the number of rows in the play grid (0-2 are loading zone)
 
-var timeMarker;
-var dropSpeed;
+var timeMarker;              // track time for tromino drop
+var dropSpeed;               // speed/frequency at which the tromino drops
 var dropDecrement;           // amount deducted from dropSpeed at each level
-var nextPiece;
+var nextPiece;               // track the next tromino to be created (preview)
 
 var score;                   // track user score
 var level;                   // track user level (increments every 5 lines)
@@ -83,19 +87,25 @@ var clearAnimationActive;    // track if row clearing animation is active
 var clearAnimationDone;      // trigger when row clearing animation is done
 var gameScreen;
 
-var t; // current tromino
+var t;                       // current tromino
 
-var leftDAS;
+var soundTheme;			         // the game theme song
+var soundLand;			         // the tromino land sound
+var soundClear;			         // basic row clear sound
+var soundTrominotris;		     // trominotris clear sound
+var soundReset;			         // restart game sound
+
+// delayed auto shift for key usage
+var leftDAS;                
 var rightDAS;
 var upDAS;
 var downDAS;
 
-var soundTheme;			// the game theme song
-var soundLand;			// the tromino land sound
-var soundClear;			// basic row clear sound
-var soundTrominotris;		// trominotris clear sound
-var soundReset;			// restart game sound
+/**************************************************************
+ PRE LOAD 
 
+ Load sounds and font
+ **************************************************************/
 function preload() {
     soundTheme = loadSound('../../assets/bensound-slowmotion_loop-modified.mp3')
     soundLand = loadSound('../../assets/deep_kick.mp3')
@@ -105,13 +115,14 @@ function preload() {
     myfont = loadFont('../../assets/Montserrat-Light.ttf');
 }
 
-
+/**************************************************************
+ SET UP
+ **************************************************************/
 function setup() {
+  // Move the canvas so it’s inside div with id="p5Canvas">.
   var parentWidth = document.getElementById('p5Canvas').offsetWidth;
   var parentHeight = document.getElementById('p5Canvas').offsetHeight;
   var canvas = createCanvas(800, 800);
- 
-  // Move the canvas so it’s inside div with id="p5Canvas">.
   canvas.parent('p5Canvas');
 
   textFont(myfont);
@@ -140,19 +151,24 @@ function setup() {
     }
   }
   
+  // create tromino
   t = new Tromino();
+
+  // create DAS object
   leftDAS = new DAS();
   rightDAS = new DAS();
   downDAS = new DAS();
   upDAS = new DAS();
   timeMarker = millis();
-
 }
 
-
+/**************************************************************
+ DRAW
+ **************************************************************/
 function draw() {
   background(245, 244, 240);
 	
+  // switch between game states
   switch(gameScreen) {
     case 0: // intro
       displayGameCore();
@@ -161,10 +177,10 @@ function draw() {
       text("SPACE to start", 400, 400);
     break;
     case 1: // play
-       if(!soundTheme.isPlaying()) {
-           soundTheme.play();
-       }
-      // update user keyboard inputs
+      // toggle sounds
+      if(!soundTheme.isPlaying()) {
+        soundTheme.play();
+      }
       updateInputs();
       displayGameCore();
       displayScoreElements();
@@ -178,17 +194,17 @@ function draw() {
       fill(115, 138, 152);
       text("Game Paused", 400, 400);
     break;
-  }  
-    
+  }     
 }
 
 /**************************************************************
 KEY PRESSED
  
- - LEFT  : engage left DAS
- - RIGHT : engage right DAS
- - UP    : engage up DAS
- - DOWN  : engage down DAS
+ - LEFT KEY  : engage left DAS
+ - RIGHT KEY : engage right DAS
+ - UP KEY    : engage up DAS
+ - DOWN KEY  : engage down DAS
+ - SPACE KEY : start and pause game
  **************************************************************/
 function keyPressed() {
   if(keyCode === LEFT_ARROW) {
@@ -247,10 +263,13 @@ Function for controlling user input
  - UP    : Rotate current tromino clockwise
  **************************************************************/
 function updateInputs() {
+  // update DAS states
   leftDAS.update();
   rightDAS.update();
   upDAS.update();
   downDAS.update();
+
+  // control trominos
   if(leftDAS.active) {
     t.moveLeft();
   }
@@ -289,9 +308,11 @@ function resetGame() {
       append(cells, new Cell(x, y, 0));
     }
   }
+  // clear blocks and reset tromino
   blocks = [];
   t = new Tromino();
   
+  // reset cues
   if(soundReset.isPlaying()) {
     soundReset.stop();
   }
@@ -302,12 +323,15 @@ function resetGame() {
   }
   soundClear.stop();
   soundClear.play();
-	
+
+  // reset time marker
   timeMarker = millis();
 }
 
+/**
+* create and display preview of next piece
+*/
 function displayNextPiece() {
-  
   stroke(169, 176, 182);
   stroke(115, 138, 152);
   switch(nextPiece) {
@@ -338,6 +362,10 @@ function displayNextPiece() {
   }
 }
 
+/**
+* run core game mechanics such as advancing tromino
+* checking rows, clearing rows, animations
+*/
 function gameMechanics() {
   // drop current tromino at desired speed
   // while game is not over
@@ -380,6 +408,7 @@ function gameMechanics() {
     }
   }
   
+  // check if clear animation is done for any block
   if(clearAnimationActive) {
     for(var b = 0; b < blocks.length; b++) {
       if(blocks[b].doneClear) {
@@ -388,6 +417,7 @@ function gameMechanics() {
     }
   }
   
+  // clear and reset row
   if(clearAnimationDone) {
     clearFullRows();
     clearAnimationActive = false;
@@ -398,6 +428,9 @@ function gameMechanics() {
   displayGameTrominoes();
 }
 
+/**
+* create and display preview of next piece
+*/
 function displayGameTrominoes() {
   for(i = 0; i < blocks.length; i++) {
     blocks[i].display();
@@ -425,6 +458,9 @@ function displayGameCore() {
   // text("by yahir", width/2, height - 25);
 }
 
+/**
+* display score
+*/
 function displayScoreElements() {
   textSize(26);
   fill(115, 138, 152);
@@ -437,7 +473,7 @@ function displayScoreElements() {
 }
 
 /**
-* method for clearing rows when torminos settle
+* method for checking if row is ready to be cleared
 */
 function checkRows() {  
   var tempLinesCleared = 0;
@@ -450,7 +486,7 @@ function checkRows() {
       rowSum += cells[x + y * gridWidth].state;
     }
     
-    // if row summ is equal to grid width the 
+    // if row sum is equal to grid width the 
     // row is full and can be cleared
     if(rowSum == gridWidth) {  
       tempLinesCleared++;
@@ -467,6 +503,7 @@ function checkRows() {
     }
   }
   
+  // check if game is over
   for(var x = 0; x < gridWidth; x++) {
     if(cells[x + 2 * gridWidth].state == 1) {
       gameOver = true;
@@ -483,6 +520,7 @@ function checkRows() {
     }
   }
   
+  // update score and also play sound effect
   var levelBonus = map(level, 0, 10, 1, 5.0);
   if (tempLinesCleared == 3) {
     score += parseInt(100 * levelBonus);
@@ -564,20 +602,15 @@ function clearFullRows() {
 
  **************************************************************/
 class Tromino {
-  // int orientation;             // track orientation of the tromino for rotations       
-  // ArrayList<Block> tromino;    // list of three blocks that make up tromino
-  // int type;                    // the type of tromino created (0 = I and 1 = L)
-  
   /**
   * Constructor method for Tromino class
   *
   */
   constructor() {
     // create tromino
-    this.orientation = 0; 
-    this.type = 0;      // #FIX this will be randomized
-    
-    this.tromino = [];
+    this.orientation = 0;       // track orientation of the tromino for rotations 
+    this.type = 0;              // the type of tromino created. override as passed to argument   
+    this.tromino = [];          // list of three blocks that make up tromino
     this.createNewTromino(parseInt(random(0, 2)));
   }
   
@@ -1050,14 +1083,6 @@ class Tromino {
  trominoes.
  **************************************************************/
 class Block {
-  // int x;          // x location of the block (index)
-  // int y;          // y location of the block (index)
-  // int xPos;       // x position of the block (pixel)
-  // int yPos;       // y position of the block (pixel)
-  // int blockSize;  // size of the block
-  // color c;        // color fo the block
-
-  
   /**
   * Constructor method for Block class
   *
@@ -1066,25 +1091,23 @@ class Block {
   * @param {int} _c    the color of the block
   */
   constructor(_x, _y, _c) {
-    this.x = _x;
-    this.y = _y;
-    this.blockSize = 50;
-    // this.xPos = this.blockSize + this.x * this.blockSize;
-    // this.yPos = (this.y * this.blockSize) - (this.blockSize * 3);
-    this.xPos = 225 + _x * this.blockSize;
-    this.yPos = (0) + (_y * this.blockSize) - 75;
-    this.c = _c;
+    this.x = _x;  // x location of the block (index)
+    this.y = _y;  // y location of the block (index)
+    this.blockSize = 50; // size of the block
+    this.xPos = 225 + _x * this.blockSize; // x position of the block (pixel)
+    this.yPos = (0) + (_y * this.blockSize) - 75; // y position of the block (pixel)
+    this.c = _c;  // color fo the block
     
-    this.hasLanded = false;
-    this.landDone = false;
-    this.strokeIn = 0;
-    this.strokeSpeed = 1;
+    this.hasLanded = false; // track if block has settled
+    this.landDone = false;  // check if land animation done
+    this.strokeIn = 0;  // track stroke land alpha for animation
+    this.strokeSpeed = 1; // speed of stroke land animation
 
-    this.startClear = false;
-    this.stopClear = false;
-    this.doneClear = false;
-    this.clearTime = 0;
-    this.clearFade = 0;
+    this.startClear = false;  // toggle start of clear animation
+    this.stopClear = false;   // track clear animation stop
+    this.doneClear = false;   // toggle when clear animation done
+    this.clearTime = 0;       // duration of clear animation
+    this.clearFade = 0;       // the alpha value of clear animation
   }
   
   /**
@@ -1183,13 +1206,6 @@ class Block {
 
  **************************************************************/
 class Cell {
-  //var x;            // x location of cell (index)
-  //var y;            // y location of cell (index)
-  //var xPos;         // x position of cell (pixel)
-  //var yPos;         // y position of cell (pixel)
-  //var state;        // track if cell is empty (0 = empty | 1 = block)
-  //var cellSize;     // size of the cell
-  
   /**
   * Constructor method for Block class
   *
@@ -1198,14 +1214,12 @@ class Cell {
   * @param {int} _s    the size of the cell
   */
   constructor(_x, _y, _s) {
-    this.x = _x;
-    this.y = _y;
-    this.cellSize = 50;
-    // this.xPos = this.cellSize + this.x * this.cellSize;
-    // this.yPos = (this.y * this.cellSize) - (this.cellSize * 3);
-    this.xPos = 225 + _x * this.cellSize;
-    this.yPos =  (_y * this.cellSize) - 75;
-    this.state = _s;
+    this.x = _x; // x location of cell (index)
+    this.y = _y; // y location of cell (index)
+    this.cellSize = 50; // size of the cell
+    this.xPos = 225 + _x * this.cellSize; // x position of cell (pixel)
+    this.yPos =  (_y * this.cellSize) - 75; // x position of cell (pixel)
+    this.state = _s; // track if cell is empty (0 = empty | 1 = block)
   }
   
   /**
@@ -1220,34 +1234,30 @@ class Cell {
   } 
 }
 
-
-
-
-
 /*
 * Class for create delay auto shifts for triggers
  */
 class DAS {
-  // boolean engaged; // The event that engages the trigger 
-  // boolean active; // Provides way of perform commands when true outside of class
-  // int timerDAS = millis(); // The running DAS timer
-  // int timerDelay = millis(); // The running short delay timer
-  // int amtDAS = 500; // Amount of DAS delay
-  // int amtDelay = 50; // Amount of short delay
-  // int stateDAS = 0; // State of DAS
 
-  // Constructor
+
+  /**
+  * Constructor method for Block class
+  *
+  */
+  cons
   constructor() {
-    this.engaged = false;
-    this.active = false;
-    this.amtDAS = 500;
-    this.amtDelay = 50;
-    this.stateDAS = 0;
-    this.timerDAS = millis();
-    this.timerDelay = millis();
+    this.engaged = false; // The event that engages the trigger 
+    this.active = false; // Provides way of perform commands when true outside of class
+    this.amtDAS = 500; // Amount of DAS delay
+    this.amtDelay = 50; // Amount of short delay
+    this.stateDAS = 0;  // State of DAS
+    this.timerDAS = millis(); // The running DAS timer
+    this.timerDelay = millis(); // The running short delay timer
   }
 
-  // Method that checks if the trigger is engaged
+  /**
+  * track if das is engaged
+  */
   update() {
     if (this.engaged) {
       this.checkActive();
@@ -1256,9 +1266,11 @@ class DAS {
       this.stateDAS = 0;
     }
   }
-
-  // Returns true when appropriate throuhg
-  // delayed auto shift 
+  
+  /**
+  * Returns true when appropriate throuhg
+  * delayed auto shift 
+  */
   checkActive() {
     this.active = false;
     switch(this.stateDAS) {
@@ -1289,6 +1301,5 @@ class DAS {
     return this.active;
   }
 }
-
 
 
