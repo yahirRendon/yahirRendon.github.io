@@ -115,8 +115,6 @@ function setup() {
   canvas.parent('p5Canvas');
 
   textFont(myfont);
-  // textSize(36);
-  // text('p5*js', 10, 50);
   
   gridHeight = 16;
   gridWidth = 7;
@@ -366,7 +364,7 @@ function gameMechanics() {
         // check if rows can be cleared
         checkRows();
         t.createNewTromino(nextPiece);
-        if(level > 0 && level % 1 == 0) {
+        if(level > 0 && level % 2 == 1) {
           var rand = parseInt(random(0, 3));
           if(rand == 2) {
             nextPiece = parseInt(random(0, 4));
