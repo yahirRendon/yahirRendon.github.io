@@ -392,6 +392,7 @@ function gameMechanics() {
         // check if rows can be cleared
         checkRows();
         t.createNewTromino(nextPiece);
+	nextPiece = parseInt(random(0, 2));
         if(level > 0) {
 	  var rand = parseInt(random(0, 2));
 	  if(rand == 0) {
@@ -399,7 +400,7 @@ function gameMechanics() {
           } else {
             nextPiece = parseInt(random(0, 2));
           }
-	}
+	} 
       }
       timeMarker = millis();
     }
