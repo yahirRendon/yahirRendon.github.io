@@ -67,7 +67,7 @@ var projectData =
 		"style": 0,
 		"title": "Trominotris",
 		"description": "A minimal Tetris game with trominoes",
-		"imgName": "../img/project_img/trominogris_gif.gif",
+		"imgName": "../img/project_img/trominotris_gif.gif",
 	 	"link": "https://yahirrendon.github.io/ePortfolioSite/pages/sketches/trominotris.html"
 	  }
 	]
