@@ -1,15 +1,13 @@
 /**
  * Author: 	Yahir Rendon 
  * Date:	April 2021
- * Update:  August 2021
+ * Update:  March 2022
  * Project: ePortfolio
  * 
  * scripts
  */
 
-
-
-var numProjects = 6;
+var numProjects = 7;
 var projectIndex = numProjects;
 var projectData = 
 {
@@ -69,6 +67,14 @@ var projectData =
 		"description": "A minimal Tetris game with trominoes",
 		"imgName": "../img/project_img/trominotris_gif.gif",
 	 	"link": "https://yahirrendon.github.io/ePortfolioSite/pages/sketches/trominotris.html"
+	  },
+	  {
+		"id": 7,
+		"style": 1,
+		"title": "Binary Art",
+		"description": "From the Veiled Art Project Series",
+		"imgName": "../img/project_img/binary_message_git.gif",
+	 	"link": "https://github.com/yahirRendon/veiled-project/tree/main/projects/binary_message_public"
 	  }
 	]
   };
