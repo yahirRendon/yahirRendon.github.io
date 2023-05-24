@@ -1,0 +1,908 @@
+/* styles */
+:root {
+  /* four */
+--dark: #353535;
+  --light: #f6f2ef;
+  /* --highlight: #697662; */
+  --third: #be9a82;
+  --subtle: #f2e8dc;
+  --highlight: #b5cca9;
+
+}
+
+/******************************************************************************
+general
+******************************************************************************/
+* {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--dark);
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  background-color: var(--light);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 10px;
+  overflow-x: hidden;
+}
+
+/******************************************************************************
+navigation menu
+******************************************************************************/
+.nav-1 {grid-area: nav-1;}
+.nav-2 {grid-area: nav-2;}
+.nav-3 {grid-area: nav-3;}
+.nav-4 {grid-area: nav-4;}
+.nav-5 {grid-area: nav-5;}
+.nav-6 {grid-area: nav-6; display:grid; font-size: xx-large; justify-content: right; align-content: center;}
+
+/* navigation links that toggle */
+.nav-links {
+  display: none;
+  justify-content: left;
+  padding: .5em;
+}
+
+/* navigation wrapper */
+.container-nav {
+  grid-area: cont-nav;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: "nav-1 nav-6" "nav-2 nav-2" "nav-3 nav-3" "nav-4 nav-4" "nav-5 nav-5";
+}
+
+.container-nav div a {
+  text-decoration: none;
+}
+
+.container-nav div a:hover {
+  color: var(--highlight);
+}
+
+/* neomorph styling for hambuger icon */
+.neomorph_menu {
+  box-shadow: 
+  inset 0 0 0 0             rgba(0, 0, 0, 0.2),
+        3px  3px  6px  0 rgba(0, 0, 0, 0.2),
+  inset 0 0 0 0             rgba(255, 255, 255, 0.2),
+        -3px -3px  6px 0 rgba(255, 255, 255, 0.5);
+  font-size: x-large;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  overflow: hidden;
+  color: var(--dark);
+  transition:box-shadow 300ms, color 300ms;
+}
+  
+.v2_menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.v2_menu:hover {
+  cursor: pointer;
+}
+
+.v2_menu:hover .ham-container div  {
+  background-color: var(--highlight);
+}
+
+/* hamburger icon */
+.ham-container {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 25px;
+  height: 1px;
+  background-color: var(--dark);
+  margin: 6px 0;
+  transition: 0.4s;
+}
+/* rotate top bar */
+.change .bar1 {
+  transform: translate(0, 7px) rotate(-45deg);
+}
+
+/* fade out middle bar */
+.change .bar2 {opacity: 0;}
+
+/* rotate bottom bar */
+.change .bar3 {
+  transform: translate(0, -7px) rotate(45deg);
+}
+
+/******************************************************************************
+index  landing page
+******************************************************************************/
+/* hold p5 canvas in landing */
+.landing-canvas {
+  display: grid;
+  grid-area: landing-canvas;
+}
+/* child of container landing */
+.landing {
+  display: grid;
+  grid-area: landing;
+  grid-template-rows: calc(100vh - 115px) 35px;
+  grid-template-columns: 100%;
+  grid-template-areas: "landing-canvas" "landing-end";
+}
+/* landing parent container */
+.container-landing {
+  grid-area: cont-landing;
+  display: grid;
+  grid-template-columns: calc(100vw - 22px);
+  grid-template-areas: "landing";
+  margin: 10px 0;
+}
+/*end/bottom of landing holds down arrow*/
+.landing-end {
+  display: grid;
+  grid-area: landing-end;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-areas: ". arrow .";
+}
+
+/* down arrow stuff */
+.arrow {
+  grid-area: arrow;
+  display: grid;
+  padding: 0 1em 0 1em;
+}
+.container-arrow {
+  grid: cont-arrow;
+  display: grid;
+}
+/* landing down arrow element */
+.arrow-bar-1, .arrow-bar-2 {
+  width: 30px;
+  height: 1px;
+  background-color: var(--dark);
+}
+/* rotate top bar */
+.arrow-bar-1 {
+  transform: translate(11px, 18px) rotate(-45deg);
+}
+/* rotate bottom bar */
+.arrow-bar-2 {
+  transform: translate(-11px, 0px) rotate(45deg);
+}
+.arrow:hover {
+  cursor: pointer;
+}
+.arrow:hover .arrow-bar-1,
+.arrow:hover .arrow-bar-2{
+  background-color: var(--highlight);
+}
+/* bounce down effect */
+.arrow-d-bounce {
+  animation: bounce 8s infinite;
+  animation-delay: 10s;
+}
+@keyframes bounce {
+  0%, 60%, 100% {
+    transform: translateY(0);
+  }
+  70%  {
+    transform: translateY(15px);
+  }
+  85% {
+    transform: translateY(-5px);
+  }
+}
+
+/* fade element for arrow */
+.arrow-d-out {
+  opacity: 1;
+  transition: 2s all ease;
+}
+.arrow-d-out.active {
+  opacity: 0;
+}
+
+/******************************************************************************
+projects section
+******************************************************************************/
+/* project cards grid */
+/* recipe cards grid */
+.project-wrapper {
+  display:grid;
+  grid-template-columns: .25fr 4fr .25fr;
+  grid-template-areas: ". recipe_cards ."; 
+}
+
+.project-cards {
+  grid-area: recipe_cards;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 350px);
+  grid-gap: 1rem;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.project-image {
+  grid-area: proImg;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-areas: "pc";
+  border-radius: 4px; 
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  height: 350px;
+  border: 1px solid white;
+}
+
+.project-container {
+  display: grid;
+  grid-area: pc;
+  grid-template-rows: 50% 25% 25%;
+  grid-template-columns: auto;
+  grid-template-areas: 
+                       "name"
+                       "description" 
+                       "tags";
+  text-align: center;
+}
+
+.project-name {
+  grid-area: name;
+  display: grid;
+  align-items: end;
+  font-size: 1.5rem;
+  color: transparent;
+  transition:color 300ms; 
+}
+
+.project-description {
+  display: grid;
+  grid-area: description;
+  align-items: center;
+  padding: .5rem .75rem;
+  color: transparent;
+  transition:color 300ms; 
+}
+
+.project-tags {
+  display: grid;
+  grid-area: tags;
+  align-items: end;
+  font-size: .75rem;
+  padding: .5rem .75rem;
+  color: transparent;
+  transition:color 300ms; 
+} 
+
+.hide {
+  display: none;
+}
+
+textarea, 
+input {
+	border: none;
+  background-color: var(--light);
+	height: 2em;
+	overflow:auto;
+  outline: none;
+  text-align: center;
+}
+
+.search-wrapper {
+  grid-area: search-wrapper;
+  display: grid;
+  grid-template-columns: 1fr minmax(auto, 35ch) 1fr;
+  grid-template-areas: ". search-box .";
+  text-align: center;
+  padding: 1em 0;
+}
+
+.search-box {
+  grid-area: search-box;
+  box-shadow: 
+        inset  2px  2px  4px  0 rgba(0, 0, 0, 0.2),
+           0 0 0 0           rgba(0, 0, 0, 0.2),
+        inset -2px -2px 4px 0   rgba(255, 255, 255, 0.5),
+           0 0 0 0           rgba(255, 255, 255, 0.5);
+        transition:box-shadow 300ms, color 300ms;
+  border-radius: 4px;
+}
+
+
+/******************************************************************************
+p5 base section
+******************************************************************************/
+
+/* h1 header with even spacing  */
+.main-h1-even {
+  grid-area: main-h1-even;
+  display: grid;
+  padding: 1em 0;  
+  text-align: center;
+  font-size: 2em;
+  grid-column: 2 / 3;
+}
+/* h1 header with extra space on top */
+.main-h1-top {
+  grid-area: main-h1-top;
+  display: grid;
+  padding: 1em .5em .25em .5em;  
+  text-align: center;
+  font-size: 2em;
+  grid-column: 2 / 3;
+}
+/* smaller padding all around 
+good for sub paragraphs and descriptions
+below h1-top*/
+.main-p-even {
+  grid-area: main-p-even;
+  display: grid;
+  padding: .5em .5em;  
+  text-align: center;
+  font-size: 1em;
+  grid-column: 2 / 3;
+}
+
+.main-p-even-small {
+  grid-area: main-p-even;
+  display: grid;
+  padding: .5em .5em;  
+  text-align: center;
+  font-size: .75em;
+  grid-column: 2 / 3;
+}
+/* larger padding on top to match h1 
+good for first paragraph*/
+.main-p-top {
+  grid-area: main-top;
+  display: grid;
+  padding: 2em .5em .5em .5em;  
+  text-align: center;
+  font-size: 1em;
+  grid-column: 2 / 3;
+}
+.main-p-bot {
+  grid-area: main-top;
+  display: grid;
+  padding: .5em .5em 2em .5em;  
+  text-align: center;
+  font-size: 1em;
+  grid-column: 2 / 3;
+}
+.main-p-link {
+  text-decoration: none;
+  color: var(--highlight);
+}
+.main-p-link:hover {
+  color: black;
+}
+
+/* create a simple dividing line*/
+.main-line {
+  grid-area: main-line;
+  display: grid; 
+  grid-column: 2 / 3;
+  border-bottom: 1px solid var(--third);
+}
+/* create a simple space horizontally */
+.main-spacer {
+  grid-area: main-spacer;
+  display: grid; 
+  padding: 2em 0;
+  grid-column: 2 / 3;
+}
+/* container/wrapper for main elements */
+.container-main {
+  grid-area: cont-main;
+  display: grid;
+  grid-template-columns: 1fr minmax(auto, 65ch) 1fr;
+}
+/* container/wrapper for main elements with wide setting */
+.container-main-wide {
+  grid-area: cont-main;
+  display: grid;
+  grid-template-columns: 1fr minmax(auto, 90ch) 1fr;
+}
+
+/* holds p5 canvas */
+.main-p5 {
+  grid-area: main-p5;
+  display: grid; 
+  grid-column: 2 / 3;
+  text-align: center;
+
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 
+    inset 0 0 0 0        rgba(0, 0, 0, 0.2),
+        3px  3px  6px  0 rgba(0, 0, 0, 0.2),
+    inset 0 0 0 0        rgba(255, 255, 255, 0.2),
+        -3px -3px  6px 0 rgba(255, 255, 255, 0.5);
+  
+}
+/* container/wrapper for p5 canvas */
+.container-main-p5 {
+  grid-area: cont-main-p5;
+  display: grid;
+  /* grid-template-columns: 1fr 1fr 1fr; */
+  grid-template-columns: 1fr minmax(auto, 800px) 1fr;
+}
+
+
+/* hold left most p5 button */
+.p5-button-1 {
+  grid-area: p5-button-1;
+  display: grid;
+  grid-column: 1/2;
+  justify-content: right;
+}
+/* hold center p5 button */
+.p5-button-2 {
+  grid-area: p5-button-2;
+  display: grid;
+  grid-column: 2/3;
+  justify-content: center;
+}
+/* hold right most p5 button */
+.p5-button-3 {
+  grid-area: p5-button-3;
+  display: grid;
+  grid-column: 3/4;
+  justify-content: left;
+}
+/* container/wrapper for p5 buttons */
+.container-p5-buttons {
+  grid-area: cont-p5-buttons;
+  display: grid;
+  grid-column: 2 / 3;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 1em;
+}
+/* container for p5.js instructions */
+.main-p-instruction {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  column-gap: .25em;
+}
+/* left element instructions */
+.instruction-left {
+  display: grid;
+  text-align: right;
+}
+/* center element instructions */
+.instruction-center {
+  display: grid;
+  text-align: center;
+}
+/* right element instructions */
+.instruction-right {
+  display: grid;
+  text-align: left;
+}
+
+/* main category index */
+.main-category {
+  display:grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+}
+
+/* category container for left */
+.category-left-multi {
+  display:grid;
+  /* grid-template-rows: minmax(300px, 1fr) minmax(300px, 1fr); */
+  grid-template-rows: auto auto;
+  grid-template-columns: 1fr;
+  overflow: hidden;
+  margin: 1em;
+  gap: 1em;
+}
+/* category content on left/top */
+.cat-cont-left {
+  display: grid;
+  /* align-items: center; */
+}
+/* first content element on left/top */
+.cat-cont-left:nth-child(1) {
+  font-size: 2em;
+  align-items: end;
+}
+/* second content element on left */
+.cat-cont-left:nth-child(2) {
+  transition-delay: 200ms;
+}
+
+/* right category container */
+.category-right-multi {
+  display:grid;
+  grid-template-rows: minmax(300px, 1fr) minmax(300px, 1fr);
+  grid-template-columns: 1fr;
+  overflow: hidden;
+  margin: 1em;
+  gap: 1em;
+}
+.cat-cont-right {
+  display: grid;
+  background-position: center; 
+  background-repeat: no-repeat; 
+  align-content: center;
+  justify-items: center;
+
+}
+/* first content element on left/top */
+.cat-cont-right:nth-child(1) {
+  font-size: 2em; 
+  
+}
+/* second content element on left */
+.cat-cont-right:nth-child(2) {
+  transition-delay: 200ms;
+}
+
+/* new category 2x2 */
+.category-image {
+  background-position: center; 
+  background-repeat: no-repeat; 
+  align-content: center;
+  justify-items: center;
+  background-size: contain;
+  margin: 1em;
+}
+.category-title {
+  align-items: end;
+  font-size: 2em;
+  margin: .5em;
+}
+
+.category-1a {
+  display: grid;
+  grid-area: cat-1a;
+}
+.category-1b {
+  display: grid;
+  grid-area: cat-1b;
+ 
+}
+.category-1c {
+  display: grid;
+  grid-area: cat-1c;
+  margin: 1em;
+}
+.category-1d {
+  display: grid;
+  grid-area: cat-1d;
+}
+
+.category-container-1 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto 300px 300px;
+  grid-template-areas: "cat-1a" "cat-1c" "cat-1b" "cat-1d";
+}
+.category-1:nth-child(3) {
+  transition-delay: 250ms;
+}
+.category-1:nth-child(4) {
+  transition-delay: 250ms;
+}
+
+#dream-img-1 {
+  background-image: url("../img/categories/catcher-light-top.jpg");
+  border-radius: 4px;
+}
+
+#dream-img-2 {
+  background-image: url("../img/categories/catcher-light-bot.jpg");
+  border-radius: 4px;
+}
+
+/* category 2x1 */
+.category-2a {
+  display: grid;
+  grid-area: cat-2a;
+}
+.category-2b {
+  display: grid;
+  grid-area: cat-2b;
+}
+.category-2c {
+  display: grid;
+  grid-area: cat-2c;
+  margin: 1em;
+}
+
+.category-container-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto 300px;
+  grid-template-areas: "cat-2a" "cat-2c" "cat-2b" ;
+}
+.category-2:nth-child(2) {
+  transition-delay: 250ms;
+}
+
+#design-img-1 {
+  background-image: url("../img/categories/design-shapes-black-highlight.jpg");
+}
+
+/* category 2x2 inverted */
+.category-3a {
+  display: grid;
+  grid-area: cat-3a;
+}
+.category-3b {
+  display: grid;
+  grid-area: cat-3b;
+}
+.category-3c {
+  display: grid;
+  grid-area: cat-3c;
+}
+.category-3d {
+  display: grid;
+  grid-area: cat-3d;
+  margin: 1em;
+}
+
+.category-container-3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto 300px 300px;
+  grid-template-areas: "cat-3b" "cat-3d" "cat-3a" "cat-3c";
+}
+.category-3:nth-child(3) {
+  transition-delay: 250ms;
+}
+.category-3:nth-child(4) {
+  transition-delay: 250ms;
+}
+
+#develop-img-1 {
+  background-image: url("../img/categories/binary-image-top.jpg");
+}
+
+#develop-img-2 {
+  background-image: url("../img/categories/binary-image-bot.jpg");
+}
+
+
+/* arrow stuff test */
+.arrow-bar-l, .arrow-bar-r {
+  width: 30px;
+  height: 1px;
+  background-color: var(--dark);
+}
+/* rotate top bar */
+.arrow-bar-l {
+  
+  display: grid;
+  
+  transform: translate(4px, 0) rotate(45deg);
+}
+/* rotate bottom bar */
+.arrow-bar-r {
+  
+  display:grid;
+ 
+  transform: translate(-4px, 0) rotate(-45deg);
+}
+.arrow-d-box:hover {
+  cursor: pointer;
+}
+.arrow-d-box:hover .arrow-bar-l,
+.arrow-d-box:hover .arrow-bar-r {
+  background-color: var(--highlight);
+}
+
+.arrow-left {
+  display:grid;
+  grid-area: arrow-l;
+  justify-content: end;
+  align-items: center;
+
+}
+.arrow-right {
+  display:grid;
+  grid-area: arrow-r;
+  align-items: center;
+
+}
+.arrow-d-box {
+  display:grid;
+  grid-area: arrow-d-box;
+  grid-template-columns: auto auto;
+  grid-template-areas: "arrow-l arrow-r";
+}
+.container-arrow-d {
+  display:grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: 8vh;
+  grid-template-areas: ". arrow-d-box .";
+}
+
+/* how to hide category on the left */
+.cat-hide-left {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateX(-100%);
+  transition: all 1s;
+}
+/* how to hide category on right */
+.cat-hide-right {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateX(100%);
+  transition: all 1s;
+}
+/* revealing index categories */
+.category-show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+}
+
+/******************************************************************************
+about contact logos
+******************************************************************************/
+.link-logo {
+  width: 50px;
+  height: 50px;
+  background-position: center; 
+  background-repeat: no-repeat; 
+  align-content: center;
+  justify-items: center;
+  background-size: contain;
+}
+#instagram-logo {
+  background-image: url("../assets/instagram-logo.png");
+}
+
+#squarespace-logo {
+  background-image: url("../assets/squarespace-logo.png");
+}
+#linkedin-logo {
+  background-image: url("../assets/linkedin-logo.png");
+}
+#about-image {
+  display:grid;
+  width: 100%;
+  height: 300px;
+  background-position: center; 
+  background-repeat: no-repeat; 
+  align-content: center;
+  justify-items: center;
+  background-size: contain;
+  background-image: url("../img/yahir_setup.jpg");
+}
+
+/******************************************************************************
+footer navigation
+******************************************************************************/
+/* footer items */
+.foot-1{grid-area: foot-1;}
+.foot-2{grid-area: foot-2;}
+.foot-3{grid-area: foot-3;}
+.foot-4{grid-area: foot-4;}
+.foot-5{grid-area: foot-5;}
+
+/* child of container foot */
+.foot {
+  grid-area: foot;
+  display: grid;
+  grid-template-columns: 1fr auto auto auto auto auto 1fr;
+  grid-template-areas: ". foot-1 foot-2 foot-3 foot-4 foot-5 . ";
+  column-gap: 2em;
+  font-size: small;
+}
+.foot div a {
+  text-decoration: none;
+}
+.foot div a:hover {
+  color: var(--highlight);
+}
+
+/* parent footer container */
+.container-foot{
+  grid-area: cont-foot;
+  display: grid;
+  grid-template-columns: 1fr minmax(auto, 65ch) 1fr;
+  grid-template-areas: ". foot .";
+  padding: 1em 0 0 1em;
+}
+
+/* ********** ************************* ********** */
+  /* ********** ***** LARGE SCREENS ***** ********** */
+  /* ********** ************************* ********** */
+  @media only screen and (min-width: 800px)   {
+    .neomorph {
+      width: 25vw;
+      height: 25vw;
+    }
+ 
+    .nav-links {
+      display: none;
+      justify-content: center;
+      align-content: center;
+      grid-gap: 1em;
+    }
+    
+    .container-nav {
+      grid-area: cont-nav;
+      display: grid;
+      grid-template-columns: auto 100px 100px 100px 100px 1fr;
+      grid-template-areas: "nav-1 nav-2 nav-3 nav-4 nav-5 nav-6";
+    }
+
+    /* index categories */
+    .main-category {
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 100vh;
+      
+    }
+    .category-left-multi {
+      display: grid;
+      grid-template-rows: minmax(100px, 1fr) minmax(500px, 1fr);
+      /* grid-template-rows: 1fr 4fr; */
+    }
+
+    .category-container-1 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 35vh 11vh 23vh 23vh;
+      grid-template-areas: "cat-1a cat-1b" 
+                           "cat-1c cat-1b"
+                           "cat-1c cat-1d"
+                           "cat-1c cat-1d";
+    }
+
+    .category-container-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 35vh 11vh 46vh;
+      grid-template-areas: "cat-2a cat-2b" 
+                           "cat-2c cat-2b"
+                           "cat-2c cat-2b";
+    }
+
+    .category-container-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 35vh 11vh 23vh 23vh;
+      grid-template-areas: "cat-3a cat-3b" 
+                           "cat-3a cat-3d"
+                           "cat-3c cat-3d"
+                           "cat-3c cat-3d";
+    }
+  }
+  
+  @media(hover: hover) and (pointer: fine) {
+      .neomorph_menu:hover{
+        box-shadow: 
+        inset  2px  2px  4px  0 rgba(0, 0, 0, 0.2),
+           0 0 0 0           rgba(0, 0, 0, 0.2),
+        inset -2px -2px 4px 0   rgba(255, 255, 255, 0.5),
+           0 0 0 0           rgba(255, 255, 255, 0.5);
+        color: var(--highlight);
+        cursor: pointer;
+      }
+  }
+
+  @media(prefers-reduced-motion) {
+    .cat-hide-left,
+    .cat-hide-right {
+      transition: none;
+    }
+  }
+  
