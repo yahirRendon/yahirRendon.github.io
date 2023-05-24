@@ -871,7 +871,7 @@ footer navigation
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 35vh 11vh 46vh;
-      grid-template-areas: "cat-2a cat-2b" 
+      grid-template-areas: "cat-2c cat-2a" 
                            "cat-2c cat-2b"
                            "cat-2c cat-2b";
     }
@@ -880,10 +880,10 @@ footer navigation
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 35vh 11vh 23vh 23vh;
-      grid-template-areas: "cat-3a cat-3b" 
-                           "cat-3a cat-3d"
-                           "cat-3c cat-3d"
-                           "cat-3c cat-3d";
+      grid-template-areas: "cat-3b cat-3a" 
+                           "cat-3d cat-3a"
+                           "cat-3d cat-3c"
+                           "cat-3d cat-3c";
     }
   }
   
