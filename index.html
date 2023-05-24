@@ -1,155 +1,194 @@
-<!-- 
- - Author: 	Yahir Rendon 
- - Date:	April 2021
- - Update:  July 2021
- - Project: ePortfolio
- -
- - home/index page
-  -->
-
+<!-- index page -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yahir</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="ePortfolioSite/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Yahir ePortfolio</title>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js" integrity="sha512-N4kV7GkNv7QR7RX9YF/olywyIgIwNvfEe2nZtfyj73HdjCUkAfOBDbcuJ/cTaN04JKRnw1YG1wnUyNKMsNgg3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
+    <link rel='stylesheet' href='./css/styles.css'>
 </head>
 
-<body>
+<body id="index-page">
 
-    <!-- navigation bar -->
-    <nav class="wrap_nav">
-        <div class="n_a" id="menuButton" title="Toggle Menu">
+    <!-- navigation section -->
+    <nav class="container-nav">
+        <div class="nav-1" id="menu-button" title="toggle menu">
             <div class="neo_holder_menu">
                 <div class="neomorph_menu v2_menu">
-                    <a href="javascript:void(0);">&#9776</a>
+                    <div class="ham-container">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="e_nav n_b" id="homeButton" title="Go Home">
-            <a href="index.html">Home</a>
+        <div class="nav-2 nav-links">
+            <a href="index.html" title="home page">home</a>
         </div>
-        <div class="e_nav n_c" id="planButton" title="View Projects">
-            <a href="ePortfolioSite/pages/projects.html">Projects</a>
+        <div class="nav-3 nav-links">
+            <a target="_blank" href="https://github.com/yahirRendon" title="yahir's github">github</a>
         </div>
-        <div class="e_nav n_d" id="aboutButton" title="About Yahir">
-            <a href="ePortfolioSite/pages/about.html">About</a>
+        <div class="nav-4 nav-links">
+            <a href="./html/projects.html" title="view projects">projects</a>
         </div>
-        <div class="n_e" id="nameButton" title="Yahir's GitHub">
-            <a href="https://github.com/yahirRendon">Yahir</a>
+        <div class="nav-5 nav-links">
+            <a href="./html/about.html" title="about yahir">about</a>
+        </div>
+        <div class="nav-6">
+            <a href="index.html" title="home page">yahir</a>
         </div>
     </nav>
 
-    <!-- introduction -->
-    <div class="title_1_sub">Welcome</div>
-    <div class="subTitle">Explore and enjoy my work in the following categories below
-        <br>or by project by clicking
-        <a href="ePortfolioSite/pages/projects.html">here</a>
-    </div>
-
-    <!-- display CS categories -->
-    <div class="wrap_cat">
-        <div class="neo_holder_a">
-            <div class="neomorph v2" id="design_button" title="View Design Project">
-                <span>Design</span>
+    <!-- main landing section -->
+    <main class="container-landing">
+        <div class="landing">
+            <!-- p5 canvas landing section  -->
+            <div id="p5-canvas" class="landing-canvas"></div>
+            <!-- lending page bottom  -->
+            <div class="landing-end">
+                <div id="arrow-down" class="arrow arrow-d-bounce arrow-d-out">
+                    <div class="arrow-bar-1"></div>
+                    <div class="arrow-bar-2"></div>
+                </div>
             </div>
         </div>
-        <div class="neo_holder_b">
-            <div class="neomorph v2" id="algorithms_button" title="View Algorithms Project">
-                <span>Algorithms</span>
-            </div>
-        </div>
-        <div class="neo_holder_c">
-            <div class="neomorph v2" id="database_button" title="View Database Project">
-                <span>Database</span>
+    </main>
+
+    <!-- dream category -->
+    <div id="category-1" class="container-main-wide">
+        <div class="main-p-even">
+            <div class="category-container-1">
+                <div class="category-1 category-1a category-title cat-hide-left">dream</div>
+                <div id="dream-img-1" class="category-1 category-1b category-image cat-hide-right"></div>
+                <div class="category-1 category-1c cat-hide-left">
+                    Most of my projects begin as imaginations of what can be. Like daydreams in which you float in pure
+                    possibility. It is no surprise that my first introduction to writing code came about through the creative
+                    coding world which embraces challenging traditional notions of what code and its output can be. While 
+                    programming is often seen as a very technical skill, approaching it from a place of creativity has been a 
+                    wonderful bridge allowing me to connect both my technical side with my strong inclination towards expression and
+                    creativity. The result -coding being additional medium to share my dreams and ideas with the world.
+                </div>
+                <div id="dream-img-2" class="category category-1d category-image cat-hide-right"></div>
             </div>
         </div>
     </div>
 
-    <!-- professional assessment introduction -->
-    <!-- <div class="title_1_a">My Projects</div> -->
-
-    <div class="title_1_sub">Self Assessment</div>
-    <div class="subTitle">Discover my journey and motivations</div>
-
-    <p class="body_text">
-        For many years I’ve worked as a paralegal representing and advocating for injured workers. I’ve helped people with a range
-        of industrial injuries with the most severe leading to permanent loss of functionality. I’ve done my best to help
-        these individuals, but not all my work results in happy endings. Fortunately, there are enough positive outcomes
-        to keep me motivated and fighting for those whose lives are irreparably changed due to injuries. Nonetheless, in
-        all my time as a lay representative I’ve yet to be able to do that which I wish to do most -truly restore the lost
-        functionality to those marred by disabling injuries.
-        <br>
-        <br> In 2010, I was hired by my firm and began engaging with these heartbreaking injuries. Throughout the years my hard
-        work has been rewarded with increased opportunities and the responsibility of managing my own claims while also helping
-        other colleagues on their case load. Despite my increased ability to help injured workers, I continue to find myself
-        wishing to do more. One day in 2016, I stumbled across a TED Talk by Hugh Herr, the head of the MIT Media Lab’s Biomechatronic
-        group. I was mesmerized as he described losing his legs in an accident and his journey to improve prosthetics based
-        on his experience. The images of all the maimed client’s I’ve helped flashed in my mind as he discussed using machine
-        learning and biometric readings to make traditional prosthetics seem crude and lifeless. By making real time adjustments,
-        these new prosthetics, can mimic natural movements including walking and running gaits.
-        <br>
-        <br> Towards the end of the talk, Herr introduced the audience to Adrianne Haslet-Davis, a runner, sister, daughter,
-        dancer, and the victim of the Boston Marathon bombing in which she lost part of her left leg. Despite her recovery
-        efforts, she was near certain traditional prosthetics would never allow her to do one of her favorite activities
-        -dance. Her fears mirrored the endless list of lost abilities I’ve become all to accustomed to hearing about in my
-        line of work. To my surprise, Adrianne was welcomed to the stage aided by one of the advanced prosthetics developed
-        at Herr’s lab. She gracefully and beautifully began to do her first dance performance since losing her leg. The hope
-        and optimism imbedded in each expression of joy as she finished her dance was ineffable and uncontrollably contagious.
-        For the first time, I felt an immense personal connection between technology and its ability to restore human function.
-        I knew in that moment my purpose in life had changed and I needed a new skillset to deliver the impact I wished to
-        have in the lives of others.
-        <br>
-        <br> I began the enrollment process at Southern New Hampshire University to complete my undergraduate degree the day
-        after watching Hugh Herr’s TED Talk and on the back of years of advocating for injured workers. It was the perfect
-        place for me to reconnect with academia, demonstrate my dedication to learning, and my commitment to being a catalyst
-        for positive change. Most importantly, while pursuing my education I was able to stay connected to my work advocating
-        for injured workers. A source of continued motivation towards my goal of using technology to erase the limitations
-        imposed by disabilities. I graduated Summa Cum Laude in early 2021 with a BS in Computer Science. While pursuing
-        my undergraduate degree I was also granted a scholarship to complete a Nanodegree through Udacity and its partnership
-        with Google in Android Development. Most recently, I was accepted into the Computer Science Graduate Program at the
-        University of Texas at Austin where I will continue to focus my skills in advanced Computer Science and Machine Learning
-        later this year.
-        <br>
-        <br> I am fully aware of the humble accomplishments on paper that I bring to my pursuit of improving the human experience
-        through technology. However, I am encouraged by my ability to demonstrate success no matter the odds. Overcoming
-        challenges as an immigrant, being successful in the demanding profession of industrial injury law and attaining academic
-        excellence at SNHU to name a few. The knowledge and abilities required to work in biomechatronic may elude me, however,
-        I’ve come to discover that my ability to help others through technology can be vast and varied. Most importantly,
-        I’ve learned that the biggest challenges require us all to play or own unique and vital role. I look forward to being
-        a part of a team that seeks to develop the software and tools to enhance the human condition for others.
-    </p>
-
-    <div class="title_1_sub">Contact</div>
-    <div class="subTitle">If my story, motivations, and/or work are intriguing
-        <br>please feel free to reach out for opportunties, projects, and collaborations</div>
-
-    <div class="wrap_icon">
-        <a href="https://www.instagram.com/_yahir360/" class="fa fa-instagram"></a>
-        <a href="https://www.linkedin.com/in/yahir-rendon-116717218/" class="fa fa-linkedin"></a>
+    <!-- down arrow to design category -->
+    <div class="container-arrow-d">
+        <div id="arrow-to-design" class="arrow-d-box arrow-d-bounce arrow-d-out">
+            <div class="arrow-left">
+                <div class="arrow-bar-l"></div>
+            </div>
+            <div class="arrow-right">
+                <div class="arrow-bar-r"></div>
+            </div>
+        </div>
     </div>
-    <!-- footer navigation bar -->
-    <footer class="wrap_footer">
-        <div class="e_footer f_home" id="homeButton" title="Go Home">
-            <a href="index.html">Home</a>
+
+    <!-- design category -->
+    <div id="category-design" class="container-main-wide">
+        <div class="main-p-even">
+            <div class="category-container-2">
+                <div class="category-2 category-2a category-title cat-hide-left">design</div>
+                <div id="design-img-1" class="category-2 category-2b category-image cat-hide-right"></div>
+                <div class="category-2 category-2c cat-hide-left">
+                    I have a strong inclination towards simplicity and minimalism when it comes to design. I enjoy the
+                    challenge of trying to provide as much control and flexibility to projects while staying true to
+                    minimalistic principles. This often requires thinking of what components can be paired together or
+                    developing UI elements that can perform multiple tasks. My design solutions and ideas do not always
+                    meet my highest of aspirations, but with each attempt a new lesson is learned and/or a new approach
+                    is conceived.
+                </div>
+            </div>
         </div>
-        <div class="e_footer f_project" id="planButton" title="View Projects">
-            <a href="ePortfolioSite/pages/projects.html">Projects</a>
+    </div>
+
+    <!-- down arrow to develop category -->
+    <div class="container-arrow-d">
+        <div id="arrow-to-develop" class="arrow-d-box arrow-d-bounce arrow-d-out">
+            <div class="arrow-left">
+                <div class="arrow-bar-l"></div>
+            </div>
+            <div class="arrow-right">
+                <div class="arrow-bar-r"></div>
+            </div>
         </div>
-        <div class="e_footer f_about" id="aboutButton" title="About Yahir">
-            <a href="ePortfolioSite/pages/about.html">About</a>
+    </div>
+
+    <!-- develop category -->
+    <div id="category-develop" class="container-main-wide">
+        <div class="main-p-even">
+            <div class="category-container-3">
+                <div id="develop-img-1" class="category-3 category-3a category-image cat-hide-left"></div>
+                <div class="category-3 category-3b category-title cat-hide-right">develop</div>
+                <div id="develop-img-2" class="category-3 category-3c category-image cat-hide-left"></div>
+                <div class="category-3 category-3d  cat-hide-right">
+                    Tterative development is central to my development process as it allows room for exploring new 
+                    features without feeling overwhelmed by all my ideas. My imagination tends to be far more expansive
+                    than the time I can realistically dedicate to my projects. I`ve also found that despite the perception 
+                    of creative coding being more form than function the lessons learned from developing my ideas expand 
+                    far beyond any one project. I've had to learn how to implement various algorithms, use different 
+                    technologies, refine my problem solving, improve math literacy, and even discover my own unique 
+                    contributions to problems.
+                </div>
+            </div>
         </div>
-        <div class="e_footer f_github" id="githubButton" title="View GitHub Pages">
-            <a href="https://github.com/yahirRendon/yahirRendon.github.io">GitHub</a>
+    </div>
+
+    <!-- down arrow to landing tips -->
+    <div class="container-arrow-d">
+        <div id="arrow-to-tips" class="arrow-d-box arrow-d-bounce arrow-d-out">
+            <div class="arrow-left">
+                <div class="arrow-bar-l"></div>
+            </div>
+            <div class="arrow-right">
+                <div class="arrow-bar-r"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- last section -->
+    <div class="container-main">
+        <div class="main-spacer"></div>
+    </div>
+    <div id="category-design" class="container-main">
+        <div id="landing-tips" class="main-p-even">
+            Before you go, have you tried mousing over the creative developer text? What happens when you click and
+            mouse over? Give it a try...
+        </div>
+    </div>
+    <div class="container-main">
+        <div class="main-spacer"></div>
+    </div>
+
+    <!-- footer navigation -->
+    <footer class="container-foot">
+        <div class="foot">
+            <div class="foot-1">
+                <a id="top-button" href="javascript:void(0)" title="top of page">top</a>
+            </div>
+            <div class="foot-2">
+                <a href="index.html" title="home page">home</a>
+            </div>
+            <div class="foot-3">
+                <a target="_blank" href="https://github.com/yahirRendon" title="yahir's github">github</a>
+            </div>
+            <div class="foot-4">
+                <a href="./html/projects.html" title="view projects">projects</a>
+            </div>
+            <div class="foot-5">
+                <a href="./html/about.html" title="about yahir">about</a>
+            </div>
         </div>
     </footer>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="ePortfolioSite/js/scripts.js"></script>
+    <script defer src="./js/scripts-index.js"></script>
 </body>
 
 </html>
