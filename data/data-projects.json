@@ -1,0 +1,215 @@
+[
+    {
+        "id": 14,
+        "name": "jewelry designer",    
+        "description": "binary loom beading designer",
+        "color": "0",
+        "image": "../img/projects/jd-ui-ex.jpg",
+        "website": "https://github.com/yahirRendon/creative_coding/tree/main/processing/app_projects/jewelry_designer",
+        "tags": [
+            "java",
+            "processing",
+            "jewelry",
+            "binary",
+            "veiled"
+            ]
+    },
+    {
+        "id": 13,
+        "name": "terrain",    
+        "description": "infinite terrain generation",
+        "color": "0",
+        "image": "../img/projects/terrain-square-ex.gif",
+        "website": "https://github.com/yahirRendon/creative_coding/tree/main/processing/audio_projects/terrain",
+        "tags": [
+            "java",
+            "processing",
+            "sound",
+            "ui"
+            ]
+    },
+    {
+        "id": 12,
+        "name": "art placer",    
+        "description": "place art in scene with light/shadow",
+        "color": "0",
+        "image": "../img/projects/art-placer-ex.gif",
+        "website": "https://github.com/yahirRendon/creative_coding/tree/main/processing/app_projects/art_placer_app",
+        "tags": [
+            "java",
+            "processing",
+            "app",
+            "ui"
+            ]
+    },
+    {
+        "id": 11,
+        "name": "be kind",    
+        "description": "a simple way to inspire kindness",
+        "color": "0",
+        "image": "../img/projects/be-kind-ex.gif",
+        "website": "../html/beKind.html",
+        "tags": [
+            "java",
+            "p5.js",
+            "processing",
+            "game"
+            ]
+    },
+    {
+        "id": 10,
+        "name": "the hypercube",    
+        "description": "a multidimensional auditory experience",
+        "color": "1",
+        "image": "../img/projects/hypercube-ex.gif",
+        "website": "https://github.com/yahirRendon/creative_coding/tree/main/processing/audio_projects/the_hypercube",
+        "tags": [
+            "java",
+            "processing",
+            "sound",
+            "ui"
+            ]
+    },
+    {
+        "id": 9,
+        "name": "the cube",    
+        "description": "an auditory experience",
+        "color": "0",
+        "image": "../img/projects/cube-winter-ex.gif",
+        "website": "https://github.com/yahirRendon/creative_coding/tree/main/processing/audio_projects/the_cube",
+        "tags": [
+            "java",
+            "processing",
+            "sound",
+            "ui"
+            ]
+    },
+    {
+        "id": 8,
+        "name": "Find Mia",    
+        "description": "a simple click game",
+        "color": "1",
+        "image": "../img/projects/find-mia-ex.gif",
+        "website": "../html/findMe.html",
+        "tags": [
+            "java",
+            "p5.js",
+            "processing",
+            "game",
+            "ui"
+            ]
+    },
+    {
+        "id": 7,
+        "name": "binary art",    
+        "description": "from the veiled art project",
+        "color": "1",
+        "image": "../img/projects/binary-msg-ex.gif",
+        "website": "https://github.com/yahirRendon/veiled-project/tree/main/projects/binary_message_public",
+        "tags": [
+            "java",
+            "processing",
+            "algo",
+            "veiled"
+            ]
+    },
+    {
+        "id": 6,
+        "name": "trominotris",    
+        "description": "minimal Tetris with trominoes",
+        "color": "0",
+        "image": "../img/projects/trominotris-ex.gif",
+        "website": "../html/trominotris.html",
+        "tags": [
+            "java",
+            "p5.js",
+            "media",
+            "game"
+            ]
+    },
+    {
+        "id": 5,
+        "name": "sweeper",    
+        "description": "classic game in a minimal layout",
+        "color": "0",
+        "image": "../img/projects/sweeper-ex.gif",
+        "website": "../html/sweeper.html",
+        "tags": [
+            "java",
+            "p5.js",
+            "recursion",
+            "game"
+            ]
+    },
+    {
+        "id": 4,
+        "name": "game of life -shift",    
+        "description": "classic game with a shifted twist",
+        "color": "0",
+        "image": "../img/projects/game-life-shift-ex.gif",
+        "website": "../html/gameOfLife.html",
+        "tags": [
+            "java",
+            "p5.js",
+            "game",
+            "recursion"
+            ]
+    },
+    {
+        "id": 3,
+        "name": "game of life -image",    
+        "description": "classic game with a revealing twist",
+        "color": "0",
+        "image": "../img/projects/game-life-img-ex.gif",
+        "website": "../html/gameOfLife.html",
+        "tags": [
+            "java",
+            "p5.js",
+            "game",
+            "recursion",
+            "media"
+            ]
+    }, 
+    {
+        "id": 2,
+        "name": "ring visualizer -revolve",    
+        "description": "audio visualizer with moving ring peaks",
+        "color": "0",
+        "image": "../img/projects/viz-ring-rev-ex.gif",
+        "website": "https://github.com/yahirRendon/Creative_Coding/tree/main/Processing/Visualizer_Rings_Solo_Revolve_Public",
+        "tags": [
+            "java",
+            "processing",
+            "art",
+            "sound",
+            "veiled"
+            ]
+    }, 
+    {
+        "id": 1,
+        "name": "ring visualizer -static",    
+        "description": "audio vizualizer in ring form",
+        "color": "1",
+        "image": "../img/projects/viz-ring-static-ex.gif",
+        "website": "https://github.com/yahirRendon/Creative_Coding/tree/main/Processing/Visualizer_Rings_Solo_Static_Public",
+        "tags": [
+            "java",
+            "processing",
+            "art",
+            "sound"
+            ]
+    },
+    {
+        "id": 0,
+        "name": "particulate matter -photo",    
+        "description": "inspired by an Instagram filter",
+        "color": "1",
+        "image": "../img/projects/particalized-ex.gif",
+        "website": "https://github.com/yahirRendon/Creative_Coding/tree/main/Processing/Instagram_Filter_Sine_Particles",
+        "tags": [
+            "java",
+            "processing",
+            "media"
+            ]
+    }
+]
