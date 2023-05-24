@@ -1,0 +1,197 @@
+<!-- about page -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yahir | trominotris</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js" integrity="sha512-N4kV7GkNv7QR7RX9YF/olywyIgIwNvfEe2nZtfyj73HdjCUkAfOBDbcuJ/cTaN04JKRnw1YG1wnUyNKMsNgg3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/addons/p5.sound.min.js"></script>
+
+    <link rel='stylesheet' href='../css/styles.css'>
+    <script src="https://cdn.jsdelivr.net/npm/ismobilejs@1.1.1/dist/isMobile.min.js"></script>
+</head>
+
+<body id="trominotris-page">
+
+    <!-- navigation section-->
+    <nav class="container-nav">
+        <div class="nav-1" id="menu-button" title="toggle menu">
+            <div class="neo_holder_menu">
+                <div class="neomorph_menu v2_menu">
+                    <div class="ham-container">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-2 nav-links">
+            <a href="../index.html" title="home page">home</a>
+        </div>
+        <div class="nav-3 nav-links">
+            <a target="_blank" href="https://github.com/yahirRendon" title="yahir's github">github</a>
+        </div>
+        <div class="nav-4 nav-links">
+            <a href="projects.html" title="view projects">projects</a>
+        </div>
+        <div class="nav-5 nav-links">
+            <a href="about.html" title="about yahir">about</a>
+        </div>
+        <div class="nav-6">
+            <a href="../index.html" title="home page">yahir</a>
+        </div>
+    </nav>
+
+    <!-- name of sketch and shor summary -->
+    <div class="container-main">
+        <div class="main-h1-top">trominotris</div>
+    </div>
+    <div class="container-main">
+        <div class="main-p-even">
+            a minimal version of Tetris using trominoes
+        </div>
+    </div>
+
+    <!-- link to github -->
+    <div class="container-main">
+        <div class="main-p-even-small">
+            <p>view code on <a class="main-p-link" href="https://github.com/yahirRendon/creative_coding/tree/main/processing/game_projects/trominotris">GitHub</a> for more developement details</p>
+        </div>
+    </div>
+
+    <!-- hold a p5 canvas with 800 by 800 dim -->
+    <div class="container-main-p5">
+        <div id="p5-canvas" class="main-p5"></div>
+    </div>
+
+    <!-- reset game button -->
+    <div class="container-main">
+        <div class="container-p5-buttons">
+            <div class="p5-button-1">
+                <!-- no button -->
+            </div>
+            <div class="p5-button-2">
+                <div class="pn_b" id="button-p5-2" title="reset grid">
+                    <div class="neo_holder_menu">
+                        <div class="neomorph_menu v2_menu">
+                            <div>&#11118</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="p5-button-3">
+                <!-- no button -->
+            </div>
+        </div>
+    </div>
+
+    <!-- instructions  -->
+    <div class="container-main">
+        <div class="main-h1-top">instructions</div>
+    </div>
+    <div class="container-main">
+        <div class="main-p-even">
+            <div class="main-p-instruction">
+                <div class="instruction-left">space key</div>
+                <div class="instruction-center">|</div>
+                <div class="instruction-right">toggle play and pause game</div>
+            </div>
+            <div class="main-p-instruction">
+                <div class="instruction-left">left arrow</div>
+                <div class="instruction-center">|</div>
+                <div class="instruction-right">move tromino left</div>
+            </div>
+            <div class="main-p-instruction">
+                <div class="instruction-left">right arrow</div>
+                <div class="instruction-center">|</div>
+                <div class="instruction-right">move tromino right</div>
+            </div>
+            <div class="main-p-instruction">
+                <div class="instruction-left">down arrow</div>
+                <div class="instruction-center">|</div>
+                <div class="instruction-right">move tromino down</div>
+            </div>
+            <div class="main-p-instruction">
+                <div class="instruction-left">up arrow</div>
+                <div class="instruction-center">|</div>
+                <div class="instruction-right">rotate tromino</div>
+            </div>
+            <p></p>
+            <div class="main-p-instruction">
+                <div class="instruction-left">&#11118</div>
+                <div class="instruction-center">|</div>
+                <div class="instruction-right">reset game</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-main">
+        <div class="main-spacer"></div>
+    </div>
+
+    <div class="container-main">
+        <div class="main-line"></div>
+    </div>
+
+    <!-- discover more about the game  -->
+    <div class="container-main">
+        <div class="main-h1-even">learn more</div>
+    </div>
+    <div class="container-main">
+        <div class="main-p-even">
+            In 1984 Alexy Pajitnov, a Soviet software engineer, created the popular game of Tetris. The name came from
+            combining the Greek word tetra, meaning four, and Pajitnov`s favorite sport of tennis. The game consists of
+            tetrominoes, which are geometric shapes composed of for squares and connect along an edge. The goal of the
+            game is to clear rows created by stacking the tetrominoes as they drop. The user can move the blocks left,
+            right, down, and rotate them but cannot move them up. As rows are cleared points are given and the rate at
+            which the trominoes drop increases. The biggest points awarded are for clearing four rows at once otherwise
+            called a Tetris.
+        </div>
+    </div>
+
+    <div class="container-main">
+        <div class="main-p-even">
+            As a fun programming challenge, I recreated the core mechanics of the game in a simple layout. Instead of
+            the classic tetromino shapes my version uses trominoes, or shapes created by using three squares.
+            Unfortunately, there are only twp unique trominoes that can be created a long piece and an L piece. So, to
+            make the game more interesting two irregular trominoes are created that include one or more squares aligned
+            along a vertex rather than an edge. The fall at sparse intervals but can make the game more challenging as
+            the drop speed picks up.
+        </div>
+    </div>
+
+    <div class="container-main">
+        <div class="main-spacer"></div>
+    </div>
+
+    <!-- footer navigation -->
+    <footer class="container-foot">
+        <div class="foot">
+            <div class="foot-1">
+                <a id="top-button" href="javascript:void(0)" title="top of page">top</a>
+            </div>
+            <div class="foot-2">
+                <a href="../index.html" title="home page">home</a>
+            </div>
+            <div class="foot-3">
+                <a target="_blank" href="https://github.com/yahirRendon" title="yahir's github">github</a>
+            </div>
+            <div class="foot-4">
+                <a href="projects.html" title="view projects">projects</a>
+            </div>
+            <div class="foot-5">
+                <a href="about.html" title="about yahir">about</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/scripts-trominotris.js"></script>
+</body>
+
+</html>
