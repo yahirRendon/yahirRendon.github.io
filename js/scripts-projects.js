@@ -114,8 +114,6 @@ fetch("../data/data-projects.json")
             // set image
             image.style.backgroundImage = "url(../img/" + project.image + ")"
             image.style.cursor = "pointer"
-            // bck.style.backgroundImage = "url(evie-s-uuCjYxJVf4o-unsplash.jpg)";
-            // image.style.backgroundImage = "linear-gradient( rgba(0,0,0,.25), rgba(0,0,0,.25) ), url(../img/evie-s-uuCjYxJVf4o-unsplash.jpg)"
 
             // format and update tags
             name.textContent = project.name
@@ -184,6 +182,7 @@ fetch("../data/data-projects.json")
                 // if search is active remove blur and text on mouseover
                 if(searchActive) {
                     image.children[0].style.backdropFilter = "none"
+                    image.children[0].style['-webkit-backdrop-filter'] = "none"
                     name.style.color = "transparent"
                     description.style.color = "transparent"
                     tags.style.color = "transparent"
