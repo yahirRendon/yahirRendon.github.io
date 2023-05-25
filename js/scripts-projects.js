@@ -146,7 +146,8 @@ fetch("../data/data-projects.json")
                         tags.style.color = "white"
     
                     }
-                    image.children[0].style.backdropFilter = "blur(10px)"    
+                    image.children[0].style.backdropFilter = "blur(10px)"
+                    image.children[0].style['-webkit-backdrop-filter'] = "blur(10px)"
                 }
 
                 // when not searching set to transparent with no blue
@@ -155,12 +156,14 @@ fetch("../data/data-projects.json")
                     description.style.color = "transparent"
                     tags.style.color = "transparent"
                     image.children[0].style.backdropFilter = "none"
+                    image.children[0].style['-webkit-backdrop-filter'] = "none"
                                
                 }
                 name.style.transition = "color 600ms"
                 description.style.transition = "color 600ms"
                 tags.style.transition = "color 600ms"
-                image.children[0].style.transition = "backdrop-filter 600ms"          
+                image.children[0].style.transition = "backdrop-filter 600ms"
+                image.children[0].style['-webkit-transition'] = "backdrop-filter 600ms" 
             }, false);
 
             // on hover
@@ -185,13 +188,15 @@ fetch("../data/data-projects.json")
                     description.style.color = "transparent"
                     tags.style.color = "transparent"
                 } else {
-                image.children[0].style.backdropFilter = "blur(10px)"
+                    image.children[0].style.backdropFilter = "blur(10px)"
+                    image.children[0].style['-webkit-backdrop-filter'] = "blur(10px)"
                 }
 
                 name.style.transition = "color 600ms"
                 description.style.transition = "color 600ms"
                 tags.style.transition = "color 600ms"
-                image.children[0].style.transition = "backdrop-filter 600ms" 
+                image.children[0].style.transition = "backdrop-filter 600ms"
+                image.children[0].style['-webkit-transition'] = "backdrop-filter 600ms"
  
             }, false);
 
@@ -239,6 +244,8 @@ searchInput.addEventListener("input", e => {
         if (searchActive) {
             for (let elem of textContainer) {        
                 project.element.children[0].children[0].style.backdropFilter = "blur(10px)"
+                project.element.children[0].children[0].style['-webkit-backdrop-filter'] = "blur(10px)"
+                
                 if (project.color == 0) {
                     elem.style.color = "black"      
                     elem.style.transition = "color 600ms"
@@ -252,6 +259,9 @@ searchInput.addEventListener("input", e => {
             for (let elem of textContainer) {
                 project.element.children[0].children[0].style.backdropFilter = "none"
                 project.element.children[0].children[0].style.transition = "backdrop-filter 600ms"
+                project.element.children[0].children[0].style['-webkit-backdrop-filter'] = "none"
+                project.element.children[0].children[0].style['-webkit-transition'] = "backdrop-filter 600ms"
+                
                 elem.style.color = "transparent"
                 elem.style.transition = "color 600ms"
             }
