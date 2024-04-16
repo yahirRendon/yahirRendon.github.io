@@ -1,194 +1,214 @@
-<!-- index page -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>yahir</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js" integrity="sha512-N4kV7GkNv7QR7RX9YF/olywyIgIwNvfEe2nZtfyj73HdjCUkAfOBDbcuJ/cTaN04JKRnw1YG1wnUyNKMsNgg3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
-    <link rel='stylesheet' href='./css/styles.css'>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" type="text/css" href="css/styles.css" />
+  <link rel="stylesheet" type="text/css" href="css/styles-index.css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>  
+  
+  <link rel="preload" href="img/drawing/drawing-01.jpg" as="image">
+  <link rel="preload" href="img/drawing/drawing-02.jpg" as="image">
+  <link rel="preload" href="img/drawing/drawing-03.jpg" as="image">
+  <link rel="preload" href="img/drawing/drawing-04.jpg" as="image">
+  <link rel="preload" href="img/drawing/drawing-05.jpg" as="image">
+  <link rel="preload" href="img/drawing/drawing-06.jpg" as="image">
+  <link rel="preload" href="img/drawing/drawing-07.jpg" as="image">
+  <!-- Images taken from Video by cottonbro studio: https://www.pexels.com/video/a-person-using-a-laptop-5474320/ -->
+  <link rel="preload" href="img/laptop/laptop-01.jpg" as="image">
+  <link rel="preload" href="img/laptop/laptop-02.jpg" as="image">
+  <link rel="preload" href="img/laptop/laptop-03.jpg" as="image">
+  <link rel="preload" href="img/laptop/laptop-04.jpg" as="image">
+  <link rel="preload" href="img/laptop/laptop-05.jpg" as="image">
+  <link rel="preload" href="img/laptop/laptop-06.jpg" as="image">
+  <link rel="preload" href="img/laptop/laptop-08.jpg" as="image">
+  <link rel="preload" href="img/humanity/humanity-code-01.jpg" as="image">
+  <link rel="preload" href="img/humanity/humanity-code-02.jpg" as="image">
+  <link rel="preload" href="img/humanity/humanity-code-03.jpg" as="image">
+  <link rel="preload" href="img/humanity/humanity-code-04.jpg" as="image">
+  <link rel="preload" href="img/humanity/humanity-code-05.jpg" as="image">
+  <link rel="preload" href="img/humanity/humanity-code-06.jpg" as="image">
+  <link rel="preload" href="img/humanity/humanity-code-07.jpg" as="image">
+
+  <title>yahir | home</title>
 </head>
 
-<body id="index-page">
-
-    <!-- navigation section -->
-    <nav class="container-nav">
-        <div class="nav-1" id="menu-button" title="toggle menu">
-            <div class="neo_holder_menu">
-                <div class="neomorph_menu v2_menu">
-                    <div class="ham-container">
-                        <div class="bar1"></div>
-                        <div class="bar2"></div>
-                        <div class="bar3"></div>
-                    </div>
-                </div>
-            </div>
+<!-- navigation bar section -->
+<nav class="container-nav">
+  <div class="cont-nav-1">
+    <div class="cont-menu">
+      <div class="cont-neo" id="menu-button">
+        <div class="cont-bar">
+          <div class="bar-1"></div>
+          <div class="bar-2"></div>
+          <div class="bar-3"></div>
         </div>
-        <div class="nav-2 nav-links">
-            <a href="index.html" title="home page">home</a>
-        </div>
-        <div class="nav-3 nav-links">
-            <a target="_blank" href="https://github.com/yahirRendon" title="yahir's github">github</a>
-        </div>
-        <div class="nav-4 nav-links">
-            <a href="./html/projects.html" title="view projects">projects</a>
-        </div>
-        <div class="nav-5 nav-links">
-            <a href="./html/about.html" title="about yahir">about</a>
-        </div>
-        <div class="nav-6">
-            <a href="index.html" title="home page">yahir</a>
-        </div>
-    </nav>
-
-    <!-- main landing section -->
-    <main class="container-landing">
-        <div class="landing">
-            <!-- p5 canvas landing section  -->
-            <div id="p5-canvas" class="landing-canvas"></div>
-            <!-- lending page bottom  -->
-            <div class="landing-end">
-                <div id="arrow-down" class="arrow arrow-d-bounce arrow-d-out">
-                    <div class="arrow-bar-1"></div>
-                    <div class="arrow-bar-2"></div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- dream category -->
-    <div id="category-1" class="container-main-wide">
-        <div class="main-p-even">
-            <div class="category-container-1">
-                <div class="category-1 category-1a category-title cat-hide-left">dream</div>
-                <div id="dream-img-1" class="category-1 category-1b category-image cat-hide-right"></div>
-                <div class="category-1 category-1c cat-hide-left">
-                    Most of my projects begin as imaginations of what can be. Like daydreams in which you float in pure
-                    possibility. It is no surprise that my first introduction to writing code came about through the creative
-                    coding world which embraces challenging traditional notions of what code and its output can be. While 
-                    programming is often seen as a very technical skill, approaching it from a place of creativity has been a 
-                    wonderful bridge allowing me to connect both my technical side with my strong inclination towards expression and
-                    creativity. The result -code as an additional medium through which I can share my dreams and ideas.
-                </div>
-                <div id="dream-img-2" class="category category-1d category-image cat-hide-right"></div>
-            </div>
-        </div>
+      </div>
     </div>
-
-    <!-- down arrow to design category -->
-    <div class="container-arrow-d">
-        <div id="arrow-to-design" class="arrow-d-box arrow-d-bounce arrow-d-out">
-            <div class="arrow-left">
-                <div class="arrow-bar-l"></div>
-            </div>
-            <div class="arrow-right">
-                <div class="arrow-bar-r"></div>
-            </div>
-        </div>
+  </div>
+  <div class="cont-nav-2 toggle-show">
+    <div class="cont-nav-links"><a class="nav-links" title="home page" href="index.html">home</a></div>
+  </div>
+  <div class="cont-nav-3 toggle-show">
+    <div class="cont-nav-links"><a class="nav-links" title="yahir's github" href="https://github.com/yahirRendon"
+        target="_blank">github</a></div>
+  </div>
+  <div class="cont-nav-4 toggle-show">
+    <div class="cont-nav-links"><a class="nav-links" title="view projects" href="projects.html">projects</a>
     </div>
+  </div>
+  <div class="cont-nav-5 toggle-show">
+    <div class="cont-nav-links"><a class="nav-links" title="about yahir" href="about.html">about</a></div>
+  </div>
+  <div class="cont-nav-6">
+    <div class="cont-nav-links"><a class="nav-links" title="home page" href="index.html">yahir</a></div>
+  </div>
+</nav>
 
-    <!-- design category -->
-    <div id="category-design" class="container-main-wide">
-        <div class="main-p-even">
-            <div class="category-container-2"> 
-                <div class="category-2 category-2a category-title cat-hide-right">design</div>
-                <div class="category-2 category-2b cat-hide-right">
-                    I have a strong inclination towards simplicity and minimalism when it comes to design. I enjoy the
-                    challenge of trying to provide as much control and flexibility to projects while staying true to
-                    minimalistic principles. This often requires thinking of what components can be paired together or
-                    developing UI elements that can perform multiple tasks. My design solutions and ideas do not always
-                    meet my highest of aspirations, but with each attempt a new lesson is learned and/or a new approach
-                    is conceived.
-                </div>            
-                <div id="design-img-1" class="category-2 category-2c category-image cat-hide-left"></div>
-            </div>
-        </div>
-    </div>
+<div class="spacer-small"></div>
 
-    <!-- down arrow to develop category -->
-    <div class="container-arrow-d">
-        <div id="arrow-to-develop" class="arrow-d-box arrow-d-bounce arrow-d-out">
-            <div class="arrow-left">
-                <div class="arrow-bar-l"></div>
-            </div>
-            <div class="arrow-right">
-                <div class="arrow-bar-r"></div>
-            </div>
-        </div>
-    </div>
+<!-- main landing section p5 canvas -->
+<main class="container-landing">
+  <div class="landing">
+    <div id="p5-canvas" class="landing-canvas"></div>
+  </div>
+</main>
 
-    <!-- develop category -->
-    <div id="category-develop" class="container-main-wide">
-        <div class="main-p-even">
-            <div class="category-container-3">
-                <div id="develop-img-1" class="category-3 category-3a category-image cat-hide-left"></div>
-                <div class="category-3 category-3b category-title cat-hide-right">develop</div>
-                <div id="develop-img-2" class="category-3 category-3c category-image cat-hide-left"></div>
-                <div class="category-3 category-3d  cat-hide-right">
-                    Iterative development is central to my development process as it allows room for exploring new 
-                    features without feeling overwhelmed by all my ideas. My imagination tends to be far more expansive
-                    than the time I can realistically dedicate to my projects. I`ve also found that despite the perception 
-                    of creative coding being more form than function the lessons learned from developing my ideas expand 
-                    far beyond any one project. I've had to learn how to implement various algorithms, use different 
-                    technologies, refine my problem solving, improve math literacy, and even discover my own unique 
-                    contributions to problems.
-                </div>
-            </div>
-        </div>
+<!-- down arrow to dream category -->
+<div class="container-arrow-d">
+  <div id="arrow-to-dream" class="arrow-d-box arrow-d-bounce arrow-d-out">
+    <div class="arrow-left">
+      <div class="arrow-bar-l"></div>
     </div>
+    <div class="arrow-right">
+      <div class="arrow-bar-r"></div>
+    </div>
+  </div>
+</div>
 
-    <!-- down arrow to landing tips -->
-    <div class="container-arrow-d">
-        <div id="arrow-to-tips" class="arrow-d-box arrow-d-bounce arrow-d-out">
-            <div class="arrow-left">
-                <div class="arrow-bar-l"></div>
-            </div>
-            <div class="arrow-right">
-                <div class="arrow-bar-r"></div>
-            </div>
-        </div>
-    </div>
+<div class="spacer-medium" id="category-dream"></div>
 
-    <!-- last section -->
-    <div class="container-main">
-        <div class="main-spacer"></div>
-    </div>
-    <div id="category-design" class="container-main">
-        <div id="landing-tips" class="main-p-even">
-            Before you go, have you tried mousing over the creative developer text? What happens when you click and
-            mouse over? Give it a try...
-        </div>
-    </div>
-    <div class="container-main">
-        <div class="main-spacer"></div>
-    </div>
+<!-- section: dream -->
+<!-- directions indicate where the image will go in section -->
+<div class="container-1-left">
+  <div class="cont-1-img-left">
+    <div class="cont-1-img-a" id="dream-img-a"></div>
+    <div class="cont-1-img-b" id="dream-img-b"></div>
+  </div>
 
-    <!-- footer navigation -->
-    <footer class="container-foot">
-        <div class="foot">
-            <div class="foot-1">
-                <a id="top-button" href="javascript:void(0)" title="top of page">top</a>
-            </div>
-            <div class="foot-2">
-                <a href="index.html" title="home page">home</a>
-            </div>
-            <div class="foot-3">
-                <a target="_blank" href="https://github.com/yahirRendon" title="yahir's github">github</a>
-            </div>
-            <div class="foot-4">
-                <a href="./html/projects.html" title="view projects">projects</a>
-            </div>
-            <div class="foot-5">
-                <a href="./html/about.html" title="about yahir">about</a>
-            </div>
-        </div>
-    </footer>
+  <div class="cont-1-body-right">
+    <div class="cont-1-body-a text-h3">recusandae</div>
+    <div class="cont-1-body-b">
+      A quia iste qui aliquid velit et sunt deleniti. Aut recusandae distinctio qui vero nihil est vitae eligendi est
+      quibusdam rerum. Aut sint autem aut provident illum ea eligendi voluptas eum ipsum repudiandae non cupiditate
+      deserunt sed adipisci illo.
+      <br><br>
+      Est enim voluptatem aut omnis aperiam sed enim maiores in alias quam sed maiores aperiam. Non dolorem excepturi ea
+      maxime repellendus ea mollitia debitis At dolore rerum ex accusantium modi ut magni enim.
+    </div>
+  </div>
+</div>
 
-    <script defer src="./js/scripts-index.js"></script>
+<!-- down arrow to design category -->
+<div class="container-arrow-d">
+  <div id="arrow-to-design" class="arrow-d-box arrow-d-bounce arrow-d-out">
+    <div class="arrow-left">
+      <div class="arrow-bar-l"></div>
+    </div>
+    <div class="arrow-right">
+      <div class="arrow-bar-r"></div>
+    </div>
+  </div>
+</div>
+
+<div class="spacer-medium" id="category-design"></div>
+
+<!-- section: design -->
+<!-- directions indicate where the image will go in section -->
+<div class="container-1-right">
+  <div class="cont-1-img-right">
+    <div class="cont-1-img-a" id="design-img-a"></div>
+    <div class="cont-1-img-b" id="design-img-b"></div>
+  </div>
+
+  <div class="cont-1-body-left">
+    <div class="cont-1-body-a text-h3" >provident</div>
+    <div class="cont-1-body-b">
+      A quia iste qui aliquid velit et sunt deleniti. Aut recusandae distinctio qui vero nihil est vitae eligendi est
+      quibusdam rerum. Aut sint autem aut provident illum ea eligendi voluptas eum ipsum repudiandae non cupiditate
+      deserunt sed adipisci illo.
+      <br><br>
+      Est enim voluptatem aut omnis aperiam sed enim maiores in alias quam sed maiores aperiam. Non dolorem excepturi ea
+      maxime repellendus ea mollitia debitis At dolore rerum ex accusantium modi ut magni enim.
+    </div>
+  </div>
+</div>
+
+<!-- down arrow to develop category -->
+<div class="container-arrow-d">
+  <div id="arrow-to-develop" class="arrow-d-box arrow-d-bounce arrow-d-out">
+    <div class="arrow-left">
+      <div class="arrow-bar-l"></div>
+    </div>
+    <div class="arrow-right">
+      <div class="arrow-bar-r"></div>
+    </div>
+  </div>
+</div>
+
+<div class="spacer-medium" id="category-develop"></div>
+
+<!-- section: develop -->
+<!-- directions indicate where the image will go in section -->
+<div class="container-1-left">
+  <div class="cont-1-img-left">
+    <div class="cont-1-img-a" id="develop-img-a"></div>
+    <div class="cont-1-img-b" id="develop-img-b"></div>
+  </div>
+
+  <div class="cont-1-body-right">
+    <div class="cont-1-body-a text-h3">eligendi</div>
+    <div class="cont-1-body-b">
+      A quia iste qui aliquid velit et sunt deleniti. Aut recusandae distinctio qui vero nihil est vitae eligendi est
+      quibusdam rerum. Aut sint autem aut provident illum ea eligendi voluptas eum ipsum repudiandae non cupiditate
+      deserunt sed adipisci illo.
+      <br><br>
+      Est enim voluptatem aut omnis aperiam sed enim maiores in alias quam sed maiores aperiam. Non dolorem excepturi ea
+      maxime repellendus ea mollitia debitis At dolore rerum ex accusantium modi ut magni enim.
+    </div>
+  </div>
+</div>
+
+<div class="spacer-medium"></div>
+
+<!-- footer navigation section -->
+<footer class="container-foot">
+  <div class="cont-foot-1">
+    <a class="foot-links" id="button-top" title="top of page" href="javascript:void(0)">top</a>
+  </div>
+  <div class="cont-foot-2">
+    <a class="foot-links" title="home page" href="index.html">home</a>
+  </div>
+  <div class="cont-foot-3">
+    <a class="foot-links" title="yahir's github" target="_blank" href="https://github.com/yahirRendon">github</a>
+  </div>
+  <div class="cont-foot-4">
+    <a class="foot-links" title="view projects" href="projects.html">projects</a>
+  </div>
+  <div class="cont-foot-5">
+    <a class="foot-links" title="about yahir" href="about.html">about</a>
+  </div>
+</footer>
+
+<div class="spacer-small"></div>
 </body>
+
+<script src="js/scripts.js"></script>
+<script src="js/scripts-index.js"></script>
 
 </html>
