@@ -1,166 +1,121 @@
-//=============================================================================
-// scripts page for index
-//=============================================================================
-const arrowElement = document.getElementById('arrow-down');
+/******************************************************************************
+*
+* javascript for index page
+* 
+*****************************************************************************/
+// get dom elements
+const p5Canvas = document.getElementById('p5-canvas');
+const arrowToDream = document.getElementById('arrow-to-dream');
 const arrowToDesign = document.getElementById('arrow-to-design');
 const arrowToDevelop = document.getElementById('arrow-to-develop');
-const arrowToTips = document.getElementById('arrow-to-tips');
-const menuButton = document.getElementById('menu-button');
-const topPageButton = document.getElementById('top-button');
-const p5Canvas = document.getElementById('p5-canvas');
 
-// observer for animate in category content
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
+let elementDreamImgA = document.getElementById("dream-img-a");
+let elementDreamImgB = document.getElementById("dream-img-b");
+let elementDesignImgA = document.getElementById("design-img-a");
+let elementDesignImgB = document.getElementById("design-img-b");
+let elementDevelopImgA = document.getElementById("develop-img-a");
+let elementDevelopImgB = document.getElementById("develop-img-b");
 
-        if (entry.isIntersecting) {
+var mousePosY = 0; // store mouse x pixel position
+var mousePosX = 0; // store mouse y pixel position
 
-            entry.target.classList.add('category-show');
+// load array of images for dream section
+let dreamPath = "url(./img/laptop/";  // path to image series folder
+let dreamImages = ["laptop-01",
+    "laptop-02",
+    "laptop-03",
+    "laptop-04",
+    "laptop-05",
+    "laptop-06",
+    "laptop-08"];
 
-            if (entry.target.id == 'arrow-to-design') {
-                entry.target.classList.remove("active");
-            }
-            if (entry.target.id == 'arrow-to-develop') {
-                entry.target.classList.remove("active");
-            }
-        } else {
-            entry.target.classList.remove('category-show');
 
-            if (entry.target.id == 'arrow-to-design') {
-                entry.target.classList.add("active");
-            }
-            if (entry.target.id == 'arrow-to-develop') {
-                entry.target.classList.add("active");
-            }
-        }
-    });
+let designPath = "url(./img/drawing/";  // path to image series folder
+// load array of image names that will be used for image series on scroll effect
+let designImages = ["drawing-01",
+    "drawing-02",
+    "drawing-03",
+    "drawing-04",
+    "drawing-05",
+    "drawing-06",
+    "drawing-07"];
+// load array of images for develop section
+let developPath = "url(./img/humanity/";  // path to image series folder
+let developImages = ["humanity-code-01",
+    "humanity-code-02",
+    "humanity-code-03",
+    "humanity-code-04",
+    "humanity-code-05",
+    "humanity-code-06",
+    "humanity-code-07"];
+
+// create objects for image montage effect
+let dreamImg;
+let designImg;
+let developImg;
+
+/******************************************************************************
+*
+* run when everything has loaded
+* 
+*****************************************************************************/
+// window.onload = function () {
+//     // dom element background, dom element foreground, offset top, offset bottom, image array, image path
+//     designImg = new TestClass(elementDesignImgA, elementDesignImgB, 100, 100, designImages, designPath);
+//     developImg = new TestClass(elementDevelopImgA, elementDevelopImgB, 400, 0, developImages, developPath);
+
+// }
+
+window.addEventListener("load", function () {
+    // this works only because they all have the same number of images
+    // would need to rework for image series of different lengths
+    for (var i = 0; i < dreamImages.length; i++) {
+        preloadImage(dreamImages[i]);
+        preloadImage(designImages[i]);
+        preloadImage(designImages[i]);
+    }
+    // offset top, offset bottom
+    dreamImg = new ScrollAnim(elementDreamImgA, elementDreamImgB, 0, 430, dreamImages, dreamPath);
+    designImg = new ScrollAnim(elementDesignImgA, elementDesignImgB, 100, 130, designImages, designPath);
+    developImg = new ScrollAnim(elementDevelopImgA, elementDevelopImgB, 100, 0, developImages, developPath);
 });
-const hiddenElementsLeft = document.querySelectorAll('.cat-hide-left');
-hiddenElementsLeft.forEach((el) => observer.observe(el));
-const hiddenElementsRight = document.querySelectorAll('.cat-hide-right');
-hiddenElementsRight.forEach((el) => observer.observe(el));
-const hiddenElementsArrows = document.querySelectorAll('.arrow-d-box');
-hiddenElementsArrows.forEach((el) => observer.observe(el));
 
 /******************************************************************************
-*  
-* run when window loads
+*
+* run when scrolling is occuring
 * 
 *****************************************************************************/
-window.onload = function () {
-}
+window.onscroll = function () {
+    // update image montage effect
+    dreamImg.update();
+    designImg.update();
+    developImg.update();
 
-/******************************************************************************
-* 
-* simple way to check if page arrived at by
-* back button. reset nav to default
-* 
-*****************************************************************************/
-window.onpageshow = function (event) {
-    if (event.persisted) {
-        // window.location.reload();
-        resetMenu();
-    }
-};
-
-/******************************************************************************
- * 
- * Toggle elements when menu-button clicked in navigation 
- * 
- *****************************************************************************/
-menuButton.addEventListener('click', function () {
-    navigationBarToggle();
-    toggleHamIcon();
-});
-
-/******************************************************************************
- * 
- * Toggle the menu links in navigation
- * 
- *****************************************************************************/
-function navigationBarToggle() {
-    // toggle nav menu based given current display state
-    let navElem = document.getElementsByClassName('nav-links');
-    for (var i = 0; i < navElem.length; i++) {
-        let navStyle = window.getComputedStyle(navElem[i], null);
-        let navStyleDisplay = navStyle.getPropertyValue('display');
-
-        if (navStyleDisplay == 'none') {
-
-            navElem[i].style.display = 'grid';
-
-        } else {
-
-            navElem[i].style.display = 'none';
-
-        }
-    }
-}
-
-/******************************************************************************
- * 
- * Toggle animation for hamburger icon in menu
- * 
- *****************************************************************************/
-function toggleHamIcon() {
-    // toggle hamburger icon bars given current state
-    let barElems = document.getElementsByClassName('ham-container');
-    for (var i = 0; i < barElems.length; i++) {
-        barElems[i].classList.toggle('change');
-    }
-}
-
-/******************************************************************************
- * 
- * reset menu to default state
- * 
-*****************************************************************************/
-function resetMenu() {
-    // hide menu
-    let navElem = document.getElementsByClassName('nav-links');
-    for (var i = 0; i < navElem.length; i++) {
-        let navStyle = window.getComputedStyle(navElem[i], null);
-        let navStyleDisplay = navStyle.getPropertyValue('display');
-        navElem[i].style.display = 'none';
-    }
-    // reset menu icon
-    let barElems = document.getElementsByClassName('ham-container');
-    for (var i = 0; i < barElems.length; i++) {
-        barElems[i].classList.remove('change');
-    }
-}
-
-/******************************************************************************
- * 
- * hide down arrow when no longer at top of page
- * 
- *****************************************************************************/
-window.addEventListener("scroll", function () {
-    // var testElem = document.getElementsByClassName('reveal')[0];
-    if (window.scrollY > 100) {
-        // arrowElement.style.display = "none";  
-        arrowElement.classList.add("active");
+    if (window.scrollY > arrowToDream.offsetTop - 100) {
+        arrowToDream.classList.add("active");
     } else {
-        // arrowElement.style.display = "grid";
-        arrowElement.classList.remove("active");
+        arrowToDream.classList.remove("active");
     }
-
-    // if(window.scrollY > 750) {
-    //     arrowToDesign.classList.add("active");
-    // } else {
-    //     arrowToDesign.classList.remove("active");
-    // }
-
-}, false);
+    if (window.scrollY > arrowToDesign.offsetTop - 100) {
+        arrowToDesign.classList.add("active");
+    } else {
+        arrowToDesign.classList.remove("active");
+    }
+    if (window.scrollY > arrowToDevelop.offsetTop - 100) {
+        arrowToDevelop.classList.add("active");
+    } else {
+        arrowToDevelop.classList.remove("active");
+    }
+}
 
 /******************************************************************************
  * 
  * move page to dream section
  * 
  *****************************************************************************/
-arrowElement.addEventListener('click', arrowDown);
-function arrowDown() {
-    const element = document.getElementById('category-1');
+arrowToDream.addEventListener('click', goToDread);
+function goToDread() {
+    const element = document.getElementById('category-dream');
     element.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
@@ -186,31 +141,112 @@ function goToDevelop() {
     element.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-/******************************************************************************
- * 
- * move page to landing tips
- * 
- *****************************************************************************/
-arrowToTips.addEventListener('click', goToTips);
-function goToTips() {
-    const element = document.getElementById('landing-tips');
-    element.scrollIntoView({ behavior: "smooth", block: "start" });
-}
 
 /******************************************************************************
- * 
- * move to top of page from footer
- * 
- *****************************************************************************/
-topPageButton.addEventListener('click', goToTop);
+*
+* move to top of page from footer
+* 
+*****************************************************************************/
+buttonTop.addEventListener('click', goToTop);
 function goToTop() {
+    // requires smooth scrool in html tag in css
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+
+    //  option wihtout using smooth scroll in css html
+    // window.scrollTo({
+    //     top: 0,
+    //     behavior: 'smooth'
+    // });
 }
 
-//=============================================================================
-// p5.js sketch
-//=============================================================================
+
+/******************************************************************************
+*
+* function for preloading images on page load. Not sure if this helps with
+* flickering as the preload in html seems to work better. 
+* 
+*****************************************************************************/
+function preloadImage(im_url) {
+    let img = new Image();
+    img.style.src = im_url;
+}
+
+/******************************************************************************
+*
+* function for mapping values from one range to another
+* 
+*****************************************************************************/
+function linearMap(number, inMin, inMax, outMin, outMax) {
+    if (number <= inMin) return outMin;
+    if (number >= inMax) return outMax;
+    return Math.floor((number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin);
+}
+
+/******************************************************************************
+*
+* calss for creating objects that help scroll animation for images
+* 
+*****************************************************************************/
+class ScrollAnim {
+    constructor(elementA, elementB, offsetTopAmt, offsetBotAmt, images, imgPath) {
+        this.elementA = elementA;
+        this.elementB = elementB;
+        this.offsetTopAmt = offsetTopAmt;
+        this.offsetBotAmt = offsetBotAmt;
+        this.images = images;
+        this.imgPath = imgPath;
+        this.lastIndexPos = 0;
+        this.indexPos = 0;
+    }
+
+    /**
+     * update elements for the stop animation effect
+     */
+    update() {
+        // get the total pixel height of the page
+        var totalPixelHeight = document.documentElement.scrollHeight;
+        // get the max value that scrollY will return to view whole page
+        var maxScrollY = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        // remap scrollY to to total pixel range for finer scroll control
+        var mapScrollY = linearMap(scrollY, 0, maxScrollY, 0, totalPixelHeight)
+
+        // get the start pixel position that will begin triggering image change
+        var startPos = this.elementB.offsetTop + this.offsetTopAmt;
+        // get the end position that will end triggering image changes
+        var endPos = this.elementB.offsetTop + (this.elementB.offsetHeight - this.offsetBotAmt);
+        // map the trigger range to index value in image series
+        this.indexPos = linearMap(mapScrollY, startPos, endPos, 0, this.images.length - 1);
+
+        // check for index changes to update elementA (background) and
+        // elementB (foreground)
+        if (this.lastIndexPos != this.indexPos) {
+            // create index point to prior position to get previous or next iamge in series
+            // depending on direction of scroll
+            var indexPrior = this.indexPos;
+            if (this.indexPos > this.lastIndexPos) {
+                indexPrior--;
+            } else {
+                indexPrior++;
+            }
+            // limit check
+            if (indexPrior < 0) indexPrior + this.images.length - 1;
+            if (indexPrior > this.images.length - 1) indexPrior = 0;
+            // update elementA image (background)
+            this.elementA.style.content = this.imgPath + this.images[indexPrior] + ".jpg)";
+
+            // triggger animation for elementB (foreground)
+            this.elementB.classList.remove("fadeIn-mod");
+            void this.elementB.offsetWidth; // trigger reflow
+            this.elementB.classList.add("fadeIn-mod");
+
+            this.elementB.style.content = this.imgPath + this.images[this.indexPos] + ".jpg)";
+
+            // update index value
+            this.lastIndexPos = this.indexPos;
+        }
+    }
+}
 
 /******************************************************************************
  * p5.js sketch
@@ -224,7 +260,7 @@ function goToTop() {
  * - LEFT CLICK | toggle repel and attract
  * - MOUS OVER  | repel or attract text pixels
  ******************************************************************************/
-var fontMontserrat;                 // custom font
+var fontPoppins;                    // custom font
 var parentWidth;                    // track canvas parent width
 var parentHeight;                   // track canvas parent height
 var xAdj;                           // x adjustment to center text
@@ -234,13 +270,16 @@ var mouseRadius;                    // radius from mouse influencing pxls
 var radiusAdj;                      // offset for randomness margin of radius
 var loadCol;                        // track which img pixel column is being loaded
 var repelPxls;                      // toggle repel and attracting pxls
+var currentTime;                    // current millis time used for tracking if mouse moves
+var timeDelayAmt;                   // time delay when mouse is not moving (ms)
 
 // png img with text
-var imgPath = "./assets/creative-developer-text.png";
+var imgPath = "./assets/creative-developer-text-poppins-lt.png"; // ./ when properly structured
 var pxls;
-const img = new Image();
+let img = new Image();
 img.src = imgPath;
 img.onload = function () { };
+
 
 /******************************************************************************
  * 
@@ -249,7 +288,7 @@ img.onload = function () { };
  *****************************************************************************/
 function preload() {
     // img = loadImage("./assets/txt-word-light.png");
-    fontMontserrat = loadFont('./assets/Montserrat-Light.ttf');
+    fontPoppins = loadFont('./assets/Poppins-Light.ttf'); // ./ when properlly structured
 }
 
 /******************************************************************************
@@ -265,22 +304,27 @@ function setup() {
     canvas.parent('p5-canvas');
     colorMode(HSB, 360, 100, 100, 100);
     noStroke();
-    textFont(fontMontserrat);
+    textFont(fontPoppins);
     textSize(16);
+    background(180, 1, 92);
 
-    // loadingPxls = false;
     repelPxls = true;
+    var r = int(random(0, 10));
+    if (r % 2 == 0) repelPxls = false;
+
     loadCol = 0;
 
     mouseRadius = int(img.width * .30);
     radiusAdj = int(mouseRadius * .25);
 
+    // x and y adjument to center image text
     xAdj = (parentWidth - img.width) / 2;
     yAdj = (parentHeight - img.height) / 2;
 
-    background(26, 3, 96);
-
     pxls = getNonTransparentPixels(img);
+
+    timeDelayAmt = 1000;
+    currentTime = millis();
 }
 
 /******************************************************************************
@@ -289,13 +333,24 @@ function setup() {
  * 
  *****************************************************************************/
 function draw() {
-    background(26, 3, 96);
+    background(180, 1, 92);
+
+    // track if mouse position is the same for more than timeDelayAmt allows
+    // if so mouse is no longer active and should not repel/push pixels
+    var mouseActive = true;
+    if (pmouseX == mouseX && pmouseY == mouseY) {
+        if (millis() > currentTime + timeDelayAmt) {
+            mouseActive = false;
+        }
+    } else {
+        currentTime = millis();
+    }
 
     // display and move pxls
     for (var i = 0; i < pxls.length; i++) {
         let distance = dist(mouseX, mouseY, pxls[i].x + xAdj, pxls[i].y + yAdj);
         let blurLimit = mouseRadius + random(-radiusAdj, radiusAdj);
-        if (distance < blurLimit) {
+        if (distance < blurLimit && mouseActive) {
             pxls[i].move(repelPxls);
             pxls[i].setTime();
         }
@@ -337,7 +392,7 @@ class Pxl {
         this.x = x + int(random(-this.d, this.d)); // moveable x position
         this.y = y + int(random(-this.d, this.d)); // moveable y position
 
-        this.hueVal = 99;                       // default hue val
+        this.hueVal = 356;                       // default hue val
         this.satVal = 0;                        // saturation val from img text
         this.briVal = 0;                        // brightness val from img text
         this.alphaVal = a;                      // alpha val from img text
@@ -368,11 +423,11 @@ class Pxl {
         // point(this.x + xAdj, this.y + yAdj);
         let maxDistance = 75;
         let distance = dist(this.orgX, this.orgY, this.x, this.y);
-        if (!this.firstMove) {
-            this.size = map(distance, 0, maxDistance * 2, 1.5, 3);
-            this.satVal = map(distance, 0, maxDistance, 0, 80);
-            this.briVal = map(distance, 0, maxDistance, 0, 15);
-        }
+        // if (!this.firstMove) {
+        this.size = map(distance, 0, maxDistance * 2, 1.5, 3);
+        this.satVal = map(distance, 0, maxDistance, 0, 58);
+        this.briVal = map(distance, 0, maxDistance, 0, 93);
+        // }
 
         fill(this.hueVal, this.satVal, this.briVal, this.alphaVal);
         // square(this.x + xAdj, this.y + yAdj, this.size);
@@ -386,9 +441,7 @@ class Pxl {
      * 
      *****************************************************************************/
     moveHome() {
-        if (millis() < this.time + this.easeDelay) {
-            return;
-        }
+        if (millis() < this.time + this.easeDelay) return;
 
         // ease x value home 
         let dx = this.orgX - this.x;
@@ -433,7 +486,8 @@ class Pxl {
      * 
      *****************************************************************************/
     repel() {
-        let angle = atan2(mouseY - (this.y + yAdj), mouseX - (this.x + xAdj));
+        let randAmt = random(-5, 5);
+        let angle = atan2((mouseY + randAmt) - (this.y + yAdj), (mouseX + randAmt) - (this.x + xAdj));
         this.x -= this.speed * cos(angle);
         this.y -= this.speed * sin(angle);
     }
@@ -444,7 +498,8 @@ class Pxl {
      * 
      *****************************************************************************/
     attract() {
-        let angle = atan2(mouseY - (this.y + yAdj), mouseX - (this.x + xAdj));
+        let randAmt = random(-5, 5);
+        let angle = atan2((mouseY + randAmt) - (this.y + yAdj), (mouseX + randAmt) - (this.x + xAdj));
         this.x += this.speed * cos(angle);
         this.y += this.speed * sin(angle);
     }
@@ -461,15 +516,15 @@ function getNonTransparentPixels(img) {
     canvas.width = img.width;
     canvas.height = img.height;
 
-    let zoff = random(203);
-
     // Get the 2D context of the canvas and draw the image to it
     const ctx = canvas.getContext("2d");
+    // #fix: for small screens set size here. needs to recenter
     ctx.drawImage(img, 0, 0);
 
     // Get the image data from the canvas
     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
+    let zoff = random(203);
     // Loop through the pixels and create a Pxl object for each non-transparent pixel
     const pixels = [];
     let yoff = 0;
@@ -491,7 +546,6 @@ function getNonTransparentPixels(img) {
         yoff += 0.05;
         zoff += 0.005;
     }
-
     return pixels;
 }
 
@@ -504,4 +558,3 @@ p5Canvas.addEventListener('click', myFunction);
 function myFunction() {
     repelPxls = !repelPxls;
 }
-

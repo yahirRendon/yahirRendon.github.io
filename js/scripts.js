@@ -1,0 +1,137 @@
+/******************************************************************************
+*
+* javascript for main web elements
+*
+* navigation bar
+* footer
+* 
+*****************************************************************************/
+// get dom elements
+const buttonMenu = document.getElementById('menu-button');
+const buttonTop = document.getElementById('button-top');
+
+
+/******************************************************************************
+*
+* run when everything has loaded
+* 
+*****************************************************************************/
+// window.onload = function () {}
+// window.addEventListener("load", function() {});
+
+/******************************************************************************
+*
+* run when scrolling is occuring
+* 
+*****************************************************************************/
+// window.onscroll = function () { }
+
+/******************************************************************************
+*
+* trigger when scrolling has ended
+* 
+*****************************************************************************/
+// window.onscrollend = function () { }
+
+/******************************************************************************
+*
+* run when mouse is moving
+* 
+*****************************************************************************/
+// onmousemove = function (event) { }
+
+/******************************************************************************
+*
+* Toggle elements when menu-button clicked in navigation 
+* 
+*****************************************************************************/
+buttonMenu.addEventListener('click', function () {
+    menuButtonToggle();
+    navigationBarToggle();
+});
+
+/******************************************************************************
+*
+* Toggle animation for hamburger icon in menu
+* 
+*****************************************************************************/
+function menuButtonToggle() {
+    var doit = 0;
+    let hambars = document.getElementsByClassName('cont-bar')[0].children;
+
+    for (var i = 0; i < hambars.length; i++) {
+        hambars[i].classList.toggle('trig');
+
+        if (!hambars[i].classList.contains('trig')) {
+            hambars[i].classList.toggle('trig-r');
+        }
+
+        if (hambars[i].classList.contains('trig') && hambars[i].classList.contains('trig-r')) {
+            hambars[i].classList.toggle('trig-r');
+        }
+    }
+}
+
+/******************************************************************************
+*
+* Toggle the menu links in navigation
+* 
+*****************************************************************************/
+function navigationBarToggle() {
+    let navElem = document.getElementsByClassName('toggle-show');
+    for (var i = 0; i < navElem.length; i++) {
+        let navStyle = window.getComputedStyle(navElem[i], null);
+        let navStyleDisplay = navStyle.getPropertyValue('display');
+
+        if (navStyleDisplay == 'none') {
+
+            navElem[i].style.display = 'grid';
+            navElem[i].classList.remove('fadeOut-mod');
+            void navElem[i].offsetWidth; // trigger reflow
+            navElem[i].classList.add('fadeIn-mod');
+
+        } else {
+            navElem[i].classList.remove('fadeIn-mod');
+            void navElem[i].offsetWidth; // trigger reflow
+            navElem[i].classList.add('fadeOut-mod');
+        }
+
+    }
+}
+
+/******************************************************************************
+*
+* run when animation for first element in toggle-show group is over
+* 
+*****************************************************************************/
+document.getElementsByClassName('toggle-show')[0].addEventListener("animationend", function () {
+    let navElem = document.getElementsByClassName('toggle-show');
+
+    if (navElem[0].classList.contains('fadeOut-mod')) {
+        for (var i = 0; i < navElem.length; i++) {
+            let navStyle = window.getComputedStyle(navElem[i], null);
+            let navStyleDisplay = navStyle.getPropertyValue('display');
+
+            navElem[i].style.display = 'none';
+        }
+    }
+}, false);
+
+/******************************************************************************
+*
+* move to top of page from footer
+* 
+*****************************************************************************/
+buttonTop.addEventListener('click', goToTop);
+function goToTop() {
+    // requires smooth scrool in html tag in css
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+
+    //  option wihtout using smooth scroll in css html
+    // window.scrollTo({
+    //     top: 0,
+    //     behavior: 'smooth'
+    // });
+}
+
