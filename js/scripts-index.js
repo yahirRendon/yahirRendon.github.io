@@ -75,7 +75,7 @@ window.addEventListener("load", function () {
         preloadImage(designImages[i]);
     }
     // offset top, offset bottom
-    dreamImg = new ScrollAnim(elementDreamImgA, elementDreamImgB, 0, 100, dreamImages, dreamPath);
+    dreamImg = new ScrollAnim(elementDreamImgA, elementDreamImgB, 100, 0, dreamImages, dreamPath);
     designImg = new ScrollAnim(elementDesignImgA, elementDesignImgB, 100, 130, designImages, designPath);
     developImg = new ScrollAnim(elementDevelopImgA, elementDevelopImgB, 100, 0, developImages, developPath);
 });
