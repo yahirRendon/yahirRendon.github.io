@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles-projects.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&amp;display=swap" rel="stylesheet">
+
+    <title>yahir | projects</title>
+</head>
+
+<body>
+    <!-- navigation bar section -->
+    <nav class="container-nav">
+      <!-- contains button and all expand/dropdown links -->
+      <div class="cont-nav-1">
+        <!-- menu button -->
+        <div class="cont-menu">
+          <div class="cont-neo" id="menu-button">
+            <div class="cont-bar">
+              <div class="bar-1"></div>
+              <div class="bar-2"></div>
+              <div class="bar-3"></div>
+            </div>
+          </div>
+        </div>
+        <!-- menu links -->
+        <div class="expand-nav">
+          <div class="exp-cont">
+          <div class="cont-nav-2 toggle-show">
+            <div class="cont-nav-links"><a class="nav-links" title="home page" href="index.html">home</a></div>
+          </div>
+          <div class="cont-nav-3 toggle-show">
+            <div class="cont-nav-links"><a class="nav-links" title="yahir's github" href="https://github.com/yahirRendon"
+              target="_blank">github</a></div>
+          </div>
+          <div class="cont-nav-4 toggle-show">
+            <div class="cont-nav-links"><a class="nav-links" title="view projects" href="projects.html">projects</a>
+            </div>
+          </div>
+          <div class="cont-nav-5 toggle-show">
+            <div class="cont-nav-links"><a class="nav-links" title="about yahir" href="about.html">about</a></div>
+          </div>
+        </div>
+      </div>
+      </div>
+    
+      <!-- home/title link -->
+      <div class="cont-nav-6">
+        <div class="cont-nav-links"><a class="nav-links" title="home page" href="index.html">yahir</a></div>
+      </div>
+    </nav>
+
+    <div class="spacer-large"></div>
+
+    <!-- title: projects -->
+    <div class="cont-text">
+        <div class="text-center text-h1">projects</div>
+    </div>
+
+    <div class="spacer-large"></div>
+
+    <!-- project introduction -->
+    <div class="cont-text">
+        <div class="text-center-cond">
+            Explore some of my favorite projects by hovering over images, doing a filter search, and/or clicking on
+            individual projects to learn more. All projects will lead to GitHub for a deep dive into the development
+            process and key features. However, some may take you to an interactive web version for hands on exploration
+            <br>-Enjoy!
+        </div>
+    </div>
+    <div class="spacer-large"></div>
+
+    <div class="search-wrapper">
+        <input class="search-box" type="search" id="search" placeholder=" search projects (java, p5.js, css, python...)"
+            data-search>
+    </div>
+
+    <div class="spacer-small"></div>
+
+    <!-- display project cards -->
+    <div class="project-wrapper">
+        <div class="project-cards" data-project-cards-container></div>
+        <template data-project-template>
+            <div class="project">
+                <!-- condensed version -->
+                <div class="test-wrap">
+                    <div class="project-image" data-image>
+                        <div class="project-container">
+                            <!-- <div class="project-image" data-image></div> -->
+                            <div class="project-name" data-name></div>
+                            <div class="project-description" data-description></div>
+                            <div class="project-tags" data-tags></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </div>
+
+    <div class="spacer-large"></div>
+
+    <!-- footer navigation section -->
+    <footer class="container-foot">
+        <div class="cont-foot-1">
+            <a class="foot-links" id="button-top" title="top of page" href="javascript:void(0)">top</a>
+        </div>
+        <div class="cont-foot-2">
+            <a class="foot-links" title="home page" href="index.html">home</a>
+        </div>
+        <div class="cont-foot-3">
+            <a class="foot-links" title="yahir's github" target="_blank"
+                href="https://github.com/yahirRendon">github</a>
+        </div>
+        <div class="cont-foot-4">
+            <a class="foot-links" title="view projects" href="projects.html">projects</a>
+        </div>
+        <div class="cont-foot-5">
+            <a class="foot-links" title="about yahir" href="about.html">about</a>
+        </div>
+    </footer>
+
+</body>
+<script src="js/scripts.js"></script>
+<script src="js/scripts-projects.js"></script>
+
+</html>

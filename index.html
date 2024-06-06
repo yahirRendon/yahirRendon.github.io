@@ -10,8 +10,8 @@
   <link rel="stylesheet" type="text/css" href="css/styles-index.css" />
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins&amp;display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>  
-  
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
+
   <link rel="preload" href="img/drawing/drawing-01.jpg" as="image">
   <link rel="preload" href="img/drawing/drawing-02.jpg" as="image">
   <link rel="preload" href="img/drawing/drawing-03.jpg" as="image">
@@ -27,6 +27,7 @@
   <link rel="preload" href="img/laptop/laptop-05.jpg" as="image">
   <link rel="preload" href="img/laptop/laptop-06.jpg" as="image">
   <link rel="preload" href="img/laptop/laptop-08.jpg" as="image">
+  <!-- Images created by yahir -->
   <link rel="preload" href="img/humanity/humanity-code-01.jpg" as="image">
   <link rel="preload" href="img/humanity/humanity-code-02.jpg" as="image">
   <link rel="preload" href="img/humanity/humanity-code-03.jpg" as="image">
@@ -38,174 +39,192 @@
   <title>yahir | home</title>
 </head>
 
-<!-- navigation bar section -->
-<nav class="container-nav">
-  <div class="cont-nav-1">
-    <div class="cont-menu">
-      <div class="cont-neo" id="menu-button">
-        <div class="cont-bar">
-          <div class="bar-1"></div>
-          <div class="bar-2"></div>
-          <div class="bar-3"></div>
+<body>
+  <!-- navigation bar section -->
+  <nav class="container-nav">
+    <!-- contains button and all expand/dropdown links -->
+    <div class="cont-nav-1">
+      <!-- menu button -->
+      <div class="cont-menu">
+        <div class="cont-neo" id="menu-button">
+          <div class="cont-bar">
+            <div class="bar-1"></div>
+            <div class="bar-2"></div>
+            <div class="bar-3"></div>
+          </div>
+        </div>
+      </div>
+      <!-- menu links -->
+      <div class="expand-nav">
+        <div class="exp-cont">
+          <div class="cont-nav-2 toggle-show">
+            <div class="cont-nav-links"><a class="nav-links" title="home page" href="index.html">home</a></div>
+          </div>
+          <div class="cont-nav-3 toggle-show">
+            <div class="cont-nav-links"><a class="nav-links" title="yahir's github"
+                href="https://github.com/yahirRendon" target="_blank">github</a></div>
+          </div>
+          <div class="cont-nav-4 toggle-show">
+            <div class="cont-nav-links"><a class="nav-links" title="view projects" href="projects.html">projects</a>
+            </div>
+          </div>
+          <div class="cont-nav-5 toggle-show">
+            <div class="cont-nav-links"><a class="nav-links" title="about yahir" href="about.html">about</a></div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="cont-nav-2 toggle-show">
-    <div class="cont-nav-links"><a class="nav-links" title="home page" href="index.html">home</a></div>
-  </div>
-  <div class="cont-nav-3 toggle-show">
-    <div class="cont-nav-links"><a class="nav-links" title="yahir's github" href="https://github.com/yahirRendon"
-        target="_blank">github</a></div>
-  </div>
-  <div class="cont-nav-4 toggle-show">
-    <div class="cont-nav-links"><a class="nav-links" title="view projects" href="projects.html">projects</a>
+
+    <!-- home/title link -->
+    <div class="cont-nav-6">
+      <div class="cont-nav-links"><a class="nav-links" title="home page" href="index.html">yahir</a></div>
+    </div>
+  </nav>
+
+  <!-- main landing section p5 canvas -->
+  <main class="container-landing">
+    <div class="landing">
+      <div id="p5-canvas" class="landing-canvas"></div>
+    </div>
+  </main>
+
+  <div class="spacer-small"></div>
+
+  <!-- down arrow to dream category -->
+  <div class="container-arrow-d">
+    <div id="arrow-to-dream" class="arrow-d-box arrow-d-bounce arrow-d-out">
+      <div class="arrow-left">
+        <div class="arrow-bar-l"></div>
+      </div>
+      <div class="arrow-right">
+        <div class="arrow-bar-r"></div>
+      </div>
     </div>
   </div>
-  <div class="cont-nav-5 toggle-show">
-    <div class="cont-nav-links"><a class="nav-links" title="about yahir" href="about.html">about</a></div>
-  </div>
-  <div class="cont-nav-6">
-    <div class="cont-nav-links"><a class="nav-links" title="home page" href="index.html">yahir</a></div>
-  </div>
-</nav>
 
-<div class="spacer-small"></div>
+  <div class="spacer-medium" id="category-dream"></div>
 
-<!-- main landing section p5 canvas -->
-<main class="container-landing">
-  <div class="landing">
-    <div id="p5-canvas" class="landing-canvas"></div>
-  </div>
-</main>
-
-<!-- down arrow to dream category -->
-<div class="container-arrow-d">
-  <div id="arrow-to-dream" class="arrow-d-box arrow-d-bounce arrow-d-out">
-    <div class="arrow-left">
-      <div class="arrow-bar-l"></div>
+  <!-- section: dream -->
+  <!-- directions indicate where the image will go in section -->
+  <div class="container-1-left">
+    <div class="cont-1-img-left">
+      <div class="cont-1-img-a" id="dream-img-a"></div>
+      <div class="cont-1-img-b" id="dream-img-b"></div>
     </div>
-    <div class="arrow-right">
-      <div class="arrow-bar-r"></div>
+
+    <div class="cont-1-body-right">
+      <div class="cont-1-body-a text-h3">recusandae</div>
+      <div class="cont-1-body-b">
+        A quia iste qui aliquid velit et sunt deleniti. Aut recusandae distinctio qui vero nihil est vitae eligendi est
+        quibusdam rerum. Aut sint autem aut provident illum ea eligendi voluptas eum ipsum repudiandae non cupiditate
+        deserunt sed adipisci illo.
+        <br><br>
+        Est enim voluptatem aut omnis aperiam sed enim maiores in alias quam sed maiores aperiam. Non dolorem excepturi
+        ea
+        maxime repellendus ea mollitia debitis At dolore rerum ex accusantium modi ut magni enim.
+      </div>
     </div>
   </div>
-</div>
 
-<div class="spacer-medium" id="category-dream"></div>
+  <div class="spacer-small"></div>
 
-<!-- section: dream -->
-<!-- directions indicate where the image will go in section -->
-<div class="container-1-left">
-  <div class="cont-1-img-left">
-    <div class="cont-1-img-a" id="dream-img-a"></div>
-    <div class="cont-1-img-b" id="dream-img-b"></div>
-  </div>
-
-  <div class="cont-1-body-right">
-    <div class="cont-1-body-a text-h3">recusandae</div>
-    <div class="cont-1-body-b">
-      A quia iste qui aliquid velit et sunt deleniti. Aut recusandae distinctio qui vero nihil est vitae eligendi est
-      quibusdam rerum. Aut sint autem aut provident illum ea eligendi voluptas eum ipsum repudiandae non cupiditate
-      deserunt sed adipisci illo.
-      <br><br>
-      Est enim voluptatem aut omnis aperiam sed enim maiores in alias quam sed maiores aperiam. Non dolorem excepturi ea
-      maxime repellendus ea mollitia debitis At dolore rerum ex accusantium modi ut magni enim.
+  <!-- down arrow to design category -->
+  <div class="container-arrow-d">
+    <div id="arrow-to-design" class="arrow-d-box arrow-d-bounce arrow-d-out">
+      <div class="arrow-left">
+        <div class="arrow-bar-l"></div>
+      </div>
+      <div class="arrow-right">
+        <div class="arrow-bar-r"></div>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- down arrow to design category -->
-<div class="container-arrow-d">
-  <div id="arrow-to-design" class="arrow-d-box arrow-d-bounce arrow-d-out">
-    <div class="arrow-left">
-      <div class="arrow-bar-l"></div>
+  <div class="spacer-medium" id="category-design"></div>
+
+  <!-- section: design -->
+  <!-- directions indicate where the image will go in section -->
+  <div class="container-1-right">
+    <div class="cont-1-img-right">
+      <div class="cont-1-img-a" id="design-img-a"></div>
+      <div class="cont-1-img-b" id="design-img-b"></div>
     </div>
-    <div class="arrow-right">
-      <div class="arrow-bar-r"></div>
-    </div>
-  </div>
-</div>
 
-<div class="spacer-medium" id="category-design"></div>
-
-<!-- section: design -->
-<!-- directions indicate where the image will go in section -->
-<div class="container-1-right">
-  <div class="cont-1-img-right">
-    <div class="cont-1-img-a" id="design-img-a"></div>
-    <div class="cont-1-img-b" id="design-img-b"></div>
-  </div>
-
-  <div class="cont-1-body-left">
-    <div class="cont-1-body-a text-h3" >provident</div>
-    <div class="cont-1-body-b">
-      A quia iste qui aliquid velit et sunt deleniti. Aut recusandae distinctio qui vero nihil est vitae eligendi est
-      quibusdam rerum. Aut sint autem aut provident illum ea eligendi voluptas eum ipsum repudiandae non cupiditate
-      deserunt sed adipisci illo.
-      <br><br>
-      Est enim voluptatem aut omnis aperiam sed enim maiores in alias quam sed maiores aperiam. Non dolorem excepturi ea
-      maxime repellendus ea mollitia debitis At dolore rerum ex accusantium modi ut magni enim.
+    <div class="cont-1-body-left">
+      <div class="cont-1-body-a text-h3">provident</div>
+      <div class="cont-1-body-b">
+        A quia iste qui aliquid velit et sunt deleniti. Aut recusandae distinctio qui vero nihil est vitae eligendi est
+        quibusdam rerum. Aut sint autem aut provident illum ea eligendi voluptas eum ipsum repudiandae non cupiditate
+        deserunt sed adipisci illo.
+        <br><br>
+        Est enim voluptatem aut omnis aperiam sed enim maiores in alias quam sed maiores aperiam. Non dolorem excepturi
+        ea
+        maxime repellendus ea mollitia debitis At dolore rerum ex accusantium modi ut magni enim.
+      </div>
     </div>
   </div>
-</div>
 
-<!-- down arrow to develop category -->
-<div class="container-arrow-d">
-  <div id="arrow-to-develop" class="arrow-d-box arrow-d-bounce arrow-d-out">
-    <div class="arrow-left">
-      <div class="arrow-bar-l"></div>
-    </div>
-    <div class="arrow-right">
-      <div class="arrow-bar-r"></div>
-    </div>
-  </div>
-</div>
+  <div class="spacer-small"></div>
 
-<div class="spacer-medium" id="category-develop"></div>
-
-<!-- section: develop -->
-<!-- directions indicate where the image will go in section -->
-<div class="container-1-left">
-  <div class="cont-1-img-left">
-    <div class="cont-1-img-a" id="develop-img-a"></div>
-    <div class="cont-1-img-b" id="develop-img-b"></div>
-  </div>
-
-  <div class="cont-1-body-right">
-    <div class="cont-1-body-a text-h3">eligendi</div>
-    <div class="cont-1-body-b">
-      A quia iste qui aliquid velit et sunt deleniti. Aut recusandae distinctio qui vero nihil est vitae eligendi est
-      quibusdam rerum. Aut sint autem aut provident illum ea eligendi voluptas eum ipsum repudiandae non cupiditate
-      deserunt sed adipisci illo.
-      <br><br>
-      Est enim voluptatem aut omnis aperiam sed enim maiores in alias quam sed maiores aperiam. Non dolorem excepturi ea
-      maxime repellendus ea mollitia debitis At dolore rerum ex accusantium modi ut magni enim.
+  <!-- down arrow to develop category -->
+  <div class="container-arrow-d">
+    <div id="arrow-to-develop" class="arrow-d-box arrow-d-bounce arrow-d-out">
+      <div class="arrow-left">
+        <div class="arrow-bar-l"></div>
+      </div>
+      <div class="arrow-right">
+        <div class="arrow-bar-r"></div>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="spacer-medium"></div>
+  <div class="spacer-medium" id="category-develop"></div>
 
-<!-- footer navigation section -->
-<footer class="container-foot">
-  <div class="cont-foot-1">
-    <a class="foot-links" id="button-top" title="top of page" href="javascript:void(0)">top</a>
-  </div>
-  <div class="cont-foot-2">
-    <a class="foot-links" title="home page" href="index.html">home</a>
-  </div>
-  <div class="cont-foot-3">
-    <a class="foot-links" title="yahir's github" target="_blank" href="https://github.com/yahirRendon">github</a>
-  </div>
-  <div class="cont-foot-4">
-    <a class="foot-links" title="view projects" href="projects.html">projects</a>
-  </div>
-  <div class="cont-foot-5">
-    <a class="foot-links" title="about yahir" href="about.html">about</a>
-  </div>
-</footer>
+  <!-- section: develop -->
+  <!-- directions indicate where the image will go in section -->
+  <div class="container-1-left">
+    <div class="cont-1-img-left">
+      <div class="cont-1-img-a" id="develop-img-a"></div>
+      <div class="cont-1-img-b" id="develop-img-b"></div>
+    </div>
 
-<div class="spacer-small"></div>
+    <div class="cont-1-body-right">
+      <div class="cont-1-body-a text-h3">eligendi</div>
+      <div class="cont-1-body-b">
+        A quia iste qui aliquid velit et sunt deleniti. Aut recusandae distinctio qui vero nihil est vitae eligendi est
+        quibusdam rerum. Aut sint autem aut provident illum ea eligendi voluptas eum ipsum repudiandae non cupiditate
+        deserunt sed adipisci illo.
+        <br><br>
+        Est enim voluptatem aut omnis aperiam sed enim maiores in alias quam sed maiores aperiam. Non dolorem excepturi
+        ea
+        maxime repellendus ea mollitia debitis At dolore rerum ex accusantium modi ut magni enim.
+      </div>
+    </div>
+  </div>
+
+  <div class="spacer-large"></div>
+
+  <!-- footer navigation section -->
+  <footer class="container-foot">
+    <div class="cont-foot-1">
+      <a class="foot-links" id="button-top" title="top of page" href="javascript:void(0)">top</a>
+    </div>
+    <div class="cont-foot-2">
+      <a class="foot-links" title="home page" href="index.html">home</a>
+    </div>
+    <div class="cont-foot-3">
+      <a class="foot-links" title="yahir's github" target="_blank" href="https://github.com/yahirRendon">github</a>
+    </div>
+    <div class="cont-foot-4">
+      <a class="foot-links" title="view projects" href="projects.html">projects</a>
+    </div>
+    <div class="cont-foot-5">
+      <a class="foot-links" title="about yahir" href="about.html">about</a>
+    </div>
+  </footer>
+
+  <!-- spacer -->
+  <div class="spacer-small"></div>
 </body>
 
 <script src="js/scripts.js"></script>
