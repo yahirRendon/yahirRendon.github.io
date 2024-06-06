@@ -455,7 +455,7 @@ function mouseClicked() {
     if (abs(dist(mouseX, mouseY, 400, 400)) < 50) {
       if(firstClick) {
         songTheme.play();
-        symbolElement1.innerHTML ="&#8414";
+        soundButtonSymbol.innerHTML ="&#8414";
         firstClick = false;
       }
       showInfo = false;
