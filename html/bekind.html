@@ -14,7 +14,7 @@
   <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/addons/p5.sound.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/ismobilejs@1.1.1/dist/isMobile.min.js"></script>
 
-  <title>yahir | trominotris</title>
+  <title>yahir | be kind</title>
 </head>
 
 <body>
@@ -61,21 +61,21 @@
 
 <div class="spacer-small"></div>
 
-<!-- title: trominotris -->
+<!-- title: be kind challenge -->
 <!-- name of sketch and short summary -->
 <div class="container-main">
-  <div class="main-h1-top">trominotris</div>
+  <div class="main-h1-top">be kind</div>
 </div>
 <div class="container-main">
   <div class="main-p-bot">
-    a minimal version of Tetris using trominoes
+    Just a fun way to encourage more kind behavior.
   </div>
 </div>
 
 <!-- link to github -->
 <div class="container-main">
   <div class="main-p-even-small">
-      <p>view code on <a class="main-p-link" href="https://github.com/yahirRendon/creative_coding/tree/main/processing/game_projects/trominotris">GitHub</a> for more developement details</p>
+      <p>view code on <a class="main-p-link" href="https://github.com/yahirRendon/creative_coding/tree/main/processing/game_projects/be_kind">GitHub</a> for more developement details</p>
   </div>
 </div>
 
@@ -84,23 +84,29 @@
   <div id="p5-canvas" class="main-p5"></div>
 </div>
 
-<!-- three button display example-->
+<!-- two button display for audio and reveal more info -->
 <div class="container-main">
   <div class="container-p5-buttons">
       <div class="p5-button-1">
-          <!-- no button 1 -->
-      </div>
-      <div class="p5-button-2">
-        <div class="pn_b" id="button-p5-2" title="reset game">
-          <div class="neo_holder_menu">
-              <div class="cont-neo">
-                  <div id="p5-button-2-symbol">&#11118</div>
+          <div class="pn_b" id="button-p5-1" title="toggle sound">
+              <div class="neo_holder_menu">
+                  <div class="cont-neo">
+                      <div id="p5-button-1-symbol">&#9655</div>
+                  </div>
               </div>
           </div>
       </div>
+      <div class="p5-button-2">
+       <!-- no button -->
       </div>
       <div class="p5-button-3">
-          <!-- no button 3 -->
+          <div class="pn_b" id="button-p5-3" title="reset grid">
+              <div class="neo_holder_menu">
+                  <div class="cont-neo">
+                      <div id="p5-button-3-symbol">&#11096</div>
+                  </div>
+              </div>
+          </div>
       </div>
   </div>
 </div>
@@ -115,65 +121,52 @@
 <div class="container-main">
   <div class="main-p-even">
       <div class="main-p-instruction">
-          <div class="instruction-top">space key</div>
-          <div class="instruction-bot">toggle play and pause game</div>
+          <div class="instruction-top">left click</div>
+          <!-- <div class="instruction-center">|</div> -->
+          <div class="instruction-bot">within center dial begins spin</div>
       </div>
       <div class="spacer-small"></div>
       <div class="main-p-instruction">
-          <div class="instruction-top">left arrow</div>
-          <div class="instruction-bot">move tromino left</div>
+          <div class="instruction-top">&#9655 or &nbsp &#8414 &nbsp</div>
+          <!-- <div class="instruction-center">|</div> -->
+          <div class="instruction-bot">toggle playing theme music</div>
       </div>
       <div class="spacer-small"></div>
       <div class="main-p-instruction">
-          <div class="instruction-top">right arrow</div>
-          <div class="instruction-bot">move tromino right</div>
-      </div>
-      <div class="spacer-small"></div>
-      <div class="main-p-instruction">
-          <div class="instruction-top">down arrow</div>
-          <div class="instruction-bot">move tromino down</div>
-      </div>
-      <div class="spacer-small"></div>
-      <div class="main-p-instruction">
-          <div class="instruction-top">up arrow</div>
-          <div class="instruction-bot">rotate tromino</div>
-      </div>
-      <div class="spacer-small"></div>
-      <div class="main-p-instruction">
-          <div class="instruction-top">&#11118</div>
-          <div class="instruction-bot">reset game</div>
+          <div class="instruction-top">&#11096 or &#10539</div>
+          <!-- <div class="instruction-center">|</div> -->
+          <div class="instruction-bot">toggle viewing more info</div>
       </div>
   </div>
 </div>
 
 <div class="spacer-large"></div>
 
+<!-- credit  -->
+<div class="cont-text">
+  <div class="text-center text-h1">credits</div>
+</div>
+<div class="container-main">
+  <div class="main-p-even">
+      Music by: Bensound.com/royalty-free-music<br>
+      License code: 9U1HL397HJTTOLUY
+  </div>
+</div>
+
+<div class="spacer-large"></div>
+
 <!-- discover more about the game  -->
-<div class="container-main">
-  <div class="main-h1-even">learn more</div>
+<div class="cont-text">
+  <div class="text-center text-h1">learn more</div>
 </div>
 
 <div class="container-main">
   <div class="main-p-even">
-    In 1984 Alexy Pajitnov, a Soviet software engineer, created the popular game of Tetris. The name came from
-    combining the Greek word tetra, meaning four, and Pajitnov`s favorite sport of tennis. The game consists of
-    tetrominoes, which are geometric shapes composed of for squares and connect along an edge. The goal of the
-    game is to clear rows created by stacking the tetrominoes as they drop. The user can move the blocks left,
-    right, down, and rotate them but cannot move them up. As rows are cleared points are given and the rate at
-    which the trominoes drop increases. The biggest points awarded are for clearing four rows at once otherwise
-    called a Tetris.
-  </div>
+    An early creation trying to inspire more kindness in the world. This could be a fun concept for a wellness
+    app or website. It could be updated with new suggestions and information about the benefits of each action.
+    In a world that makes it far too easy to pit humans against one another a friendly reminder to be kind is an
+    idea worth expanding upon.
 </div>
-
-<div class="container-main">
-  <div class="main-p-even">
-    As a fun programming challenge, I recreated the core mechanics of the game in a simple layout. Instead of
-    the classic tetromino shapes my version uses trominoes, or shapes created by using three squares.
-    Unfortunately, there are only twp unique trominoes that can be created a long piece and an L piece. So, to
-    make the game more interesting two irregular trominoes are created that include one or more squares aligned
-    along a vertex rather than an edge. The fall at sparse intervals but can make the game more challenging as
-    the drop speed picks up.
-  </div>
 </div>
 
 <div class="spacer-large"></div>
@@ -200,8 +193,9 @@
 <div class="spacer-small"></div>
 
 </body>
-<!-- general sripts + sketch scripts -->
+
+<!-- load scripts -->
 <script src="../js/scripts.js"></script>
-<script src="../js/scripts-trominotris.js"></script>
+<script src="../js/scripts-beKind.js"></script>
 
 </html>

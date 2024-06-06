@@ -1,214 +1,221 @@
-<!-- about page -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>yahir | game of life</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js" integrity="sha512-N4kV7GkNv7QR7RX9YF/olywyIgIwNvfEe2nZtfyj73HdjCUkAfOBDbcuJ/cTaN04JKRnw1YG1wnUyNKMsNgg3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
-    <link rel='stylesheet' href='../css/styles.css'>
-    <script src="https://cdn.jsdelivr.net/npm/ismobilejs@1.1.1/dist/isMobile.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- load general styles + sketch specific styles -->
+  <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+  <link rel="stylesheet" type="text/css" href="../css/styles-sketch.css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/addons/p5.sound.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/ismobilejs@1.1.1/dist/isMobile.min.js"></script>
+
+  <title>yahir | game of life</title>
 </head>
 
-<body id="gameOfLife-page">
-
-    <!-- navigation section-->
-    <nav class="container-nav">
-        <div class="nav-1" id="menu-button" title="toggle menu">
-            <div class="neo_holder_menu">
-                <div class="neomorph_menu v2_menu">
-                    <div class="ham-container">
-                        <div class="bar1"></div>
-                        <div class="bar2"></div>
-                        <div class="bar3"></div>
-                    </div>
-                </div>
+<body>
+  <!-- navigation bar section -->
+  <nav class="container-nav">
+    <!-- contains button and all expand/dropdown links -->
+    <div class="cont-nav-1">
+      <!-- menu button -->
+      <div class="cont-menu">
+        <div class="cont-neo" id="menu-button">
+          <div class="cont-bar">
+            <div class="bar-1"></div>
+            <div class="bar-2"></div>
+            <div class="bar-3"></div>
+          </div>
+        </div>
+      </div>
+      <!-- menu links -->
+      <div class="expand-nav">
+        <div class="exp-cont">
+          <div class="cont-nav-2 toggle-show">
+            <div class="cont-nav-links"><a class="nav-links" title="home page" href="../index.html">home</a></div>
+          </div>
+          <div class="cont-nav-3 toggle-show">
+            <div class="cont-nav-links"><a class="nav-links" title="yahir's github"
+                href="https://github.com/yahirRendon" target="_blank">github</a></div>
+          </div>
+          <div class="cont-nav-4 toggle-show">
+            <div class="cont-nav-links"><a class="nav-links" title="view projects" href="../projects.html">projects</a>
             </div>
+          </div>
+          <div class="cont-nav-5 toggle-show">
+            <div class="cont-nav-links"><a class="nav-links" title="about yahir" href="../about.html">about</a></div>
+          </div>
         </div>
-        <div class="nav-2 nav-links">
-            <a href="../index.html" title="home page">home</a>
-        </div>
-        <div class="nav-3 nav-links">
-            <a target="_blank" href="https://github.com/yahirRendon" title="yahir's github">github</a>
-        </div>
-        <div class="nav-4 nav-links">
-            <a href="projects.html" title="view projects">projects</a>
-        </div>
-        <div class="nav-5 nav-links">
-            <a href="about.html" title="about yahir">about</a>
-        </div>
-        <div class="nav-6">
-            <a href="../index.html" title="home page">yahir</a>
-        </div>
-    </nav>
-
-    <!-- name of sketch and shor summary -->
-    <div class="container-main">
-        <div class="main-h1-top">Game of Life</div>
-    </div>
-    <div class="container-main">
-        <div class="main-p-even">
-            A minimal take on Conway's Game of Life
-        </div>
+      </div>
     </div>
 
-    <!-- link to github -->
-    <div class="container-main">
-        <div class="main-p-even-small">
-            <p>view code on <a class="main-p-link" href="https://github.com/yahirRendon/creative_coding/tree/main/processing/game_projects/game_of_life_image">GitHub</a> for more developement details</p>
+    <!-- home/title link -->
+    <div class="cont-nav-6">
+      <div class="cont-nav-links"><a class="nav-links" title="home page" href="../index.html">yahir</a></div>
+    </div>
+  </nav>
+
+  <div class="spacer-small"></div>
+
+  <!-- title: game of life -->
+  <!-- name of sketch and short summary -->
+  <div class="container-main">
+    <div class="main-h1-top">game of life</div>
+  </div>
+  <div class="container-main">
+    <div class="main-p-bot">
+      a minimal take on Conway's Game of Life
+    </div>
+  </div>
+
+  <!-- link to github -->
+  <div class="container-main">
+    <div class="main-p-even-small">
+      <p>view code on <a class="main-p-link"
+          href="https://github.com/yahirRendon/creative_coding/tree/main/processing/game_projects/game_of_life_image">GitHub</a>
+        for more developement details</p>
+    </div>
+  </div>
+
+  <!-- hold a p5 canvas with 800 by 800 dim -->
+  <div class="container-main-p5">
+    <div id="p5-canvas" class="main-p5"></div>
+  </div>
+
+  <!-- three button display example-->
+  <div class="container-main">
+    <div class="container-p5-buttons">
+      <div class="p5-button-1">
+        <div class="pn_b" id="button-p5-1" title="select/deselect">
+          <div class="neo_holder_menu">
+            <div class="cont-neo">
+              <div id="p5-button-1-symbol">&#11096</div>
+            </div>
+          </div>
         </div>
-    </div>
-
-    <!-- hold a p5 canvas with 800 by 800 dim -->
-    <div class="container-main-p5">
-        <div id="p5-canvas" class="main-p5"></div>
-    </div>
-
-    <!-- reset game button -->
-    <div class="container-main">
-        <div class="container-p5-buttons">
-            <div class="p5-button-1">
-                <div class="pn_b" id="button-p5-1" title="reset grid">
-                    <div class="neo_holder_menu">
-                        <div class="neomorph_menu v2_menu">
-                            <div id="p5-button-1-symbol">&#11096</div>
-                            <!-- <div>&#10539</div> -->
-                        </div>
-                    </div>
-                </div>
+      </div>
+      <div class="p5-button-2">
+        <div class="pn_b" id="button-p5-2" title="static/evolve">
+          <div class="neo_holder_menu">
+            <div class="cont-neo">
+              <div id="p5-button-2-symbol">&#9655</div>
             </div>
-            <div class="p5-button-2">
-                <div class="pn_b" id="button-p5-2" title="reset grid">
-                    <div class="neo_holder_menu">
-                        <div class="neomorph_menu v2_menu">
-                            <div id="p5-button-2-symbol">&#9655</div>
-                            <!-- <div>&#8414</div> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="p5-button-3">
-                <div class="pn_b" id="button-p5-3" title="reset grid">
-                    <div class="neo_holder_menu">
-                        <div class="neomorph_menu v2_menu">
-                            <div id="p5-button-3-symbol">&#11118</div>
-                            <!-- <div>&#11119</div> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-    </div>
-
-    <!-- instructions  -->
-    <div class="container-main">
-        <div class="main-h1-top">instructions</div>
-    </div>
-    <div class="container-main">
-        <div class="main-p-even">
-            <div class="main-p-instruction">
-                <div class="instruction-left">mouse over</div>
-                <div class="instruction-center">|</div>
-                <div class="instruction-right">reveals cell grid</div>
+      </div>
+      <div class="p5-button-3">
+        <div class="pn_b" id="button-p5-3" title="reset grid">
+          <div class="neo_holder_menu">
+            <div class="cont-neo">
+              <div id="p5-button-3-symbol">&#11118</div>
             </div>
-            <div class="main-p-instruction">
-                <div class="instruction-left">left click</div>
-                <div class="instruction-center">|</div>
-                <div class="instruction-right">select a cell</div>
-            </div>
-            <p></p>
-            <div class="main-p-instruction">
-                <div class="instruction-left">&#11096 or &#10539</div>
-                <div class="instruction-center">|</div>
-                <div class="instruction-right">toggle select and deselect</div>
-            </div>
-            <div class="main-p-instruction">
-                <div class="instruction-left">&#8414 &nbsp</div>
-                <div class="instruction-center">|</div>
-                <div class="instruction-right">toggle evolve and static states</div>
-            </div>
-            <div class="main-p-instruction">
-                <div class="instruction-left">&#11118</div>
-                <div class="instruction-center">|</div>
-                <div class="instruction-right">reset game</div>
-            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 
-    <div class="container-main">
-        <div class="main-spacer"></div>
+  <div class="spacer-medium"></div>
+
+  <!-- instructions  -->
+  <div class="cont-text">
+    <div class="text-center text-h1">instructions</div>
+  </div>
+
+  <div class="container-main">
+    <div class="main-p-even">
+      <div class="main-p-instruction">
+        <div class="instruction-top">mouse over</div>
+        <div class="instruction-bot">reveals cell grid</div>
+      </div>
+      <div class="spacer-small"></div>
+      <div class="main-p-instruction">
+        <div class="instruction-top">left click</div>
+        <div class="instruction-bot">select a cell</div>
+      </div>
+      <div class="spacer-small"></div>
+      <div class="main-p-instruction">
+        <div class="instruction-top">&#11096 or &#10539</div>
+        <div class="instruction-bot">toggle select and deselect</div>
+      </div>
+      <div class="spacer-small"></div>
+      <div class="main-p-instruction">
+        <div class="instruction-top">&#8414</div>
+        <div class="instruction-bot">toggle evolve and static states</div>
+      </div>
+      <div class="spacer-small"></div>
+      <div class="main-p-instruction">
+        <div class="instruction-top">&#11118</div>
+        <div class="instruction-bot">reset game</div>
+      </div>
     </div>
+  </div>
 
-    <div class="container-main">
-        <div class="main-line"></div>
+  <div class="spacer-large"></div>
+
+  <!-- discover more about the game  -->
+  <div class="container-main">
+    <div class="main-h1-even">learn more</div>
+  </div>
+  <div class="container-main">
+    <div class="main-p-even">
+      Conway`s Game of Life is a classic cellular automaton developed in 1970 by John Horton Conway. It consists
+      of a two-dimensional grid of cells. Individual cells can either be alive or dead to begin with and can be
+      set by either a user or automatically. After the initial state of cells is set the program begins evolving
+      via steps in time to update the cell states by following four simple rules. Any cell in the alive state with
+      fewer than two living neighbors dies, any cell in the alive state with two or three living neighbors lives
+      into the next generation, any cell in the alive state with more than three living neighbors dies, and any
+      cell in the dead state with exactly three living neighbors becomes a living cell in the next generation.
+      These rules serve to simulate real life ecosystems reflecting underpopulation, homeostasis, overpopulation,
+      and reproduction. From these simple rules incredibly complex patterns can arise making the game capable of
+      endless possibilities.
     </div>
+  </div>
 
-    <!-- discover more about the game  -->
-    <div class="container-main">
-        <div class="main-h1-even">learn more</div>
+  <div class="container-main">
+    <div class="main-p-even">
+      My version follows the same basic rules with a minor twist in the board layout. The original version uses a
+      two-dimensional orthogonal grid of square cells while mine uses circles aligned in near optimal circle
+      packing manner. This offsets every other row to fit more circles in the same space over an orthogonal
+      layout. Additionally, the grid layout is stripped of all unnecessary lines to create an extremely minimal
+      appearance. To aid in cell selection in the static state the grid of cells is revealed around the mouse
+      cursor. All the basic patters and designs are still possible but will appear different due to this layout.
+      Finally, individual cells recall the amount of time spent in the alive state and a heatmap is generated with
+      this data. Learn more about the Game of Life <a class="main-p-link"
+        href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">here.</a>
     </div>
-    <div class="container-main">
-        <div class="main-p-even">
-            Conway`s Game of Life is a classic cellular automaton developed in 1970 by John Horton Conway. It consists
-            of a two-dimensional grid of cells. Individual cells can either be alive or dead to begin with and can be
-            set by either a user or automatically. After the initial state of cells is set the program begins evolving
-            via steps in time to update the cell states by following four simple rules. Any cell in the alive state with
-            fewer than two living neighbors dies, any cell in the alive state with two or three living neighbors lives
-            into the next generation, any cell in the alive state with more than three living neighbors dies, and any
-            cell in the dead state with exactly three living neighbors becomes a living cell in the next generation.
-            These rules serve to simulate real life ecosystems reflecting underpopulation, homeostasis, overpopulation,
-            and reproduction. From these simple rules incredibly complex patterns can arise making the game capable of
-            endless possibilities.
-        </div>
+  </div>
+
+  <div class="spacer-large"></div>
+
+  <!-- footer navigation section -->
+  <footer class="container-foot">
+    <div class="cont-foot-1">
+      <a class="foot-links" id="button-top" title="top of page" href="javascript:void(0)">top</a>
     </div>
-
-    <div class="container-main">
-        <div class="main-p-even">
-            <p>
-            My version follows the same basic rules with a minor twist in the board layout. The original version uses a
-            two-dimensional orthogonal grid of square cells while mine uses circles aligned in near optimal circle
-            packing manner. This offsets every other row to fit more circles in the same space over an orthogonal
-            layout. Additionally, the grid layout is stripped of all unnecessary lines to create an extremely minimal
-            appearance. To aid in cell selection in the static state the grid of cells is revealed around the mouse
-            cursor. All the basic patters and designs are still possible but will appear different due to this layout.
-            Finally, individual cells recall the amount of time spent in the alive state and a heatmap is generated with
-            this data. Learn more about the Game of Life <a class="main-p-link"
-                href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">here</a> and try recreating all of the
-            classic patters from still lives to oscillators.
-            </p>
-        </div>
+    <div class="cont-foot-2">
+      <a class="foot-links" title="home page" href="../index.html">home</a>
     </div>
-
-    <div class="container-main">
-        <div class="main-spacer"></div>
+    <div class="cont-foot-3">
+      <a class="foot-links" title="yahir's github" target="_blank" href="https://github.com/yahirRendon">github</a>
     </div>
+    <div class="cont-foot-4">
+      <a class="foot-links" title="view projects" href="../projects.html">projects</a>
+    </div>
+    <div class="cont-foot-5">
+      <a class="foot-links" title="about yahir" href="../about.html">about</a>
+    </div>
+  </footer>
 
-    <!-- footer navigation -->
-    <footer class="container-foot">
-        <div class="foot">
-            <div class="foot-1">
-                <a id="top-button" href="javascript:void(0)" title="top of page">top</a>
-            </div>
-            <div class="foot-2">
-                <a href="../index.html" title="home page">home</a>
-            </div>
-            <div class="foot-3">
-                <a target="_blank" href="https://github.com/yahirRendon" title="yahir's github">github</a>
-            </div>
-            <div class="foot-4">
-                <a href="projects.html" title="view projects">projects</a>
-            </div>
-            <div class="foot-5">
-                <a href="about.html" title="about yahir">about</a>
-            </div>
-        </div>
-    </footer>
+  <div class="spacer-small"></div>
 
-    <script src="../js/scripts-gameOfLife.js"></script>
 </body>
+<!-- general sripts + sketch scripts -->
+<script src="../js/scripts.js"></script>
+<script src="../js/scripts-gameOfLife.js"></script>
 
 </html>

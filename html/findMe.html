@@ -1,176 +1,185 @@
-<!-- about page -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>yahir | fine me</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js" integrity="sha512-N4kV7GkNv7QR7RX9YF/olywyIgIwNvfEe2nZtfyj73HdjCUkAfOBDbcuJ/cTaN04JKRnw1YG1wnUyNKMsNgg3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
-    <link rel='stylesheet' href='../css/styles.css'>
-    <script src="https://cdn.jsdelivr.net/npm/ismobilejs@1.1.1/dist/isMobile.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- load general styles + sketch specific styles -->
+  <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+  <link rel="stylesheet" type="text/css" href="../css/styles-sketch.css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/addons/p5.sound.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ismobilejs@1.1.1/dist/isMobile.min.js"></script>
+
+  <title>yahir | find me</title>
 </head>
 
-<body id="findMe-page">
-
-    <!-- navigation section-->
-    <nav class="container-nav">
-        <div class="nav-1" id="menu-button" title="toggle menu">
-            <div class="neo_holder_menu">
-                <div class="neomorph_menu v2_menu">
-                    <div class="ham-container">
-                        <div class="bar1"></div>
-                        <div class="bar2"></div>
-                        <div class="bar3"></div>
-                    </div>
-                </div>
-            </div>
+<body>
+  <!-- navigation bar section -->
+  <nav class="container-nav">
+    <!-- contains button and all expand/dropdown links -->
+    <div class="cont-nav-1">
+      <!-- menu button -->
+      <div class="cont-menu">
+        <div class="cont-neo" id="menu-button">
+          <div class="cont-bar">
+            <div class="bar-1"></div>
+            <div class="bar-2"></div>
+            <div class="bar-3"></div>
+          </div>
         </div>
-        <div class="nav-2 nav-links">
-            <a href="../index.html" title="home page">home</a>
+      </div>
+      <!-- menu links -->
+      <div class="expand-nav">
+        <div class="exp-cont">
+        <div class="cont-nav-2 toggle-show">
+          <div class="cont-nav-links"><a class="nav-links" title="home page" href="../index.html">home</a></div>
         </div>
-        <div class="nav-3 nav-links">
-            <a target="_blank" href="https://github.com/yahirRendon" title="yahir's github">github</a>
+        <div class="cont-nav-3 toggle-show">
+          <div class="cont-nav-links"><a class="nav-links" title="yahir's github" href="https://github.com/yahirRendon"
+            target="_blank">github</a></div>
         </div>
-        <div class="nav-4 nav-links">
-            <a href="projects.html" title="view projects">projects</a>
+        <div class="cont-nav-4 toggle-show">
+          <div class="cont-nav-links"><a class="nav-links" title="view projects" href="../projects.html">projects</a>
+          </div>
         </div>
-        <div class="nav-5 nav-links">
-            <a href="about.html" title="about yahir">about</a>
+        <div class="cont-nav-5 toggle-show">
+          <div class="cont-nav-links"><a class="nav-links" title="about yahir" href="../about.html">about</a></div>
         </div>
-        <div class="nav-6">
-            <a href="../index.html" title="home page">yahir</a>
-        </div>
-    </nav>
+      </div>
+    </div>
+    </div>
+  
+    <!-- home/title link -->
+    <div class="cont-nav-6">
+      <div class="cont-nav-links"><a class="nav-links" title="home page" href="../index.html">yahir</a></div>
+    </div>
+  </nav>
 
-    <!-- name of sketch and shor summary -->
-    <div class="container-main">
-        <div class="main-h1-top">find me</div>
-    </div>
-    <div class="container-main">
-        <div class="main-p-even">
-            a simple game for trying to find a hidden target inspired by the find mia game.
-        </div>
-    </div>
+<div class="spacer-small"></div>
 
-    <!-- link to github -->
-    <div class="container-main">
-        <div class="main-p-even-small">
-            <p>view code on <a class="main-p-link" href="https://github.com/yahirRendon/creative_coding/tree/main/processing/game_projects/find_mia">GitHub</a> for more developement details</p>
-        </div>
-    </div>
+<!-- title: be kind challenge -->
+<!-- name of sketch and short summary -->
+<div class="container-main">
+  <div class="main-h1-top">find me</div>
+</div>
+<div class="container-main">
+  <div class="main-p-bot">
+    a simple game for trying to find a hidden target inspired by the find mia game.
+  </div>
+</div>
 
-    <!-- hold a p5 canvas with 800 by 800 dim -->
-    <div class="container-main-p5">
-        <div id="p5-canvas" class="main-p5"></div>
-    </div>
+<!-- link to github -->
+<div class="container-main">
+  <div class="main-p-even-small">
+      <p>view code on <a class="main-p-link" href="https://github.com/yahirRendon/creative_coding/tree/main/processing/game_projects/find_mia">GitHub</a> for more developement details</p>
+  </div>
+</div>
 
-    <!-- two button display for easy/hard and reset -->
-    <div class="container-main">
-        <div class="container-p5-buttons">
-            <div class="p5-button-1">
-                <div class="pn_b" id="button-p5-1" title="reset grid">
-                    <div class="neo_holder_menu">
-                        <div class="neomorph_menu v2_menu">
-                            <div id="p5-button-1-symbol">&#11096</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="p5-button-2">
-             <!-- no button -->
-            </div>
-            <div class="p5-button-3">
-                <div class="pn_b" id="button-p5-3" title="reset grid">
-                    <div class="neo_holder_menu">
-                        <div class="neomorph_menu v2_menu">
-                            <div>&#11118</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<!-- hold a p5 canvas with 800 by 800 dim -->
+<div class="container-main-p5">
+  <div id="p5-canvas" class="main-p5"></div>
+</div>
 
-    <!-- instructions  -->
-    <div class="container-main">
-        <div class="main-h1-top">instructions</div>
-    </div>
-    <div class="container-main">
-        <div class="main-p-even">
-            <div class="main-p-instruction">
-                <div class="instruction-left">left click</div>
-                <div class="instruction-center">|</div>
-                <div class="instruction-right">reveal distance to target (number & pulse)</div>
-            </div>
-            <p></p>
-            <div class="main-p-instruction">
-                <div class="instruction-left">&#11096 or &nbsp  &#8416 &nbsp</div>
-                <div class="instruction-center">|</div>
-                <div class="instruction-right">toggle easy or hard mode</div>
-            </div>
-            <div class="main-p-instruction">
-                <div class="instruction-left">&#11118</div>
-                <div class="instruction-center">|</div>
-                <div class="instruction-right">reset game</div>
-            </div>
-        </div>
-    </div>
+<!-- two button display for easy/hard and reset -->
+<div class="container-main">
+  <div class="container-p5-buttons">
+      <div class="p5-button-1">
+          <div class="pn_b" id="button-p5-1" title="toggle difficulty">
+              <div class="neo_holder_menu">
+                  <div class="cont-neo">
+                      <div id="p5-button-1-symbol">&#11096</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="p5-button-2">
+       <!-- no button -->
+      </div>
+      <div class="p5-button-3">
+          <div class="pn_b" id="button-p5-3" title="reset grid">
+              <div class="neo_holder_menu">
+                  <div class="cont-neo">
+                      <div id="p5-button-3-symbol">&#11118</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
 
-    <div class="container-main">
-        <div class="main-spacer"></div>
-    </div>
+<div class="spacer-medium"></div>
 
-    <div class="container-main">
-        <div class="main-line"></div>
-    </div>
+<!-- instructions  -->
+<div class="cont-text">
+  <div class="text-center text-h1">instructions</div>
+</div>
 
-    <!-- discover more about the game  -->
-    <div class="container-main">
-        <div class="main-h1-even">about</div>
-    </div>
-    <div class="container-main">
-        <div class="main-p-even">
-            This was a simple game I created to help work though some logic and flow elements of a game. There isn't 
-            anything special to it but can be fun to see how man levels can be reached or what your high score can be.
-            The score is calculated based on how close you are to the target when it is found and the number of clicks
-            remaining in the round. A final score is calculated when you fail to complete a level by subtracting your 
-            running average click distance from the current score. After every three levels completed the number of
-            available clicks decreases by one until you only have 3 clicks available per round. Additionally, trying 
-            the hard mode the distance to target is no longer displayed and the player has to observe the pulsing ring 
-            to navigate their next guess. 
-        </div>
-    </div>
+<div class="container-main">
+  <div class="main-p-even">
+      <div class="main-p-instruction">
+          <div class="instruction-top">left click</div>
+          <div class="instruction-bot">reveal distance to target (number & pulse)</div>
+      </div>
+      <div class="spacer-small"></div>
+      <div class="main-p-instruction">
+          <div class="instruction-top">&#11096 or &nbsp  &#8416 &nbsp</div>
+          <div class="instruction-bot">toggle easy or hard mode</div>
+      </div>
+      <div class="spacer-small"></div>
+      <div class="main-p-instruction">
+          <div class="instruction-top">&#11118</div>
+          <div class="instruction-bot">reset game</div>
+      </div>
+  </div>
+</div>
 
-    <div class="container-main">
-        <div class="main-spacer"></div>
-    </div>
+<div class="spacer-large"></div>
 
-    <!-- footer navigation -->
-    <footer class="container-foot">
-        <div class="foot">
-            <div class="foot-1">
-                <a id="top-button" href="javascript:void(0)" title="top of page">top</a>
-            </div>
-            <div class="foot-2">
-                <a href="../index.html" title="home page">home</a>
-            </div>
-            <div class="foot-3">
-                <a target="_blank" href="https://github.com/yahirRendon" title="yahir's github">github</a>
-            </div>
-            <div class="foot-4">
-                <a href="projects.html" title="view projects">projects</a>
-            </div>
-            <div class="foot-5">
-                <a href="about.html" title="about yahir">about</a>
-            </div>
-        </div>
-    </footer>
+<!-- discover more about the game  -->
+<div class="cont-text">
+  <div class="text-center text-h1">learn more</div>
+</div>
 
-    <script src="../js/scripts-findMe.js"></script>
+<div class="container-main">
+  <div class="main-p-even">
+    An early creation trying to inspire more kindness in the world. This could be a fun concept for a wellness
+    app or website. It could be updated with new suggestions and information about the benefits of each action.
+    In a world that makes it far too easy to pit humans against one another a friendly reminder to be kind is an
+    idea worth expanding upon.
+</div>
+</div>
+
+<div class="spacer-large"></div>
+
+<!-- footer navigation section -->
+<footer class="container-foot">
+  <div class="cont-foot-1">
+    <a class="foot-links" id="button-top" title="top of page" href="javascript:void(0)">top</a>
+  </div>
+  <div class="cont-foot-2">
+    <a class="foot-links" title="home page" href="../index.html">home</a>
+  </div>
+  <div class="cont-foot-3">
+    <a class="foot-links" title="yahir's github" target="_blank" href="https://github.com/yahirRendon">github</a>
+  </div>
+  <div class="cont-foot-4">
+    <a class="foot-links" title="view projects" href="../projects.html">projects</a>
+  </div>
+  <div class="cont-foot-5">
+    <a class="foot-links" title="about yahir" href="../about.html">about</a>
+  </div>
+</footer>
+
+<div class="spacer-small"></div>
+
 </body>
+
+<!-- load scripts -->
+<script src="../js/scripts.js"></script>
+<script src="../js/scripts-findMe.js"></script>
 
 </html>
