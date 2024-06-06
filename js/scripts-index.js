@@ -29,7 +29,6 @@ let dreamImages = ["laptop-01",
     "laptop-06",
     "laptop-08"];
 
-
 let designPath = "url(./img/drawing/";  // path to image series folder
 // load array of image names that will be used for image series on scroll effect
 let designImages = ["drawing-01",
@@ -39,6 +38,7 @@ let designImages = ["drawing-01",
     "drawing-05",
     "drawing-06",
     "drawing-07"];
+
 // load array of images for develop section
 let developPath = "url(./img/humanity/";  // path to image series folder
 let developImages = ["humanity-code-01",
@@ -59,12 +59,7 @@ let developImg;
 * run when everything has loaded
 * 
 *****************************************************************************/
-// window.onload = function () {
-//     // dom element background, dom element foreground, offset top, offset bottom, image array, image path
-//     designImg = new TestClass(elementDesignImgA, elementDesignImgB, 100, 100, designImages, designPath);
-//     developImg = new TestClass(elementDevelopImgA, elementDevelopImgB, 400, 0, developImages, developPath);
-
-// }
+// window.onload = function () {}
 
 window.addEventListener("load", function () {
     // this works only because they all have the same number of images
@@ -74,10 +69,11 @@ window.addEventListener("load", function () {
         preloadImage(designImages[i]);
         preloadImage(designImages[i]);
     }
-    // offset top, offset bottom
-    dreamImg = new ScrollAnim(elementDreamImgA, elementDreamImgB, 0, 130, dreamImages, dreamPath);
-    designImg = new ScrollAnim(elementDesignImgA, elementDesignImgB, 100, 130, designImages, designPath);
-    developImg = new ScrollAnim(elementDevelopImgA, elementDevelopImgB, 100, 0, developImages, developPath);
+
+    // container A, container B, offset top as percentage, offset bottom as percentage, image array, path to images
+    dreamImg = new ScrollAnim(elementDreamImgA, elementDreamImgB, 0, 40, dreamImages, dreamPath);
+    designImg = new ScrollAnim(elementDesignImgA, elementDesignImgB, 10, 10, designImages, designPath);
+    developImg = new ScrollAnim(elementDevelopImgA, elementDevelopImgB, 20, 0, developImages, developPath);
 });
 
 /******************************************************************************
@@ -165,17 +161,22 @@ function goToTop() {
 *
 * function for preloading images on page load. Not sure if this helps with
 * flickering as the preload in html seems to work better. 
-* 
+* @param {image} img_url the image source
 *****************************************************************************/
-function preloadImage(im_url) {
+function preloadImage(img_url) {
     let img = new Image();
-    img.style.src = im_url;
+    img.style.src = img_url;
 }
 
 /******************************************************************************
 *
 * function for mapping values from one range to another
-* 
+* @param {number} number the number to be mapped given new range
+* @param {number} inMin the minimum value in original number range
+* @param {number} inMax the maximum value in original number rnage
+* @param {number} outMin the minimum value in the desired range
+* @param {number} outMax the maximum value in the desired range
+* @return a new number mapped to desired range
 *****************************************************************************/
 function linearMap(number, inMin, inMax, outMin, outMax) {
     if (number <= inMin) return outMin;
@@ -189,11 +190,22 @@ function linearMap(number, inMin, inMax, outMin, outMax) {
 * 
 *****************************************************************************/
 class ScrollAnim {
-    constructor(elementA, elementB, offsetTopAmt, offsetBotAmt, images, imgPath) {
+    /**
+     * @constructor
+     * @param {element} elementA The container holding the images foreground
+     * @param {element} elementB The container holding the images background
+     * @param {number} offsetTopPercent The amount offset from top as percentage of image height
+     * @param {number} offsetBotPercent The amount offset from bottom as percentage of image height
+     * @param {Array} images an array of images to cycle through
+     * @param {String} imgPath the path to the images
+     */
+    constructor(elementA, elementB, offsetTopPercent, offsetBotPercent, images, imgPath) {
         this.elementA = elementA;
         this.elementB = elementB;
-        this.offsetTopAmt = offsetTopAmt;
-        this.offsetBotAmt = offsetBotAmt;
+        this.offsetTopPercent = offsetTopPercent/100.0;
+        this.offsetBotPercent = offsetBotPercent/100.0;
+        this.offsetTopPixels = 0;
+        this.offsetBotPixels = 0;
         this.images = images;
         this.imgPath = imgPath;
         this.lastIndexPos = 0;
@@ -202,6 +214,55 @@ class ScrollAnim {
 
     /**
      * update elements for the stop animation effect
+     * using pixel offset
+     */
+    // update() {
+    //     // get the total pixel height of the page
+    //     var totalPixelHeight = document.documentElement.scrollHeight;
+    //     // get the max value that scrollY will return to view whole page
+    //     var maxScrollY = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    //     // remap scrollY to to total pixel range for finer scroll control
+    //     var mapScrollY = linearMap(scrollY, 0, maxScrollY, 0, totalPixelHeight)
+
+    //     // get the start pixel position that will begin triggering image change
+    //     var startPos = this.elementB.offsetTop + this.offsetTopAmt;
+    //     // get the end position that will end triggering image changes
+    //     var endPos = this.elementB.offsetTop + (this.elementB.offsetHeight - this.offsetBotAmt);
+    //     // map the trigger range to index value in image series
+    //     this.indexPos = linearMap(mapScrollY, startPos, endPos, 0, this.images.length - 1);
+
+    //     // check for index changes to update elementA (background) and
+    //     // elementB (foreground)
+    //     if (this.lastIndexPos != this.indexPos) {
+    //         // create index point to prior position to get previous or next iamge in series
+    //         // depending on direction of scroll
+    //         var indexPrior = this.indexPos;
+    //         if (this.indexPos > this.lastIndexPos) {
+    //             indexPrior--;
+    //         } else {
+    //             indexPrior++;
+    //         }
+    //         // limit check
+    //         if (indexPrior < 0) indexPrior + this.images.length - 1;
+    //         if (indexPrior > this.images.length - 1) indexPrior = 0;
+    //         // update elementA image (background)
+    //         this.elementA.style.content = this.imgPath + this.images[indexPrior] + ".jpg)";
+
+    //         // triggger animation for elementB (foreground)
+    //         this.elementB.classList.remove("fadeIn-mod");
+    //         void this.elementB.offsetWidth; // trigger reflow
+    //         this.elementB.classList.add("fadeIn-mod");
+
+    //         this.elementB.style.content = this.imgPath + this.images[this.indexPos] + ".jpg)";
+
+    //         // update index value
+    //         this.lastIndexPos = this.indexPos;
+    //     }
+    // }
+
+    /**
+     * Update for the stop animation effect
+     *  using a desire percentage offset
      */
     update() {
         // get the total pixel height of the page
@@ -211,10 +272,17 @@ class ScrollAnim {
         // remap scrollY to to total pixel range for finer scroll control
         var mapScrollY = linearMap(scrollY, 0, maxScrollY, 0, totalPixelHeight)
 
+        // image height
+        var imgHeight = this.elementB.offsetHeight;
+
+        // convert percentage offset to pixel offset
+        this.offsetTopPixels = imgHeight * this.offsetTopPercent;
+        this.offsetBotPixels = imgHeight * this.offsetBotPercent;
+
         // get the start pixel position that will begin triggering image change
-        var startPos = this.elementB.offsetTop + this.offsetTopAmt;
+        var startPos = this.elementB.offsetTop + this.offsetTopPixels;
         // get the end position that will end triggering image changes
-        var endPos = this.elementB.offsetTop + (this.elementB.offsetHeight - this.offsetBotAmt);
+        var endPos = this.elementB.offsetTop + (this.elementB.offsetHeight - this.offsetBotPixels);
         // map the trigger range to index value in image series
         this.indexPos = linearMap(mapScrollY, startPos, endPos, 0, this.images.length - 1);
 
@@ -288,7 +356,7 @@ img.onload = function () { };
  *****************************************************************************/
 function preload() {
     // img = loadImage("./assets/txt-word-light.png");
-    fontPoppins = loadFont('./assets/Poppins-Regular.ttf'); // ./ when properlly structured
+    fontPoppins = loadFont('./assets/Poppins-Light.ttf'); // ./ when properlly structured
 }
 
 /******************************************************************************
@@ -384,6 +452,16 @@ function windowResized() {
  * - ablity to return to home position
  *****************************************************************************/
 class Pxl {
+    /**
+     * @constructor
+     * @param {number} x the x position origin (pixels)
+     * @param {number} y the y position origin (pixels)
+     * @param {number} r red color value amount
+     * @param {number} g green color value amount  
+     * @param {number} b blue color value amount
+     * @param {number} a alpha color value amount
+     * @param {number} d distance offset
+     */
     constructor(x, y, r, g, b, a, d) {
         this.d = abs(int(map(d, 0, 1, -5, 16)));   // distance offset for start
         if (this.d < 0) this.d = 0;
@@ -466,16 +544,17 @@ class Pxl {
 
     /******************************************************************************
      * 
-     * perform repel or attrack function
+     * perform repel or attract function
      * 
+     * @param {Boolean} repelPxl if true repel else attract
      *****************************************************************************/
     move(repelPxl) {
         if (repelPxl) {
             this.repel();
         }
-        else {
+        else 
+        {
             this.attract();
-
         }
         this.setTime();
     }
@@ -509,6 +588,7 @@ class Pxl {
  * 
  * function for getting text pixels from image
  * 
+ * @param {Image} img the image to be processed for creating pixels
  *****************************************************************************/
 function getNonTransparentPixels(img) {
     // Create a canvas element and set its dimensions to match the image

@@ -4,12 +4,25 @@
 *
 * navigation bar
 * footer
+* top page button
 * 
 *****************************************************************************/
 // get dom elements
 const buttonMenu = document.getElementById('menu-button');
 const buttonTop = document.getElementById('button-top');
 
+/******************************************************************************
+*
+* simple way to check if page arrived at by
+* back button. reset nav to default
+* 
+*****************************************************************************/
+window.onpageshow = function (event) {
+    if (event.persisted) {
+        // window.location.reload();
+        resetMenu();
+    }
+};
 
 /******************************************************************************
 *
@@ -56,7 +69,7 @@ buttonMenu.addEventListener('click', function () {
 * 
 *****************************************************************************/
 function menuButtonToggle() {
-    var doit = 0;
+    // var doit = 0;
     let hambars = document.getElementsByClassName('cont-bar')[0].children;
 
     for (var i = 0; i < hambars.length; i++) {
@@ -84,7 +97,6 @@ function navigationBarToggle() {
         let navStyleDisplay = navStyle.getPropertyValue('display');
 
         if (navStyleDisplay == 'none') {
-
             navElem[i].style.display = 'grid';
             navElem[i].classList.remove('fadeOut-mod');
             void navElem[i].offsetWidth; // trigger reflow
@@ -95,7 +107,30 @@ function navigationBarToggle() {
             void navElem[i].offsetWidth; // trigger reflow
             navElem[i].classList.add('fadeOut-mod');
         }
+    }
+}
 
+/******************************************************************************
+*
+* Toggle animation for hamburger icon in menu
+* 
+*****************************************************************************/
+function resetMenu() {
+    let hambars = document.getElementsByClassName('cont-bar')[0].children;
+
+    for (var i = 0; i < hambars.length; i++) {
+        hambars[i].classList.remove('trig');
+        hambars[i].classList.add('trig-r');
+    }
+
+    let navElem = document.getElementsByClassName('toggle-show');
+    for (var i = 0; i < navElem.length; i++) {
+        let navStyle = window.getComputedStyle(navElem[i], null);
+        let navStyleDisplay = navStyle.getPropertyValue('display');
+
+            navElem[i].classList.remove('fadeIn-mod');
+            void navElem[i].offsetWidth; // trigger reflow
+            navElem[i].classList.add('fadeOut-mod');
     }
 }
 

@@ -1,115 +1,43 @@
-//=============================================================================
-// scripts page for for find me game
-//=============================================================================
-const menuButton = document.getElementById('menu-button');
-const topButton = document.getElementById('top-button');
+
+/******************************************************************************
+*
+* javascript for be kind challenge
+* 
+*****************************************************************************/
 const toggleSoundButton = document.getElementById('button-p5-1');
 const moreInfoButton = document.getElementById('button-p5-3');
-const symbolElement1 = document.getElementById('p5-button-1-symbol');
-const symbolElement3 = document.getElementById('p5-button-3-symbol');
-
-
-/******************************************************************************
-*
-* run when window loads
-* 
-*****************************************************************************/
-window.onload = function () {
-    // may want to use this in the future
-    // for p5.projects to inform user to visit website via pc
-    // if(isMobile.any) {
-    //     document.getElementById("s1-header").textContent = "Not Mobile"
-    // }
-}
+const soundButtonSymbol = document.getElementById('p5-button-1-symbol');
+const infoButtonSymbol = document.getElementById('p5-button-3-symbol');
 
 /******************************************************************************
 *
-* simple way to check if page arrived at by
-* back button. reset nav to default
+* run when everything has loaded
 * 
 *****************************************************************************/
-window.onpageshow = function (event) {
-    if (event.persisted) {
-        // window.location.reload();
-        resetMenu();
-    }
-};
+// window.onload = function () {}
+
+// window.addEventListener("load", function() {});
 
 /******************************************************************************
 *
-* Toggle elements when menu-button clicked in navigation 
+* run when scrolling is occuring
 * 
 *****************************************************************************/
-menuButton.addEventListener('click', function () {
-    navigationBarToggle();
-    toggleHamIcon();
-});
+// window.onscroll = function () {}
 
 /******************************************************************************
 *
-* Toggle the menu links in navigation
+* trigger when scrolling has ended
 * 
 *****************************************************************************/
-function navigationBarToggle() {
-    // toggle nav menu based given current display state
-    let navElem = document.getElementsByClassName('nav-links');
-    for (var i = 0; i < navElem.length; i++) {
-        let navStyle = window.getComputedStyle(navElem[i], null);
-        let navStyleDisplay = navStyle.getPropertyValue('display');
-
-        if (navStyleDisplay == 'none') {
-
-            navElem[i].style.display = 'grid';
-
-        } else {
-
-            navElem[i].style.display = 'none';
-        }
-    }
-}
+// window.onscrollend = function () {}
 
 /******************************************************************************
 *
-* Toggle animation for hamburger icon in menu
+* run when mouse is moving
 * 
 *****************************************************************************/
-function toggleHamIcon() {
-    // toggle hamburger icon bars given current state
-    let barElems = document.getElementsByClassName('ham-container');
-    for (var i = 0; i < barElems.length; i++) {
-        barElems[i].classList.toggle('change');
-    }
-}
-
-/******************************************************************************
-*
-* reset menu to default state
-* 
-*****************************************************************************/
-function resetMenu() {
-    // hide menu
-    let navElem = document.getElementsByClassName('nav-links');
-    for (var i = 0; i < navElem.length; i++) {
-        let navStyle = window.getComputedStyle(navElem[i], null);
-        let navStyleDisplay = navStyle.getPropertyValue('display');
-        navElem[i].style.display = 'none';
-    }
-    // reset menu icon
-    let barElems = document.getElementsByClassName('ham-container');
-    for (var i = 0; i < barElems.length; i++) {
-        barElems[i].classList.remove('change');
-    }
-}
-
-/******************************************************************************
-*
-* move to top of page from footer
-* 
-*****************************************************************************/
-topButton.addEventListener('click', function () {
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-})
+// onmousemove = function (event) {}
 
 /******************************************************************************
  * p5.js sketch
@@ -121,14 +49,12 @@ topButton.addEventListener('click', function () {
  * Date:     february 2019
  * 
  * Notes:
- * - LEFT CLICK on cell to reveal
- * - SHIFT + LEFT CLICK to place a flag
- * - PRESS reset button to reset grid
+ * - LEFT CLICK on center dial to spin
  * 
  * Music by: Bensound.com/royalty-free-music
  * License code: 9U1HL397HJTTOLUY
  ******************************************************************************/
-var fontMontserrat;
+var myFont;
 var parentWidth;
 var songTheme;
 
@@ -162,7 +88,7 @@ let color8;
  * 
  *****************************************************************************/
 function preload() {
-    fontMontserrat = loadFont('../assets/Montserrat-Light.ttf');
+    myFont = loadFont('../assets/Poppins-Light.ttf');
     songTheme = loadSound('../assets/beKind/onceagain.mp3');
 }
 
@@ -178,7 +104,7 @@ function setup() {
     canvas.parent('p5-canvas');
 
     // set up font
-    textFont(fontMontserrat);
+    textFont(myFont);
 
     // global stuff
     showInfo = true;
@@ -540,10 +466,11 @@ function mouseClicked() {
   }
 }
   
-//=============================================================================
-// p5 button events
-//=============================================================================
-
+/******************************************************************************
+*
+* p5 button events
+* 
+*****************************************************************************/
 /******************************************************************************
 *
 * toggle sound playing
@@ -552,15 +479,14 @@ function mouseClicked() {
 toggleSoundButton.addEventListener('click', function() {
   if(songTheme.isPlaying()) {
     songTheme.pause();
-    symbolElement1.innerHTML ="&#9655";
+    soundButtonSymbol.innerHTML ="&#9655";
   } else {
     songTheme.play();
     if(firstClick) firstClick = false;
-    symbolElement1.innerHTML = "&#8414";
+    soundButtonSymbol.innerHTML = "&#8414";
   }
 
 });
-
 
 /******************************************************************************
 *
@@ -571,10 +497,8 @@ moreInfoButton.addEventListener('click', function() {
   beginInfoTrans = !beginInfoTrans;
   
   if(beginInfoTrans) {
-    symbolElement3.innerHTML = "&#10539"
+    infoButtonSymbol.innerHTML = "&#10539"
   } else {
-    symbolElement3.innerHTML ="&#11096"
+    infoButtonSymbol.innerHTML ="&#11096"
   }
 });
-
-

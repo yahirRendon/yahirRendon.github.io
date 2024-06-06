@@ -1,128 +1,56 @@
-//=============================================================================
-// scripts for game of life page
-//=============================================================================
-const menuButton = document.getElementById('menu-button');
-const topButton = document.getElementById('top-button');
-const selectToggleButton = document.getElementById('button-p5-1');
-const staticToggleButton = document.getElementById('button-p5-2');
-const resetGameButton = document.getElementById('button-p5-3');
 
 /******************************************************************************
 *
-* run when window loads
+* javascript for game of life
 * 
 *****************************************************************************/
-window.onload = function () {
-    // may want to use this in the future
-    // for p5.projects to inform user to visit website via pc
-    // if(isMobile.any) {
-    //     document.getElementById("s1-header").textContent = "Not Mobile"
-    // }
+const selectToggleButton = document.getElementById('button-p5-1');
+const staticToggleButton = document.getElementById('button-p5-2');
+const resetGameButton = document.getElementById('button-p5-3');
+// const button1Symbol = document.getElementById('p5-button-1-symbol');
+// const button2Symbol = document.getElementById('p5-button-2-symbol');
+// const button3Symbol = document.getElementById('p5-button-3-symbol');
 
+/******************************************************************************
+*
+* run when everything has loaded
+* 
+*****************************************************************************/
+// window.onload = function () {}
 
-}
+// window.addEventListener("load", function() {});
+
+/******************************************************************************
+*
+* run when scrolling is occuring
+* 
+*****************************************************************************/
+// window.onscroll = function () {}
+
+/******************************************************************************
+*
+* trigger when scrolling has ended
+* 
+*****************************************************************************/
+// window.onscrollend = function () {}
+
+/******************************************************************************
+*
+* run when mouse is moving
+* 
+*****************************************************************************/
+// onmousemove = function (event) {}
 
 /******************************************************************************
 *
 * Turn off default functionaliity of space and arrow keys
 * 
 *****************************************************************************/
-window.addEventListener("keydown", function(e) {
-  if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
-      e.preventDefault();
-  }
+window.addEventListener("keydown", function (e) {
+    if (["Space", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].indexOf(e.code) > -1) {
+        e.preventDefault();
+    }
 }, false);
-
-/******************************************************************************
-*
-* simple way to check if page arrived at by
-* back button. reset nav to default
-* 
-*****************************************************************************/
-window.onpageshow = function (event) {
-    if (event.persisted) {
-        // window.location.reload();
-        resetMenu();
-    }
-};
-
-/******************************************************************************
-*
-* Toggle elements when menu-button clicked in navigation 
-* 
-*****************************************************************************/
-menuButton.addEventListener('click', function () {
-    navigationBarToggle();
-    toggleHamIcon();
-});
-
-/******************************************************************************
-*
-* Toggle the menu links in navigation
-* 
-*****************************************************************************/
-function navigationBarToggle() {
-    // toggle nav menu based given current display state
-    let navElem = document.getElementsByClassName('nav-links');
-    for (var i = 0; i < navElem.length; i++) {
-        let navStyle = window.getComputedStyle(navElem[i], null);
-        let navStyleDisplay = navStyle.getPropertyValue('display');
-
-        if (navStyleDisplay == 'none') {
-
-            navElem[i].style.display = 'grid';
-
-        } else {
-
-            navElem[i].style.display = 'none';
-
-        }
-    }
-}
-
-/******************************************************************************
-*
-* Toggle animation for hamburger icon in menu
-* 
-*****************************************************************************/
-function toggleHamIcon() {
-    // toggle hamburger icon bars given current state
-    let barElems = document.getElementsByClassName('ham-container');
-    for (var i = 0; i < barElems.length; i++) {
-        barElems[i].classList.toggle('change');
-    }
-}
-
-/******************************************************************************
-*
-* reset menu to default state
-* 
-*****************************************************************************/
-function resetMenu() {
-    // hide menu
-    let navElem = document.getElementsByClassName('nav-links');
-    for (var i = 0; i < navElem.length; i++) {
-        let navStyle = window.getComputedStyle(navElem[i], null);
-        let navStyleDisplay = navStyle.getPropertyValue('display');
-        navElem[i].style.display = 'none';
-    }
-    // reset menu icon
-    let barElems = document.getElementsByClassName('ham-container');
-    for (var i = 0; i < barElems.length; i++) {
-        barElems[i].classList.remove('change');
-    }
-}
-
-/******************************************************************************
-*
-* move to top of page from footer
-* 
-*****************************************************************************/
-topButton.addEventListener('click', function () {
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-})
-
 
 /******************************************************************************
  * p5.js sketch
@@ -139,15 +67,14 @@ topButton.addEventListener('click', function () {
  * - us html buttons to select/deselect | evovle/static | reset
  * 
  *****************************************************************************/
-
-var fontMontserrat;
+var myFont;
 var parentWidth;
 
 let board = [[]];         // 2D Array for holding board x & y position and space state
-                          // [][].x = x pos, [][].y = y pos, [][].z = space state
+// [][].x = x pos, [][].y = y pos, [][].z = space state
 let nextBoard = [[]];     // 2D array generating future/next board state
 let boardData = [[]];     // 2D array holding heatmap value and potential other details
-                          // [][].x = heatmap
+// [][].x = heatmap
 
 let cols;                 // number of board/grid columns
 let rows;                 // number of board/grid rows
@@ -161,7 +88,7 @@ var evolveCounter;        // counter used for frame based delay
 // Color palette 
 let dark;                 // selected cell color              
 let bright;               // heat map color
-let light;     
+let light;
 
 
 /******************************************************************************
@@ -170,7 +97,7 @@ let light;
  * 
  *****************************************************************************/
 function preload() {
-    fontMontserrat = loadFont('../assets/Montserrat-Light.ttf');
+    myFont = loadFont('../assets/Poppins-Light.ttf');
 }
 
 /******************************************************************************
@@ -186,50 +113,50 @@ function setup() {
 
     // set up font
     textAlign(CENTER, CENTER);
-    textFont(fontMontserrat);
+    textFont(myFont);
 
     // Set intials variable values
-  cols = 17;
-  rows = 19;
-  cellSize = 50; 
-  mClicked = false;
-  ctrl = false;
-  evolveBoard = false;
-  evolveCounter = 0;
-  
-  // Set color palette
-  light = color(212, 208, 175);
-  bright = color(255, 0, 221);
-  dark = color(144, 167, 196);
-  
-  // Initialize 2D array for board
-  board = new Array(cols);
-  for (let i = 0; i < cols; i++) {
-    board[i] = new Array(rows);
-  }
-  
-  // Initialize 2D array for future/next board
-  nextBoard = new Array(cols);
-  for (let i = 0; i < cols; i++) {
-    nextBoard[i] = new Array(rows);
-  }
-  
-  // Initialize 2D array for heatmap
-  boardData = new Array(cols);
-  for (let i = 0; i < cols; i++) {
-    boardData[i] = new Array(rows);
-  }
-  
-  // Populate 2D arrays
-  for(var y = 0; y < rows; y++) {
-    for(var x = 0; x < cols; x++) {
-      board[x][y] = createVector(x, y, 0);
-      nextBoard[x][y] = createVector(x, y, 0);
-      boardData[x][y] = createVector(0, 0, 0);
+    cols = 17;
+    rows = 19;
+    cellSize = 50;
+    mClicked = false;
+    ctrl = false;
+    evolveBoard = false;
+    evolveCounter = 0;
+
+    // Set color palette
+    light = color(212, 208, 175);
+    bright = color(255, 0, 221);
+    dark = color(144, 167, 196);
+
+    // Initialize 2D array for board
+    board = new Array(cols);
+    for (let i = 0; i < cols; i++) {
+        board[i] = new Array(rows);
     }
-  }
-   
-  }
+
+    // Initialize 2D array for future/next board
+    nextBoard = new Array(cols);
+    for (let i = 0; i < cols; i++) {
+        nextBoard[i] = new Array(rows);
+    }
+
+    // Initialize 2D array for heatmap
+    boardData = new Array(cols);
+    for (let i = 0; i < cols; i++) {
+        boardData[i] = new Array(rows);
+    }
+
+    // Populate 2D arrays
+    for (var y = 0; y < rows; y++) {
+        for (var x = 0; x < cols; x++) {
+            board[x][y] = createVector(x, y, 0);
+            nextBoard[x][y] = createVector(x, y, 0);
+            boardData[x][y] = createVector(0, 0, 0);
+        }
+    }
+
+}
 
 /******************************************************************************
  * 
@@ -237,9 +164,8 @@ function setup() {
  * 
  *****************************************************************************/
 function draw() {
-  background(235, 237, 239);
-  noStroke();
-
+    background(233, 235, 235);
+    noStroke();
     /* quick check for device screen size. 
     * kills sketch. could look into a more responsive approach.
     */ 
@@ -429,9 +355,11 @@ function evolve() {
   nextBoard = temp;
 }
 
-//=============================================================================
-// p5 button events
-//=============================================================================
+/******************************************************************************
+*
+* p5 button events
+* 
+*****************************************************************************/
 /******************************************************************************
 *
 * toggle select and deselcting cells on button
@@ -476,15 +404,3 @@ resetGameButton.addEventListener('click', function() {
   resetBoard();
   evolveBoard = false;
 });
-
-
-
-
-
-
-
-
-
-
-
-

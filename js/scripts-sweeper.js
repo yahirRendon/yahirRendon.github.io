@@ -1,117 +1,45 @@
-//=============================================================================
-// scripts for sweeper game
-//=============================================================================
-const menuButton = document.getElementById('menu-button');
-const topButton = document.getElementById('top-button');
+
+/******************************************************************************
+*
+* javascript for SKETCH NAME
+* 
+*****************************************************************************/
+// const button1 = document.getElementById('button-p5-1');
 const resetGameButton = document.getElementById('button-p5-2');
+// const button3 = document.getElementById('button-p5-3');
+// const button1Symbol = document.getElementById('p5-button-1-symbol');
+// const button2Symbol = document.getElementById('p5-button-2-symbol');
+// const button3Symbol = document.getElementById('p5-button-3-symbol');
 
 /******************************************************************************
 *
-* run when window loads
+* run when everything has loaded
 * 
 *****************************************************************************/
-window.onload = function () {
-    // may want to use this in the future
-    // for p5.projects to inform user to visit website via pc
-    // if(isMobile.any) {
-    //     document.getElementById("s1-header").textContent = "Not Mobile"
-    // }
-}
+// window.onload = function () {}
+
+// window.addEventListener("load", function() {});
 
 /******************************************************************************
 *
-* simple way to check if page arrived at by
-* back button. reset nav to default
+* run when scrolling is occuring
 * 
 *****************************************************************************/
-window.onpageshow = function (event) {
-    if (event.persisted) {
-        // window.location.reload();
-        resetMenu();
-    }
-};
+// window.onscroll = function () {}
 
 /******************************************************************************
 *
-* Toggle elements when menu-button clicked in navigation 
+* trigger when scrolling has ended
 * 
 *****************************************************************************/
-menuButton.addEventListener('click', function () {
-    navigationBarToggle();
-    toggleHamIcon();
-});
+// window.onscrollend = function () {}
 
 /******************************************************************************
 *
-* Toggle the menu links in navigation
+* run when mouse is moving
 * 
 *****************************************************************************/
-function navigationBarToggle() {
-    // toggle nav menu based given current display state
-    let navElem = document.getElementsByClassName('nav-links');
-    for (var i = 0; i < navElem.length; i++) {
-        let navStyle = window.getComputedStyle(navElem[i], null);
-        let navStyleDisplay = navStyle.getPropertyValue('display');
-
-        if (navStyleDisplay == 'none') {
-
-            navElem[i].style.display = 'grid';
-
-        } else {
-
-            navElem[i].style.display = 'none';
-
-        }
-    }
-}
-
-/******************************************************************************
-*
-* Toggle animation for hamburger icon in menu
-* 
-*****************************************************************************/
-function toggleHamIcon() {
-    // toggle hamburger icon bars given current state
-    let barElems = document.getElementsByClassName('ham-container');
-    for (var i = 0; i < barElems.length; i++) {
-        barElems[i].classList.toggle('change');
-    }
-}
-
-/******************************************************************************
-*
-* reset menu to default state
-* 
-*****************************************************************************/
-function resetMenu() {
-    // hide menu
-    let navElem = document.getElementsByClassName('nav-links');
-    for (var i = 0; i < navElem.length; i++) {
-        let navStyle = window.getComputedStyle(navElem[i], null);
-        let navStyleDisplay = navStyle.getPropertyValue('display');
-        navElem[i].style.display = 'none';
-    }
-    // reset menu icon
-    let barElems = document.getElementsByClassName('ham-container');
-    for (var i = 0; i < barElems.length; i++) {
-        barElems[i].classList.remove('change');
-    }
-}
-
-/******************************************************************************
-*
-* move to top of page from footer
-* 
-*****************************************************************************/
-document.getElementById('top-button').addEventListener('click', function () {
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-})
-
-
-//=============================================================================
-// p5.js sketch
-//=============================================================================
+// onmousemove = function (event) {}
 
 /******************************************************************************
  * p5.js sketch
@@ -127,8 +55,9 @@ document.getElementById('top-button').addEventListener('click', function () {
  * - PRESS reset button to reset grid
  * 
  ******************************************************************************/
-var fontMontserrat;
+var myFont;
 var parentWidth;
+
 var cells = [];         // cell grid
 var mines = [];         // ine location in index
 var gameLost;           // track if game won
@@ -142,13 +71,15 @@ let opened;
 let flagged;
 let dark;
 
+
+
 /******************************************************************************
  * 
  * Preload assessts prior to running setup function
  * 
  *****************************************************************************/
 function preload() {
-    fontMontserrat = loadFont('../assets/Montserrat-Light.ttf');
+    myFont = loadFont('../assets/Poppins-Light.ttf');
 }
 
 /******************************************************************************
@@ -164,11 +95,11 @@ function setup() {
 
     // set up font
     textAlign(CENTER, CENTER);
-    textFont(fontMontserrat);
+    textFont(myFont);
 
 
     // set initial values
-    base = color(244, 233, 227);
+    base = color(233, 235, 235); // (244, 233, 227);
     mine = color(244, 210, 208);
     closed = color(201, 211, 223);
     opened = color(228, 233, 236);
@@ -176,7 +107,6 @@ function setup() {
     dark = color(121, 125, 161);
 
     resetGrid();
-
 }
 
 /******************************************************************************
@@ -501,15 +431,18 @@ class Cell {
     }
 }
 
-//=============================================================================
-// p5 button events
-//=============================================================================
-
 /******************************************************************************
- * 
+*
+* p5 button events
+* 
+*****************************************************************************/
+/******************************************************************************
+*
 * reset game when button clicked
 * 
 *****************************************************************************/
 resetGameButton.addEventListener('click', function() {
     resetGrid();
 });
+
+  
