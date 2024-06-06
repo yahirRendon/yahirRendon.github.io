@@ -356,7 +356,7 @@ img.onload = function () { };
  *****************************************************************************/
 function preload() {
     // img = loadImage("./assets/txt-word-light.png");
-    fontPoppins = loadFont('./assets/Poppins-Light.ttf'); // ./ when properlly structured
+    fontPoppins = loadFont('../assets/Poppins-Light.ttf'); // ./ when properlly structured
 }
 
 /******************************************************************************
