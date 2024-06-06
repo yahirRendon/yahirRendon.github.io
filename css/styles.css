@@ -6,10 +6,7 @@ css for all pages
   --dark: #9e9791;
   --darker: #514a47;
   --darkest: #292929;
-  /* --third: #ecdace; */
   --third: #ee646e;
-  /* --third: #767b61; */
-  /* --third: #c87298; */
 }
 
 * {
@@ -84,16 +81,6 @@ general class stuff
   height: 40px;
 }
 
-/* create a simple dividing line*/
-.main-line {
-  grid-area: main-line;
-  display: grid;
-  width: 900px;
-  grid-column: 2 / 3;
-  border-bottom: 1px solid var(--third);
-
-}
-
 /* fade in/out at moderate speed */
 .fadeIn-mod {
   animation: fadeInMod 750ms;
@@ -128,34 +115,52 @@ container navigation
 ******************************************************************************/
 .container-nav {
   /* sm */
-  /* border: 1px dashed black; */
   display: grid;
-  grid-template-columns: auto 1fr auto;
-  grid-template-areas: "cn1 . cn6" "cn2 . ." "cn3 . ." "cn4 . ." "cn5. .";
-  align-items: center;
-  text-align: center;
+  grid-template-columns: 100px 1fr 100px;
+  grid-template-areas: "cn1 . cn6";
 }
 
-.cont-nav-1,
+/* .cont-nav-1, */
 .cont-nav-2,
 .cont-nav-3,
 .cont-nav-4,
 .cont-nav-5,
 .cont-nav-6 {
   /* sm */
-  /* border: 1px solid red; */
+  display: grid;
   width: 100px;
   height: 40px;
+  align-items: center;
+  text-align: center;
+  /* background-color: rgba(233, 235, 235, .5); */
+  background-color: var(--light);
 }
 
 .cont-nav-1 {
   /* sm */
   display: grid;
   grid-area: cn1;
-  width: 100px;
-  height: 100px;
+  grid-template-columns: 100px;
+  grid-template-rows: 100px auto;
+  grid-template-areas: "cont-menu" "expand-nav";
   align-items: center;
-  justify-content: center;
+  text-align: center;
+
+  
+}
+
+.expand-nav {
+  position: relative;
+  grid-area: expand-nav;
+}
+
+.exp-cont {
+  position: absolute;
+  display: grid;
+  grid-area: exp-cont;
+  grid-template-columns: 100px;
+  grid-template-rows: 50px 50px 50px 50px;
+  grid-template-areas: "cn2" "cn3" "cn4" "cn5";
 }
 
 .cont-nav-2 {
@@ -176,45 +181,23 @@ container navigation
 
 .cont-nav-6 {
   grid-area: cn6;
-  width: auto;
+  display: grid;
   height: 100px;
   font-size: xx-large;
   padding-right: 10px;
-}
-
-.toggle-show {
-  display: none;
-  opacity: 100;
-  transition: opacity 400ms;
-}
-
-.cont-nav-links {
-  /* border: 1px solid teal; */
-  display: grid;
-  height: 100%;
   align-items: center;
-  justify-content: center;
-}
-
-.nav-links {
-  /* border: 1px dotted blue; */
-  text-decoration: none;
-  color: var(--darkest);
-  transition: color 400ms;
-}
-
-.nav-links:hover {
-  color: var(--third);
+  text-align: center;
 }
 
 .cont-menu {
-  /* border: 1px dotted blue; */
+  grid-area: cont-menu;
   display: grid;
+  align-items: center;
+  justify-items: center;
 }
 
 .cont-neo {
   display: grid;
-  /* border: 1px dotted green; */
   width: 80px;
   height: 80px;
   border-radius: 40px;
@@ -227,12 +210,10 @@ container navigation
     6px 6px 9px 0 rgba(0, 0, 0, 0.2),
     inset 0 0 0 0 rgba(255, 255, 255, 0.2),
     -6px -6px 9px 0 rgba(255, 255, 255, 0.5);
-
   transition: box-shadow 400ms, color 400ms;
 }
 
 .cont-bar {
-  /* border: 1px dotted purple; */
   display: grid;
   width: 40px;
   height: 30px;
@@ -364,91 +345,123 @@ container navigation
   }
 }
 
-/******************************************************************************
-  container footer
-  ******************************************************************************/
-.container-foot {
-  /* border: 1px solid black; */
-  display: grid;
-  grid-template-columns: 1fr auto auto auto auto auto 1fr;
-  grid-template-areas: ". cf1 cf2 cf3 cf4 cf5 .";
+.toggle-show {
+  display: none;
+  opacity: 100;
+  transition: opacity 400ms;
 }
 
-.cont-foot-1,
-.cont-foot-2,
-.cont-foot-3,
-.cont-foot-4,
-.cont-foot-5 {
-  /* border: 1px solid red; */
+.cont-nav-links {
   display: grid;
-  ;
-  width: 80px;
-  height: 40px;
+  height: 100%;
   align-items: center;
   justify-content: center;
 }
 
-.cont-foot-1 {
-  grid-area: cf1;
-}
-
-.cont-foot-2 {
-  grid-area: cf2;
-}
-
-.cont-foot-3 {
-  grid-area: cf3;
-}
-
-.cont-foot-4 {
-  grid-area: cf4;
-}
-
-.cont-foot-5 {
-  grid-area: cf5;
-}
-
-.foot-links {
-  /* border: 1px dotted purple; */
+.nav-links {
   text-decoration: none;
   color: var(--darkest);
   transition: color 400ms;
+  cursor: pointer;
 }
 
-.foot-links:hover {
+.nav-links:hover {
   color: var(--third);
 }
 
 /******************************************************************************
+  container footer
+  ******************************************************************************/
+  .container-foot {
+    display: grid;
+    grid-template-columns: 1fr auto auto auto auto auto 1fr;
+    grid-template-areas: ". cf1 cf2 cf3 cf4 cf5 .";
+  }
+  
+  .cont-foot-1,
+  .cont-foot-2,
+  .cont-foot-3,
+  .cont-foot-4,
+  .cont-foot-5 {
+    display: grid;
+    width: 80px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .cont-foot-1 {
+    grid-area: cf1;
+  }
+  
+  .cont-foot-2 {
+    grid-area: cf2;
+  }
+  
+  .cont-foot-3 {
+    grid-area: cf3;
+  }
+  
+  .cont-foot-4 {
+    grid-area: cf4;
+  }
+  
+  .cont-foot-5 {
+    grid-area: cf5;
+  }
+  
+  .foot-links {
+    text-decoration: none;
+    color: var(--darkest);
+    transition: color 400ms;
+  }
+  
+  .foot-links:hover {
+    color: var(--third);
+  }
+/******************************************************************************
 for large screens
 ******************************************************************************/
 @media only screen and (min-width: 850px) {
-
-  /* navigation */
+  /* nav bar elements */
   .container-nav {
-    /* lg */
-    grid-template-columns: auto auto auto auto auto 1fr auto;
-    grid-template-areas: "cn1 cn2 cn3 cn4 cn5 . cn6";
+    /* sm */
+    display: grid;
+    grid-template-columns: 1fr 100px;
+    grid-template-areas: "cn1 cn6";
   }
-
-  .cont-nav-1,
-  .cont-nav-2,
-  .cont-nav-3,
-  .cont-nav-4,
-  .cont-nav-5,
-  .cont-nav-6 {
-    /* lg */
-    width: 80px;
-    height: 100px;
-  }
-
+  
   .cont-nav-1 {
-    width: 100px;
-    height: 100px;
+    /* sm */
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    grid-template-areas: "cont-menu expand-nav";
   }
 
+  .expand-nav {
+    /* display: grid; */
+    position: static;
+    width: 100%;
+    height: 100%;
+  }
+
+  .exp-cont {
+    display: grid;
+    grid-template-columns: 100px 100px 100px 100px 100px;
+    grid-template-rows: 100px;
+    grid-template-areas: "cn2 cn3 cn4 cn5";
+    align-items: center;
+    text-align: center;
+  }
+  
   .cont-nav-6 {
+    grid-area: cn6;
+    display: grid;
     height: 100px;
+    font-size: xx-large;
+    padding-right: 10px;
+    align-items: center;
+    text-align: center;
   }
 
   /* help to only do inset on large screens */
@@ -463,6 +476,5 @@ for large screens
       cursor: pointer;
     }
   }
-
-  /* navigation end */
+  /* end nav bar elements */
 }

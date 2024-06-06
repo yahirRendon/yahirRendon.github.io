@@ -1,0 +1,187 @@
+/******************************************************************************
+styles page for P5.js sketches
+******************************************************************************/
+:root {
+  --light: #e9ebeb;
+  --dark: #9e9791;
+  --darker: #514a47;
+  --darkest: #292929;
+  --third: #ee646e;
+}
+
+/******************************************************************************
+sketch elements
+******************************************************************************/
+
+/* h1 header with even spacing  */
+.main-h1-even {
+  grid-area: main-h1-even;
+  display: grid;
+  padding: 1em 0;  
+  text-align: center;
+  font-size: 2em;
+  grid-column: 2 / 3;
+}
+/* h1 header with extra space on top */
+.main-h1-top {
+  grid-area: main-h1-top;
+  display: grid;
+  padding: 1em .5em .25em .5em;  
+  text-align: center;
+  font-size: 2em;
+  grid-column: 2 / 3;
+}
+/* smaller padding all around 
+good for sub paragraphs and descriptions
+below h1-top*/
+.main-p-even {
+  grid-area: main-p-even;
+  display: grid;
+  padding: .5em .5em;  
+  text-align: center;
+  font-size: 1em;
+  grid-column: 2 / 3;
+}
+
+.main-p-even-small {
+  grid-area: main-p-even;
+  display: grid;
+  padding: .5em .5em;  
+  text-align: center;
+  font-size: .75em;
+  grid-column: 2 / 3;
+}
+/* larger padding on top to match h1 
+good for first paragraph*/
+.main-p-top {
+  grid-area: main-top;
+  display: grid;
+  padding: 2em .5em .5em .5em;  
+  text-align: center;
+  font-size: 1em;
+  grid-column: 2 / 3;
+}
+.main-p-bot {
+  grid-area: main-top;
+  display: grid;
+  padding: .5em .5em 2em .5em;  
+  text-align: center;
+  font-size: 1em;
+  grid-column: 2 / 3;
+}
+.main-p-link {
+  text-decoration: none;
+  color: var(--third);
+}
+.main-p-link:hover {
+  color: black;
+}
+
+/* container/wrapper for main elements */
+.container-main {
+  grid-area: cont-main;
+  display: grid;
+  grid-template-columns: 1fr minmax(auto, 65ch) 1fr;
+}
+/* container/wrapper for main elements with wide setting */
+.container-main-wide {
+  grid-area: cont-main;
+  display: grid;
+  grid-template-columns: 1fr minmax(auto, 90ch) 1fr;
+}
+
+/* holds p5 canvas */
+.main-p5 {
+  grid-area: main-p5;
+  display: grid; 
+  grid-column: 2 / 3;
+  text-align: center;
+
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 
+    inset 0 0 0 0        rgba(0, 0, 0, 0.2),
+        3px  3px  6px  0 rgba(0, 0, 0, 0.2),
+    inset 0 0 0 0        rgba(255, 255, 255, 0.2),
+        -3px -3px  6px 0 rgba(255, 255, 255, 0.5);
+  
+}
+/* container/wrapper for p5 canvas */
+.container-main-p5 {
+  grid-area: cont-main-p5;
+  display: grid;
+  /* grid-template-columns: 1fr 1fr 1fr; */
+  grid-template-columns: 1fr minmax(auto, 800px) 1fr;
+}
+
+
+/* hold left most p5 button */
+.p5-button-1 {
+  grid-area: p5-button-1;
+  display: grid;
+  grid-column: 1/2;
+  justify-content: right;
+
+}
+/* hold center p5 button */
+.p5-button-2 {
+  grid-area: p5-button-2;
+  display: grid;
+  grid-column: 2/3;
+  justify-content: center;
+
+}
+/* hold right most p5 button */
+.p5-button-3 {
+  grid-area: p5-button-3;
+  display: grid;
+  grid-column: 3/4;
+  justify-content: left;
+  
+}
+.p5-button-1 div,
+.p5-button-2 div,
+.p5-button-3 div {
+  transition: 400ms;
+
+}
+.p5-button-1:hover div,
+.p5-button-2:hover div,
+.p5-button-3:hover div {
+  color: var(--third);
+  transition: 400ms;
+}
+/* container/wrapper for p5 buttons */
+.container-p5-buttons {
+  grid-area: cont-p5-buttons;
+  display: grid;
+  grid-column: 2 / 3;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 1em;
+}
+/* container for p5.js instructions */
+.main-p-instruction {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+/* left element instructions */
+.instruction-top,
+.instruction-bot {
+  display: grid;
+  text-align: center;
+
+}
+/* right element instructions */
+.instruction-bot {
+  color: var(--dark);
+}
+
+/******************************************************************************
+for large screens
+******************************************************************************/
+@media only screen and (min-width: 850px) {
+
+}

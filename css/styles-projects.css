@@ -1,0 +1,135 @@
+/******************************************************************************
+css for project page
+******************************************************************************/
+:root {
+  --light: #e9ebeb;
+  --dark: #9e9791;
+  --darker: #514a47;
+  --darkest: #292929;
+  --third: #ee646e;
+}
+
+/******************************************************************************
+projects section
+******************************************************************************/
+/* project cards grid */
+.project-wrapper {
+  display:grid;
+  grid-template-columns: .25fr 4fr .25fr;
+  grid-template-areas: ". project_cards ."; 
+}
+
+.project-cards {
+  grid-area: project_cards;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 350px);
+  grid-gap: 1rem;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.test-wrap {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow:
+    inset 0 0 0 0 rgba(0, 0, 0, 0.2),
+    6px 6px 9px 0 rgba(0, 0, 0, 0.2),
+    inset 0 0 0 0 rgba(255, 255, 255, 0.2),
+    -6px -6px 9px 0 rgba(255, 255, 255, 0.5);
+}
+
+.project-image {
+  grid-area: proImg;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-areas: "pc";
+  border-radius: 10px; 
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  height: 350px;
+}
+
+.project-container {
+  display: grid;
+  grid-area: pc;
+  grid-template-rows: 50% 25% 25%;
+  grid-template-columns: auto;
+  grid-template-areas: 
+                       "name"
+                       "description" 
+                       "tags";
+  text-align: center;
+  opacity: 0;
+}
+
+.project-name {
+  grid-area: name;
+  display: grid;
+  align-items: end;
+  font-size: 1.5rem;
+  color: transparent;
+  transition:color 300ms; 
+}
+
+.project-description {
+  display: grid;
+  grid-area: description;
+  align-items: center;
+  padding: .5rem .75rem;
+  color: transparent;
+  transition:color 300ms; 
+}
+
+.project-tags {
+  display: grid;
+  grid-area: tags;
+  align-items: end;
+  font-size: .75rem;
+  padding: .5rem .75rem;
+  color: transparent;
+  transition:color 300ms; 
+} 
+
+.hide {
+  display: none;
+}
+
+textarea, 
+input {
+	border: none;
+  background-color: var(--light);
+	height: 2em;
+	overflow:auto;
+  outline: none;
+  text-align: center;
+}
+
+.search-wrapper {
+  grid-area: search-wrapper;
+  display: grid;
+  grid-template-columns: 1fr minmax(auto, 35ch) 1fr;
+  grid-template-areas: ". search-box .";
+  text-align: center;
+  padding: 1em 0;
+}
+
+.search-box {
+  grid-area: search-box;
+  box-shadow: 
+        inset  2px  2px  4px  0 rgba(0, 0, 0, 0.2),
+           0 0 0 0           rgba(0, 0, 0, 0.2),
+        inset -2px -2px 4px 0   rgba(255, 255, 255, 0.5),
+           0 0 0 0           rgba(255, 255, 255, 0.5);
+        transition:box-shadow 300ms, color 300ms;
+  border-radius: 4px;
+}
+
+/******************************************************************************
+for large screens
+******************************************************************************/
+@media only screen and (min-width: 850px) {
+
+}

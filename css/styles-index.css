@@ -224,7 +224,7 @@ cont-1-img-b for dyanimc montage scroll
   display: grid;
   grid-area: cont-1-img-a;
   width: 100%;
-  max-width: 600px;
+  max-width: 300px;
   min-width: 100px;
   height: auto;
   border-radius: 10px;
@@ -239,7 +239,7 @@ cont-1-img-b for dyanimc montage scroll
   grid-row: 1;
   grid-column: 1;
   width: 100%;
-  max-width: 600px;
+  max-width: 300px;
   min-width: 100px;
   height: auto;
   border-radius: 10px;
@@ -250,7 +250,7 @@ cont-1-img-b for dyanimc montage scroll
   display: grid;
   grid-area: cont-1-body-a;
   width: 100%;
-  max-width: 600px;
+  max-width: 300px;
   min-width: 100px;
   align-items: end;
 }
@@ -260,7 +260,7 @@ cont-1-img-b for dyanimc montage scroll
   display: grid;
   grid-area: cont-1-body-b;
   width: 100%;
-  max-width: 600px;
+  max-width: 300px;
   min-width: 100px;
 }
 
@@ -279,6 +279,27 @@ for large screens
   }
 
   /* container 1 */
+  .cont-1-img-a {
+    max-width: 600px;
+    min-width: 100px;
+  }
+  
+  .cont-1-img-b {
+    max-width: 600px;
+    min-width: 100px;
+
+  }
+  
+  .cont-1-body-a {
+    max-width: 600px;
+    min-width: 100px;
+  }
+  
+  .cont-1-body-b {
+    max-width: 600px;
+    min-width: 100px;
+  }
+
   .container-1-left {
     /* lg */
     grid-template-columns: 1fr 1fr;
