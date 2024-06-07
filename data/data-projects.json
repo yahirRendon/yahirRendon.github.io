@@ -176,7 +176,7 @@
         "description": "audio visualizer with moving ring peaks",
         "color": "0",
         "image": "../img/projects/viz-ring-rev-ex.gif",
-        "website": "https://github.com/yahirRendon/Creative_Coding/tree/main/Processing/Visualizer_Rings_Solo_Revolve_Public",
+        "website": "https://github.com/yahirRendon/creative_coding/tree/main/processing/audio_projects/Visualizer_Rings_Solo_Revolve_Public",
         "tags": [
             "java",
             "processing",
@@ -191,7 +191,7 @@
         "description": "audio vizualizer in ring form",
         "color": "1",
         "image": "../img/projects/viz-ring-static-ex.gif",
-        "website": "https://github.com/yahirRendon/Creative_Coding/tree/main/Processing/Visualizer_Rings_Solo_Static_Public",
+        "website": "https://github.com/yahirRendon/creative_coding/tree/main/processing/audio_projects/Visualizer_Rings_Solo_Static_Public",
         "tags": [
             "java",
             "processing",
@@ -205,7 +205,7 @@
         "description": "inspired by an Instagram filter",
         "color": "1",
         "image": "../img/projects/particalized-ex.gif",
-        "website": "https://github.com/yahirRendon/Creative_Coding/tree/main/Processing/Instagram_Filter_Sine_Particles",
+        "website": "https://github.com/yahirRendon/creative_coding/tree/main/processing/artistic_projects/Instagram_Filter_Sine_Particles",
         "tags": [
             "java",
             "processing",
