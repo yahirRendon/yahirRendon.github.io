@@ -62,7 +62,7 @@
         "description": "when we need a reminder",
         "color": "0",
         "image": "../img/projects/quote-site-ex.gif",
-        "website": "../../../quote-website/index.html",
+        "website": "https://github.com/yahirRendon/quote-website",
         "tags": [
             "javascript",
             "web design"
