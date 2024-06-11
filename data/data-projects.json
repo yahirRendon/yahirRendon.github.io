@@ -1,6 +1,6 @@
 [
     {
-        "id": 14,
+        "id": 15,
         "name": "jewelry designer",    
         "description": "binary loom beading designer",
         "color": "0",
@@ -15,7 +15,7 @@
             ]
     },
     {
-        "id": 13,
+        "id": 14,
         "name": "terrain",    
         "description": "infinite terrain generation",
         "color": "0",
@@ -29,7 +29,7 @@
             ]
     },
     {
-        "id": 12,
+        "id": 13,
         "name": "art placer",    
         "description": "place art in scene with light/shadow",
         "color": "0",
@@ -43,7 +43,7 @@
             ]
     },
     {
-        "id": 11,
+        "id": 12,
         "name": "be kind",    
         "description": "a simple way to inspire kindness",
         "color": "0",
@@ -54,6 +54,18 @@
             "p5.js",
             "processing",
             "game"
+            ]
+    },
+    {
+        "id": 11,
+        "name": "quote site",    
+        "description": "when we need a reminder",
+        "color": "0",
+        "image": "../img/projects/quote-site-ex.gif",
+        "website": "../../quote-website/index.html",
+        "tags": [
+            "javascript",
+            "web design"
             ]
     },
     {
@@ -95,8 +107,7 @@
             "java",
             "p5.js",
             "processing",
-            "game",
-            "ui"
+            "game"
             ]
     },
     {
@@ -176,7 +187,7 @@
         "description": "audio visualizer with moving ring peaks",
         "color": "0",
         "image": "../img/projects/viz-ring-rev-ex.gif",
-        "website": "https://github.com/yahirRendon/creative_coding/tree/main/processing/audio_projects/Visualizer_Rings_Solo_Revolve_Public",
+        "website": "https://github.com/yahirRendon/Creative_Coding/tree/main/Processing/Visualizer_Rings_Solo_Revolve_Public",
         "tags": [
             "java",
             "processing",
@@ -191,7 +202,7 @@
         "description": "audio vizualizer in ring form",
         "color": "1",
         "image": "../img/projects/viz-ring-static-ex.gif",
-        "website": "https://github.com/yahirRendon/creative_coding/tree/main/processing/audio_projects/Visualizer_Rings_Solo_Static_Public",
+        "website": "https://github.com/yahirRendon/Creative_Coding/tree/main/Processing/Visualizer_Rings_Solo_Static_Public",
         "tags": [
             "java",
             "processing",
@@ -205,7 +216,7 @@
         "description": "inspired by an Instagram filter",
         "color": "1",
         "image": "../img/projects/particalized-ex.gif",
-        "website": "https://github.com/yahirRendon/creative_coding/tree/main/processing/artistic_projects/Instagram_Filter_Sine_Particles",
+        "website": "https://github.com/yahirRendon/Creative_Coding/tree/main/Processing/Instagram_Filter_Sine_Particles",
         "tags": [
             "java",
             "processing",
