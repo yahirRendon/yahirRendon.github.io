@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&amp;display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles-signIn.css">
+    <title>The Wellness Table | Sign In</title>
+</head>
+
+<body>
+    <!-- user banner area: left= view guest | right= exit screen -->
+    <div id="view-guests-button"></div>
+    <div id="exit-guest-button"></div>
+
+    <!-- guest sign in section -->
+    <div class="parent">
+        <div class="child">
+            <div class="g-child">
+                <div class="gg-child">
+                    <div class="host-banner-container">
+                        <div class="host-name h1">The Wellness Table</div>
+                        <div class="event-name h5">MEXICAN STREET FARE</div>
+                        <div class="event-date h5">January 12</div>
+                    </div>
+
+                    <div class="welcome-msg hide"></div>
+
+                    <div class="form-container">
+                        <div class="instructions">Please sign in below</div>
+                        <input id="f-name" type="text" placeholder="First Name">
+                        <input id="l-name" type="text" placeholder="Last Name">
+                        <div class="instructions">Get email notifications for<br>upcoming events</div>
+                        <input id="g-email" type="text" placeholder="email">
+                        <div class="form-button-wrapper">
+                            <button id="submit-button" type="button">Sign In</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="spacer-large"></div> -->
+
+    <!-- will display total guests numbers/data -->
+    <!-- <div class="title-container">
+        <div id="guest-stats" class="title"></div>
+    </div> -->
+    <!-- <div class="spacer-large"></div> -->
+
+    <div class="guest-wrapper">
+        <div id="guest-stats" class="title"></div>
+        <div class="guest-cards" data-guest-cards-container></div>
+        <template data-guest-template>
+            <div class="guest-container">
+                <div class="guest-name" data-name></div>
+                <div class="guest-email" data-email></div>
+                <div class="guest-kids" data-kids></div>
+                <div class="guest-paid" data-paid></div>
+            </div>
+        </template>
+        <div class="button-container">
+            <button id="to-topOfPage-button" type="button"></button>
+            <!-- <button id="to-topOfPage-button" type="button">&#11105;</button> -->
+            <!-- <button id="copy-data-button" type="button">&#128203;</button> -->
+            <button id="copy-data-button" type="button"></button>
+        </div>
+    </div>
+    <!-- <div class="spacer-large"></div> -->
+
+
+
+    <script src="../js/scripts-signIn.js" type="text/javascript"></script>
+</body>
+
+</html>
