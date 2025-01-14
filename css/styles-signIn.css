@@ -1,0 +1,290 @@
+:root {
+  --h2: 1.5rem;
+}
+
+* {
+  font-family: "Montserrat", sans-serif;
+
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+input {
+  min-width: 0;
+}
+
+input[type=text]:hover {
+  cursor: pointer;
+}
+
+input[type=text]:focus {
+  outline: 1px solid #145e00;
+  outline-offset: -1px;
+}
+
+button:focus {
+  outline: 1px solid #145e00;
+  outline-offset: -1px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.spacer-large {
+  height: 2rem;
+}
+
+.h1 {
+  font-size: 1.6rem;
+  /* font-size: x-large; */
+  /* font-size: clamp(1.5rem, 1rem + 5vw, 1.8rem); */
+}
+
+.h2 {
+  font-size: 1.5rem;
+}
+
+.h3 {
+  font-size: 1.17;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.h4 {
+  font-size: 1em;
+}
+
+.h5 {
+  font-size: .83rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.h6 {
+  font-size: .67rem;
+}
+
+
+.show-welcome {
+  display: grid;
+  font-size: 1.25em;
+  margin: 2em;
+}
+
+.hide {
+  display: none;
+
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: 100vw;
+  grid-template-rows: 100vh;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  /* overflow: hidden; */
+  background-image: url("../img/pexels-ella-olsson-572949-1640777.jpg");
+}
+
+.child {
+  display: grid;
+  grid-template-columns: minmax(1rem, 1fr) minmax(5rem, 30rem) minmax(1rem, 1fr);
+  grid-template-rows: minmax(1rem, 1fr) minmax(5rem, auto) minmax(1rem, 1fr);
+}
+
+.g-child {
+  display: grid;
+  grid-area: 2 / 2;
+  align-items: center;
+  background-color: rgba(255, 255, 255, .35);
+  /* blurred with safari support */
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 10px;
+}
+
+.gg-child div {
+  display: grid;
+  text-align: center;
+}
+
+.host-banner-container {
+  margin: 2rem 1rem;
+}
+
+.form-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 0 2rem;
+}
+
+.form-button-wrapper {
+  display: grid;
+  justify-items: center;
+  margin: 1rem 0 2rem 0;
+}
+
+#f-name,
+#l-name,
+#g-email {
+  font-size: 1.25rem;
+  text-align: center;
+  border-radius: 5px;
+  border: none;
+}
+
+#submit-button {
+  padding: .4rem .8rem;
+  width: fit-content;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+#view-guests-button {
+  position: absolute;
+  width: 33vw;
+  height: 40px;
+  top: 0;
+  left: 0;
+}
+
+#exit-guest-button {
+  position: absolute;
+  width: 33vw;
+  height: 40px;
+  top: 0;
+  right: 0;
+}
+
+.title {
+  grid-area: title;
+}
+
+.title-container {
+  display: grid;
+  grid-template-areas: ". title .";
+  justify-items: center;
+}
+
+.info-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  text-align: center;
+  gap: 1em;
+}
+
+.guest-name {
+  grid-area: name;
+  text-transform: capitalize;
+
+}
+.guest-email {
+  grid-area: email;
+
+}
+
+.guest-kids {
+  grid-area: kids;
+  align-content: center;
+  text-align: center;
+  height: 50px;
+  width: 50px;
+  border-radius: 5px;
+  background-color: rgb(243, 243, 243); 
+}
+
+.guest-paid {
+  grid-area: paid;
+  align-content: center;
+  text-align: center; 
+  height: 50px;
+  width: 50px;
+  border-radius: 5px;
+  background-color: rgb(243, 243, 243); 
+}
+
+.guest-paid:hover {
+  cursor: pointer;
+}
+
+#guest-stats {
+  display: grid;
+  grid-area: 1 / 2;
+  text-align: center;
+}
+
+.guest-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: repeat(auto);
+  grid-template-areas: "paid name kids"
+                      "paid email kids";
+
+  /* background-color: rgb(243, 243, 243); */
+  border-radius: 5px;
+  justify-items: center;
+
+}
+
+.guest-cards {
+  display: grid;
+  grid-area: 2 / 2;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  gap: 1em;
+ 
+}
+
+.guest-wrapper {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: repeat(auto);
+  justify-content: center;
+  gap: 1em;
+  margin: 2em 0;
+}
+
+#to-topOfPage-button, 
+#copy-data-button{
+  display: grid;
+  width: 40px;
+  height: 40px;
+  /* border-radius: 50%; */
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  /* font-size: 1rem; */
+  background-color: #4c7541;
+}
+
+#to-topOfPage-button {
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* background-size: cover; */
+  background-image: url("../assets/arrow-up.svg");
+}
+
+#copy-data-button {
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* background-size: cover; */
+  background-image: url("../assets/copy.svg");
+
+}
+
+.button-container {
+  display: grid;
+  grid-area: 3 / 2;
+  grid-template-columns: auto auto;
+  justify-items: center
+}
