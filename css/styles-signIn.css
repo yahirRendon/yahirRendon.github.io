@@ -84,7 +84,7 @@ button:hover {
 .parent {
   display: grid;
   grid-template-columns: 100vw;
-  grid-template-rows: 100vh;
+  grid-template-rows: minmax(450px, 100vh);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -95,7 +95,7 @@ button:hover {
 .child {
   display: grid;
   grid-template-columns: minmax(1rem, 1fr) minmax(5rem, 30rem) minmax(1rem, 1fr);
-  grid-template-rows: minmax(1rem, 1fr) minmax(5rem, auto) minmax(1rem, 1fr);
+  grid-template-rows: minmax(1rem, 1fr) minmax(425px, auto) minmax(1rem, 1fr);
 }
 
 .g-child {
