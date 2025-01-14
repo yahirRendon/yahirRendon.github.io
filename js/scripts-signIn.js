@@ -186,7 +186,7 @@ function saveGuestInfo() {
 
         if (firstName === "YR" && lastName === "AG" && email === "deleteThisNow!") {
             localStorage.clear();
-            guestList = [];
+            guestListData = [];
             guestCardContainer.innerHTML = '';
             
             guestStatistics.innerHTML = "Guests: 0" +
