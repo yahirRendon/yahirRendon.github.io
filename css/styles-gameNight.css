@@ -202,7 +202,8 @@ body {
 /* editing player card */
 .player-card {
     background-color: #FFF;
-    width: 400px;
+    min-width: 300px;
+    max-width: 400px;
     height: 200px;
     border-radius: 15px;
     display: flex;
@@ -214,7 +215,8 @@ body {
 /* displaying current player card */
 .cur-player-card {
     background-color: #FFF;
-    width: 400px;
+    min-width: 300px;
+    max-width: 400px;
     height: 200px;
     border-radius: 15px;
     display: flex;
