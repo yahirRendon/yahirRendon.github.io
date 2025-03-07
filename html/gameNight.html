@@ -1,0 +1,154 @@
+<!-- 
+  Game Night Score Tracker - Main HTML File
+  -----------------------------------------
+  the main interface for the game night score tracking, allowing users to:
+  - view, create, and manage scores for individual games.
+
+  Structure Overview:
+  - `<div id="new-game-wrapper">` create new game
+  - `<div id="nav-button-wrapper">` control edit, save, and back UI elements
+  - `<div id="edit-game">` UI for creating a new game or editing a prio game
+  - `<div id="prior-games">` displays prior game tiles
+  - `<div id="current-game">` UI for displaying current game
+  - `<div id="score-update-modal">` UI elements for modal for score updating
+  - `<script src="script.js"></script>` Links the JavaScript functionality.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Game Night!</title>
+    <!-- github -->
+    <!-- <link rel="stylesheet" href="../css/styles-gameNight.css">  -->
+    <!-- local -->
+    <link rel="stylesheet" href="css/styles-gameNight.css">
+</head>
+
+<body>
+
+    <!-- start new game button -->
+    <div class="button-centerEnd-wrapper" id="new-game-wrapper">
+        <div class="h1">Let's Play!</div>
+        <div class="spacer"></div>
+        <button class="button-round button-large button-green" id="button-new-game">
+            <img src="img/projects/gameNight/plus.svg" alt="New Game Icon">
+        </button>
+    </div>
+    <div class="spacer"></div>
+
+    <!-- Back and Save buttons -->
+    <div class="button-ends-wrapper" id="nav-button-wrapper">
+        <button class="button-round button-large button-green" id="button-back">
+            <img src="img/projects/gameNight/arrow-left.svg" alt="Edit Icon">
+        </button>
+        <button class="button-round button-large button-blue" id="button-save">
+            <img src="img/projects/gameNight/check.svg" alt="Save Icon">
+        </button>
+        <button class="button-round button-large button-blue" id="button-edit">
+            <img src="img/projects/gameNight/edit.svg" alt="Edit Icon">
+        </button>
+    </div>
+
+    <!-- create new game and/or edit a game -->
+    <div class="edit-game-wrapper" id="edit-game">
+        <div class="editable-field" id="gameNameField">
+            <input type="text" id="gameNameInput" placeholder="What Game Are We Playing?">
+        </div>
+        <div class="h4">
+            Today's Date: <span id="current-date"></span>
+        </div>
+        <div class="h3 narrow" id="weatherAdLib">Witty weather statement coming soon!</div>
+        <div class="button-center-wrapper">
+            <button class="button-round button-large button-green" id="add-player-button">
+                <img src="img/projects/gameNight/user-plus.svg" alt="Add Player Icon">
+            </button>
+        </div>
+        <!-- container for dynamically added player cards -->
+        <div class="player-cards-container"></div>
+        <!-- template for a player card -->
+        <template id="player-card-template">
+            <div class="player-card">
+                <div class="left">
+                    <div class="player-image">
+                        <img data-player-image src="" alt="Player Avatar">
+                    </div>
+                    <input class="player-name outline" type="text" data-player-name placeholder="Who is Playing?">
+                </div>
+                <div class="right">
+                    <input class="player-score outline" type="number" data-player-score placeholder="0" value="0">
+                </div>
+            </div>
+        </template>
+    </div>
+    <div class="spacer"></div>
+
+    <!-- display prior games -->
+    <div class="prior-games-wrapper" id="prior-games">
+        <div class="h1">Prior Games</div>
+        <!-- container for dynamically adding prior game cards -->
+        <div class="prior-games-container">
+            <!-- template for prior games -->
+            <template class="prior-game-template">
+                <div class="prior-game-item">
+                    <div class="h2" data-game-name>Game Name</div>
+                    <div class="h4" data-game-date>Date</div>
+                    <div class="h3" data-game-winner>Winner</div>
+                    <div class="button-center-wrapper">
+                        <button class="button-round button-small button-red" id="button-remove">
+                            <img src="img/projects/gameNight/x.svg" alt="Delete Icon">
+                        </button>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
+    <div class="spacer"></div>
+
+    <!-- display current game -->
+    <div class="current-game-wrapper" id="current-game">
+        <div class="h1" data-game-name></div>
+        <div class="h4" data-game-date></div>
+        <div class="h3 narrow" data-game-witty></div>
+        <!-- container for dynamically adding player cards for current game -->
+        <div id="cur-player-cards-container"></div>
+        <!-- template for a player card for current game -->
+        <template id="cur-player-card-template">
+            <div class="cur-player-card">
+                <div class="left">
+                    <div class="player-image">
+                        <img data-player-image src="" alt="Player Avatar">
+                    </div>
+                    <div class="player-name" data-player-name></div>
+                </div>
+                <div class="right">
+                    <div class="player-score" data-player-score></div>
+                </div>
+            </div>
+        </template>
+    </div>
+
+    <!-- score update modal -->
+    <div id="score-update-modal" class="modal">
+        <div class="modal-content">
+            <p id="score-update-text">Update score for [Player Name]</p>
+            <input type="text" id="score-update-input" placeholder="Enter round score">
+            <div class="button-center-wrapper">
+                <button class="button-round button-small button-green" id="score-update-btn">
+                    <img src="img/projects/gameNight/check.svg" alt="Check Icon">
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- github -->
+    <!-- <script src="../js/scripts-gameNight.js" type="text/javascript"></script> -->
+    <!-- local -->
+    <script src="js/scripts-gameNight.js"></script>
+</body>
+
+</html>
