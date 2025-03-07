@@ -1,0 +1,347 @@
+/*
+ * Game Night Score Tracker - Stylesheet
+ * -------------------------------------
+ * styling for the game night score tracker system
+ *
+ */
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #f6f3ec;
+}
+
+/* general elements */
+.h1 {
+    font-size: xx-large;
+    text-align: center;
+}
+
+.h2 {
+    font-size: x-large;
+    text-align: center;
+}
+
+.h3 {
+    text-align: center;
+    font-size: large;
+    text-transform: uppercase;
+    padding: 1rem;
+}
+
+.h4 {
+    text-align: center;
+    font-size: small;
+}
+
+.spacer {
+    height: 20px;
+    width: 100vw;
+}
+
+/* button elements */
+.button-centerEnd-wrapper {
+    display: flex;
+    flex-direction: column; 
+    min-height: 33vh;
+    margin: 20px;
+    justify-content: end;
+    align-items: center;    
+}
+
+.button-right-wrapper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: end;
+}
+
+.button-center-wrapper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-ends-wrapper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+#button-back {
+    margin: 10px;
+}
+#button-save {
+    margin: 10px;
+}
+#button-edit {
+    margin: 10px;
+}
+
+.button-round {
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button-small {
+    width: 50px;
+    height: 50px;
+}
+
+.button-large {
+    width: 80px;
+    height: 80px;
+}
+
+.button-blue {
+    background-color: #b4d7dd;
+}
+
+.button-red {
+    background-color: #f26740;
+}
+
+.button-green {
+    background-color: #bbcda5;
+}
+
+.round-button img {
+    width: 50%;
+    height: 50%;
+}
+
+/* edit game but also works for creating new game */
+.edit-game-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.editable-field {
+    display: flex;
+    padding: 10px 0;
+}
+
+.editable-field input {
+    width: 300px;
+    max-width: 500px;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    text-align: center;
+}
+
+.narrow {
+    max-width: 400px;
+}
+
+/* Prior games wrapper */
+.prior-games-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.prior-games-container {
+    width: 300px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+}
+
+.prior-game-item {
+    background-color: #FFF;
+    width: 100%;
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.prior-game-item:hover {
+    cursor: pointer;
+}
+
+.prior-game-template {
+    display: none;
+}
+
+/* current game template */
+.current-game-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+}
+
+/* editing player card */
+.player-card {
+    background-color: #FFF;
+    width: 400px;
+    height: 200px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+}
+
+/* displaying current player card */
+.cur-player-card {
+    background-color: #FFF;
+    width: 400px;
+    height: 200px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+}
+
+.left {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.player-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 70%;
+}
+
+.player-image img {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    display: block;
+}
+
+.player-name {
+    display: flex;
+    height: 20%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 6px;
+}
+
+.player-score {
+    display: flex;
+    font-size: 4rem;
+    width: 90%;
+    height: 90%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.outline {
+    border-radius: 6px;
+    border: 1px solid gray;
+}
+
+.player-card .left .player-image:hover {
+    cursor: pointer;
+}
+
+.player-score:hover {
+    cursor: pointer;
+}
+
+#player-score-edit {
+    display: flex;
+    border-radius: 6px;
+    border: 1px solid gray;
+    text-align: center;
+}
+
+#player-name-edit {
+    border-radius: 6px;
+    border: 1px solid gray;
+    margin: 5%;
+}
+
+#player-score-edit:hover,
+#player-name-edit:hover,
+#player-image-edit:hover {
+    cursor: pointer;
+}
+
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 6px;
+    width: 80%;
+    max-width: 400px;
+    height:fit-content;
+    box-sizing: border-box; 
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #score-update-text {
+    margin-bottom: 15px;
+  }
+  
+  #score-update-input {
+    width: 80%;
+    padding: 10px;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  
