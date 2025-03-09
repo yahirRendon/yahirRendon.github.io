@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function () {
             "The forecast says [main], but our friendship and game night always shine!",
             "I will remember this [main] day as the game night friends became enemies!",
             "Even though it's [main] outside, our friendship shines brighter -game night is a go!",
-            "Even when the weather's [main], the drive home a bright after a game night victory!",
+            "Even when the weather's [main], the drive home is bright after a game night victory!",
             "They say it's [main] out there, but game night is nothing but good vibes!",
             "When the weather is [main], game night and great friends are all we need!",
             "No matter if it's [main] or not, our game night is where friendship triumphs!",
