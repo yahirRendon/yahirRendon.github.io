@@ -7,13 +7,11 @@
  * - store and retrieve game data using `localStorage` for persistence.
  * - provide interactive features such as dynamic UI updates and game deletion.
  *
- *
  * Storage & UI Interactions:
  * - usses `localStorage` to persist game data
  * - dynamically updates the UI elements based on user interactions.
  *
  */
-
 document.addEventListener('DOMContentLoaded', function () {
 
   // retrieve the gameData array from localStorage or initialize as empty
@@ -21,11 +19,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // DOM element references
   const editGameWrapper = document.getElementById('edit-game');
-  const priorGamesWrapper = document.getElementById('prior-games'); // Wrapper for prior games
-  const priorGamesContainer = document.querySelector('.prior-games-container'); // Container inside prior-games
-  const buttonNewGame = document.getElementById('button-new-game'); // New Game button
-  const newGamewrapper = document.getElementById('new-game-wrapper'); // New game wrapper element and helper functions
-  const currentGameWrapper = document.getElementById('current-game'); // Current game wrapper helper functions (for display mode)
+  const priorGamesWrapper = document.getElementById('prior-games'); 
+  const priorGamesContainer = document.querySelector('.prior-games-container'); 
+  const buttonNewGame = document.getElementById('button-new-game'); 
+  const newGamewrapper = document.getElementById('new-game-wrapper'); 
+  const currentGameWrapper = document.getElementById('current-game'); 
   const navButtonWrapper = document.getElementById('nav-button-wrapper');
   const gameNameInput = document.getElementById('gameNameInput');
   const currentDateEl = document.getElementById('current-date');
@@ -86,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
     return JSON.parse(localStorage.getItem('gameData')) || [];
   }
 
+  // simple function for check data
   function hasSavedGames() {
     const games = getStoredGameData();
     return games.length > 0;
@@ -97,6 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
     currentDateEl.textContent = now.toLocaleDateString() + " " + now.toLocaleTimeString();
   }
 
+  // get weather data and create mad lib
   function fetchWeatherAdLib() {
     const API_KEY = getAPIKey("048055057056057048054057051057053054056054051098052102051051051101054102099057055098100102101102");
 
@@ -112,16 +112,15 @@ document.addEventListener('DOMContentLoaded', function () {
       "Chilliwack,CA"
     ];
 
-    // Select a random city from the list.
+    // select a random city from the list.
     const randomCity = cities[Math.floor(Math.random() * cities.length)];
     // randomCity = cities[0]; // for testing
 
-
-    // Build the API URL (using the standard current weather endpoint).
+    // build the API URL
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(randomCity)}&appid=${API_KEY}`;
     console.log(Math.floor(Math.random() * cities.length), randomCity);
 
-    // Fetch weather data.
+    // fetch weather data.
     fetch(url)
       .then(response => {
         if (!response.ok) {
@@ -171,19 +170,19 @@ document.addEventListener('DOMContentLoaded', function () {
             "They say it's [main] outside, but that's just the universe testing our will to game!",
             "While others question the forecast of [main], we're busy questioning our friendship after game night.",
             "It might be [main] out there, but trust us: game night will become the storm you want to get caught in."
-
           ];
-          // Select a random phrase.
+
+          // select a random phrase.
           const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
-          // Replace [main] with the actual weather main description.
+          // replace [main] with the actual weather main description.
           const finalPhrase = randomPhrase.replace("[main]", mainWeather);
-          // Set the resulting phrase in the element with id "weatherAdLib"
+          // set the resulting phrase in the element with id "weatherAdLib"
           document.getElementById("weatherAdLib").textContent = finalPhrase;
         }
       })
       .catch(error => {
         console.error("Error fetching weather:", error);
-        // Fallback phrase if there is an error.
+        // fallback phrase if there is an error.
         document.getElementById("weatherAdLib").textContent = "Game night always outshines the forecast!";
       });
   }
@@ -214,6 +213,17 @@ document.addEventListener('DOMContentLoaded', function () {
     avatarImg.addEventListener('click', function () {
       avatarImg.src = generateRandomAvatar();
     });
+
+    // attach a double-click event listener to the remove button
+  const removeBtn = clone.querySelector('#remove-player-button');
+  removeBtn.addEventListener('dblclick', function (e) {
+    e.stopPropagation(); // Prevent propagation to any parent click events
+    // Remove the entire player card element from the DOM
+    const card = removeBtn.closest('.player-card');
+    if (card) {
+      card.remove();
+    }
+  });
     return clone;
   }
 
@@ -401,8 +411,8 @@ document.addEventListener('DOMContentLoaded', function () {
       // update an existing game
       gameEntry = {
         gameName: gameNameInput.value.trim(),
-        date: now.toLocaleString(), // You can choose to preserve the original date if needed
-        timestamp: existingTimestamp, // Keep the original timestamp so it updates the correct entry
+        date: now.toLocaleString(), 
+        timestamp: existingTimestamp, 
         wittyText: wittyText,
         players: players
       };
@@ -558,6 +568,17 @@ document.addEventListener('DOMContentLoaded', function () {
       // add click listener so user can get a new random avatar.
       avatarImg.addEventListener('click', function () {
         avatarImg.src = generateRandomAvatar();
+      });
+
+      // attach remove player functionality
+      const removeBtn = clone.querySelector('#remove-player-button');
+      removeBtn.addEventListener('dblclick', function (e) {
+        e.stopPropagation();
+        // Remove the card from the edit container.
+        const card = removeBtn.closest('.player-card');
+        if (card) {
+          card.remove();
+        }
       });
 
       container.appendChild(clone);
