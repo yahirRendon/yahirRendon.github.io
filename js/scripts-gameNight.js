@@ -25,27 +25,27 @@ document.addEventListener('DOMContentLoaded', function () {
   const newGamewrapper = document.getElementById('new-game-wrapper'); 
   const currentGameWrapper = document.getElementById('current-game'); 
   const navButtonWrapper = document.getElementById('nav-button-wrapper');
-  const gameNameInput = document.getElementById('gameNameInput');
+  const gameNameInput = document.getElementById('game-name-input');
   const currentDateEl = document.getElementById('current-date');
   const addPlayerButton = document.getElementById('add-player-button');
-  const btnSave = document.getElementById('button-save');
-  const btnEdit = document.getElementById('button-edit');
-  const btnBack = document.getElementById('button-back');
+  const buttonSave = document.getElementById('button-save');
+  const buttonEdit = document.getElementById('button-edit');
+  const buttonBack = document.getElementById('button-back');
   const playerCardTemplate = document.getElementById('player-card-template');
   const priorGameTemplate = document.querySelector('.prior-game-template');
 
   /* ---------- hide/show functions ---------- */
   function hideButtonEdit() {
-    btnEdit.style.display = 'none';
+    buttonEdit.style.display = 'none';
   }
   function showButtonEdit() {
-    btnEdit.style.display = 'flex';
+    buttonEdit.style.display = 'flex';
   }
   function hideButtonSave() {
-    btnSave.style.display = 'none';
+    buttonSave.style.display = 'none';
   }
   function showButtonSave() {
-    btnSave.style.display = 'flex';
+    buttonSave.style.display = 'flex';
   }
   function hideNewGameWrapper() {
     newGamewrapper.style.display = 'none';
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function fetchWeatherAdLib() {
     const API_KEY = getAPIKey("048055057056057048054057051057053054056054051098052102051051051101054102099057055098100102101102");
 
-    // Array of cities for the region with their country codes:
+    // array of cities for the region with their country codes:
     const cities = [
       "Bellingham,US",
       "Sumas,US",
@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function () {
             "The forecast says [main], but our friendship and game night always shine!",
             "I will remember this [main] day as the game night friends became enemies!",
             "Even though it's [main] outside, our friendship shines brighter -game night is a go!",
-            "Even when the weather's [main], the drive home is bright after a game night victory!",
+            "Even when the weather's [main], the drive home a bright after a game night victory!",
             "They say it's [main] out there, but game night is nothing but good vibes!",
             "When the weather is [main], game night and great friends are all we need!",
             "No matter if it's [main] or not, our game night is where friendship triumphs!",
@@ -177,13 +177,13 @@ document.addEventListener('DOMContentLoaded', function () {
           // replace [main] with the actual weather main description.
           const finalPhrase = randomPhrase.replace("[main]", mainWeather);
           // set the resulting phrase in the element with id "weatherAdLib"
-          document.getElementById("weatherAdLib").textContent = finalPhrase;
+          document.getElementById("weather-ad-lib").textContent = finalPhrase;
         }
       })
       .catch(error => {
         console.error("Error fetching weather:", error);
         // fallback phrase if there is an error.
-        document.getElementById("weatherAdLib").textContent = "Game night always outshines the forecast!";
+        document.getElementById("weather-ad-lib").textContent = "Game night always outshines the forecast!";
       });
   }
 
@@ -196,7 +196,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     return api;
   }
-
 
   // generate a random avatar URL from DiceBear
   // i like personas, minilavs, and micah
@@ -400,7 +399,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const players = gatherPlayersData();
     const now = new Date();
-    const wittyText = document.getElementById("weatherAdLib").textContent;
+    const wittyText = document.getElementById("weather-ad-lib").textContent;
 
     // retrieve any existing timestamp from the edit view
     const existingTimestamp = editGameWrapper.getAttribute("data-timestamp");
@@ -504,7 +503,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // attach listeners for the edit game functionality
   function attachEditGameListeners() {
     addPlayerButton.addEventListener('click', addPlayerCard);
-    btnBack.addEventListener('click', function () {
+    buttonBack.addEventListener('click', function () {
       hideEditGameWrapper();
       hideNavButtonWrapper();
       hideCurrentGameWrapper();
@@ -514,7 +513,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       showNewGameWrapper();
     });
-    btnSave.addEventListener('click', saveGameData);
+    buttonSave.addEventListener('click', saveGameData);
   }
 
   // attach listener for the new game button
@@ -539,7 +538,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const editGame = document.getElementById('edit-game');
 
     // load game name into the input field.
-    const gameNameInput = document.getElementById('gameNameInput');
+    const gameNameInput = document.getElementById('game-name-input');
     gameNameInput.value = game.gameName;
 
     // load game date.
@@ -547,7 +546,7 @@ document.addEventListener('DOMContentLoaded', function () {
     currentDateEl.textContent = game.date;
 
     // load witty comment.
-    const weatherAdLib = document.getElementById('weatherAdLib');
+    const weatherAdLib = document.getElementById('weather-ad-lib');
     weatherAdLib.textContent = game.wittyText;
 
     // clear the container for player cards in the edit view.
@@ -618,7 +617,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // attach event listener for the Edit button so that clicking it switches to edit mode.
-  btnEdit.addEventListener('click', switchToEditMode);
+  buttonEdit.addEventListener('click', switchToEditMode);
 
 
   // initialize the view on page load:
