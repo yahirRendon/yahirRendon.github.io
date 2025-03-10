@@ -90,22 +90,45 @@ function menuButtonToggle() {
 * Toggle the menu links in navigation
 * 
 *****************************************************************************/
+// function navigationBarToggle() {
+//     let navElem = document.getElementsByClassName('toggle-show');
+//     for (var i = 0; i < navElem.length; i++) {
+//         let navStyle = window.getComputedStyle(navElem[i], null);
+//         let navStyleDisplay = navStyle.getPropertyValue('display');
+
+//         if (navStyleDisplay == 'none') {
+//             navElem[i].style.display = 'grid';
+//             navElem[i].classList.remove('fadeOut-mod');
+//             void navElem[i].offsetWidth; // trigger reflow
+//             navElem[i].classList.add('fadeIn-mod');
+
+//         } else {
+//             navElem[i].classList.remove('fadeIn-mod');
+//             void navElem[i].offsetWidth; // trigger reflow
+//             navElem[i].classList.add('fadeOut-mod');
+//         }
+//     }
+// }
+
 function navigationBarToggle() {
-    let navElem = document.getElementsByClassName('toggle-show');
-    for (var i = 0; i < navElem.length; i++) {
-        let navStyle = window.getComputedStyle(navElem[i], null);
-        let navStyleDisplay = navStyle.getPropertyValue('display');
-
-        if (navStyleDisplay == 'none') {
-            navElem[i].style.display = 'grid';
-            navElem[i].classList.remove('fadeOut-mod');
-            void navElem[i].offsetWidth; // trigger reflow
-            navElem[i].classList.add('fadeIn-mod');
-
+    let navElems = document.getElementsByClassName('toggle-show');
+    for (let i = 0; i < navElems.length; i++) {
+        let navStyle = window.getComputedStyle(navElems[i]);
+        if (navStyle.getPropertyValue('display') === 'none') {
+            navElems[i].style.display = 'grid';
+            navElems[i].classList.remove('fadeOut-mod');
+            // force reflow
+            void navElems[i].offsetWidth;
+            navElems[i].classList.add('fadeIn-mod');
         } else {
-            navElem[i].classList.remove('fadeIn-mod');
-            void navElem[i].offsetWidth; // trigger reflow
-            navElem[i].classList.add('fadeOut-mod');
+            navElems[i].classList.remove('fadeIn-mod');
+            // force reflow
+            void navElems[i].offsetWidth;
+            navElems[i].classList.add('fadeOut-mod');
+            // fallback: Remove the element from view after the animation
+            setTimeout(function(elem) {
+                elem.style.display = 'none';
+            }, 750, navElems[i]);
         }
     }
 }
