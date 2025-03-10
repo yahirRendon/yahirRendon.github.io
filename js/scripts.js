@@ -120,6 +120,8 @@ function navigationBarToggle() {
             // force reflow
             void navElems[i].offsetWidth;
             navElems[i].classList.add('fadeIn-mod');
+
+            console.log("open");
         } else {
             navElems[i].classList.remove('fadeIn-mod');
             // force reflow
