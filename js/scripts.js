@@ -127,6 +127,7 @@ function navigationBarToggle() {
             navElems[i].classList.add('fadeOut-mod');
             // fallback: Remove the element from view after the animation
             setTimeout(function(elem) {
+                console.log("timeout complete");
                 elem.style.display = 'none';
             }, 750, navElems[i]);
         }
