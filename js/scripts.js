@@ -124,16 +124,17 @@ function navigationBarToggle() {
             console.log("open");
         } else {
             navElems[i].classList.remove('fadeIn-mod');
+            navElems[i].style.display = 'none';
             // force reflow
             void navElems[i].offsetWidth;
-            navElems[i].classList.add('fadeOut-mod');
+            // navElems[i].classList.add('fadeOut-mod');
 
             console.log("timeout start");
             // fallback: Remove the element from view after the animation
-            setTimeout(function(elem) {
-                console.log("timeout complete");
-                elem.style.display = 'none';
-            }, 750, navElems[i]);
+            // setTimeout(function(elem) {
+            //     console.log("timeout complete");
+            //     elem.style.display = 'none';
+            // }, 750, navElems[i]);
         }
     }
 }
