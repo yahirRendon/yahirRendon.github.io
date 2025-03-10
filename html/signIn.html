@@ -1,79 +1,163 @@
+<!-- 
+  Event Management System - Main HTML File
+  -----------------------------------------
+  the main interface for the event management system, allowing users to:
+  - view, create, and manage events.
+  - sign in as guests and track event statistics.
+  - switch between event views dynamically.
+
+  Structure Overview:
+  - `<header>` → Navigation and branding.
+  - `<nav>` toggle display of prior events and guest list
+  - `<main>` main event display and management.
+  - `<section class="current-event-container">` displays the currently selected event.
+  - `<section class="create-event-container">` Event creation form.
+  - `<section class="guest-list">` lists guests attending the event.
+  - `<section id="prior-events-wrapper">` displays prior events
+  - `<script src="script.js"></script>` Links the JavaScript functionality.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&amp;display=swap"
-        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <title>Event Sign Up</title>
+<!--     <link rel="stylesheet" href="css/styles-signIn.css"> -->
     <link rel="stylesheet" href="../css/styles-signIn.css">
-    <title>The Wellness Table | Sign In</title>
 </head>
 
 <body>
-    <!-- user banner area: left= view guest | right= exit screen -->
-    <div id="view-guests-button"></div>
-    <div id="exit-guest-button"></div>
+    <!-- navigation banner -->
+    <nav class="nav-container">
+        <div id="view-guests-btn" class="nav-1"></div>
+        <div class="nav-2"></div>
+        <div id="view-create-btn" class="nav-3"></div>
+    </nav>
 
-    <!-- guest sign in section -->
-    <div class="parent">
-        <div class="child">
-            <div class="g-child">
-                <div class="gg-child">
-                    <div class="host-banner-container">
-                        <div class="host-name h1">The Wellness Table</div>
-                        <div class="event-name h5">MEXICAN STREET FARE</div>
-                        <div class="event-date h5">January 12</div>
-                    </div>
+    <!-- display current event -->
+    <div class="current-event-container">
+        <div id="current-event" class="current-event-content">
+            <div class="current-event-details">
+                <h1 id="host-name-title">Host Name</h1>
+                <h2 id="event-name-title">Event Name</h2>
+                <p id="event-date-title">Event Date</p>
+            </div>
+            <div class="current-form-container">
+                <form id="guest-sign-in-form" class="current-sign-in-form form">
+                    <p class="instruction-text">Please sign in below</p>
+                    <input type="text" placeholder="First Name" />
+                    <input type="text" placeholder="Last Name" />
+                    <select class="dropdown">
+                        <option value="" disabled selected>How did you hear about the event?</option>
+                        <option value="meetup">Meetup.com</option>
+                        <option value="eventbrite">Eventbrite.com</option>
+                        <option value="flyer">Local Business Flyer</option>
+                        <option value="church">Church Announcement</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <p class="notification-text">Get notified of future events</p>
+                    <input type="email" placeholder="Email Address" />
+                    <button type="submit">Sign In</button>
+                </form>
+            </div>
+        </div>
 
-                    <div class="welcome-msg hide"></div>
+        <!-- create new event -->
+        <div id="create-event" class="create-event-content">
+            <div class="create-event-container form">
+                <p>Create a new event</p>
+                <form id="create-event-form">
+                    <input id="host-name-field" type="text" placeholder="Host Name" />
+                    <input id="event-name-field" type="text" placeholder="Event Name" />
+                    <input id="event-date-field" type="text" placeholder="Event Date" />
+                    <input id="event-image-field" type="number" min="0" max="17" placeholder="Image" />
+                    <button id="event-create-button" type="submit">Create</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
-                    <div class="form-container">
-                        <div class="instructions">Please sign in below</div>
-                        <input id="f-name" type="text" placeholder="First Name">
-                        <input id="l-name" type="text" placeholder="Last Name">
-                        <div class="instructions">Get email notifications for<br>upcoming events</div>
-                        <input id="g-email" type="text" placeholder="email">
-                        <div class="form-button-wrapper">
-                            <button id="submit-button" type="button">Sign In</button>
-                        </div>
-                    </div>
+    <!-- display guests and statestics for event -->
+    <div id="guest-wrapper">
+        <div class="guest-list-container">
+            <div class="guest-stats-container">
+                <h2>Guest List Info</h2>
+                <div id="guest-stats">
+                    <p>Total Guests: <span id="total-guests">0</span></p>
+                    <p>Guests Paid: <span id="guests-paid">0</span></p>
+                    <p>Total Kids: <span id="total-kids">0</span></p>
+                    <p>Heard About Breakdown:</p>
+                    <ul id="heard-about-breakdown">
+                        <li>Meetup.com: <span id="heard-meetup">0</span></li>
+                        <li>Eventbrite.com: <span id="heard-eventbrite">0</span></li>
+                        <li>Local Business Flyer: <span id="heard-flyer">0</span></li>
+                        <li>Church Announcement: <span id="heard-church">0</span></li>
+                        <li>Other: <span id="heard-other">0</span></li>
+                        <li>Not Specified: <span id="heard-not-specified">0</span></li>
+                    </ul>
                 </div>
+                <div class="guest-list" id="guestList"></div>
+            </div>
+
+            <!-- template for individual guests -->
+            <template id="guest-template">
+                <div class="guest-item">
+                    <p><span class="label">Name:</span> <span data-name></span></p>
+                    <p><span class="label">Email:</span> <span data-email></span></p>
+                    <p><span class="label">Heard About:</span> <span data-heard-about></span></p>
+                    <p>
+                        <span class="label">Paid:</span>
+                        <button class="paid-toggle-btn" data-paid></button>
+                    </p>
+                    <p>
+                        <span class="label">Kids Under 13:</span>
+                        <button class="kids-toggle-btn" data-kids></button>
+                    </p>
+                    <button class="remove-guest-btn">Remove</button>
+                </div>
+            </template>
+
+            <!-- event action buttons -->
+            <div id="actions-container">
+                <button id="delete-all-btn" title="Delete All Guests">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+                <button id="scroll-to-top-btn" title="Scroll to Top">
+                    <i class="fas fa-arrow-up"></i>
+                </button>
+                <button id="copy-guests-btn" title="Copy Guests">
+                    <i class="fas fa-copy"></i>
+                </button>
             </div>
         </div>
     </div>
-    <!-- <div class="spacer-large"></div> -->
 
-    <!-- will display total guests numbers/data -->
-    <!-- <div class="title-container">
-        <div id="guest-stats" class="title"></div>
-    </div> -->
-    <!-- <div class="spacer-large"></div> -->
-
-    <div class="guest-wrapper">
-        <div id="guest-stats" class="title"></div>
-        <div class="guest-cards" data-guest-cards-container></div>
-        <template data-guest-template>
-            <div class="guest-container">
-                <div class="guest-name" data-name></div>
-                <div class="guest-email" data-email></div>
-                <div class="guest-kids" data-kids></div>
-                <div class="guest-paid" data-paid></div>
-            </div>
-        </template>
-        <div class="button-container">
-            <button id="to-topOfPage-button" type="button"></button>
-            <!-- <button id="to-topOfPage-button" type="button">&#11105;</button> -->
-            <!-- <button id="copy-data-button" type="button">&#128203;</button> -->
-            <button id="copy-data-button" type="button"></button>
+    <!-- template display for prior events -->
+    <div id="prior-events-wrapper">
+        <div class="prior-events-container">
+            <h2>Prior Events</h2>
+            <div class="prior-event-list" id="priorEventList"></div>
+            <template id="prior-event-template">
+                <div class="prior-event-item" data-event-img>
+                    <div class="prior-blur-cont" >
+                    <p><span class="label">Date:</span> <span data-event-data></span></p>
+                    <p><span class="label">Host:</span> <span data-host-name></span></p>
+                    <p><span class="label">Event:</span> <span data-event-name></span></p>
+                    <p><span class="label">Guests:</span> <span data-num-guests></span></p>
+                    <button class="delete-event-button">Delete</button>
+                </div>
+                </div>
+            </template>
         </div>
     </div>
-    <!-- <div class="spacer-large"></div> -->
 
 
-
+<!--     <script src="js/scripts-SignIn.js"></script> -->
     <script src="../js/scripts-signIn.js" type="text/javascript"></script>
 </body>
 
