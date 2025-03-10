@@ -152,6 +152,20 @@ document.getElementsByClassName('toggle-show')[0].addEventListener("animationend
     }
 }, false);
 
+// safari mobile
+document.getElementsByClassName('toggle-show')[0].addEventListener("webkitAnimationEnd", function () {
+    let navElem = document.getElementsByClassName('toggle-show');
+
+    if (navElem[0].classList.contains('fadeOut-mod')) {
+        for (var i = 0; i < navElem.length; i++) {
+            let navStyle = window.getComputedStyle(navElem[i], null);
+            let navStyleDisplay = navStyle.getPropertyValue('display');
+
+            navElem[i].style.display = 'none';
+        }
+    }
+}, false);
+
 /******************************************************************************
 *
 * move to top of page from footer
