@@ -83,11 +83,23 @@ general class stuff
 
 /* fade in/out at moderate speed */
 .fadeIn-mod {
+  -webkit-animation: fadeInMod 750ms;
   animation: fadeInMod 750ms;
 }
 
 .fadeOut-mod {
+  -webkit-animation: fadeOutMod 750ms;
   animation: fadeOutMod 750ms;
+}
+
+@-webkit-keyframes fadeInMod {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 100;
+  }
 }
 
 @keyframes fadeInMod {
@@ -97,6 +109,16 @@ general class stuff
 
   100% {
     opacity: 100;
+  }
+}
+
+@-webkit-keyframes fadeOutMod {
+  0% {
+    opacity: 100;
+  }
+
+  100% {
+    opacity: 0;
   }
 }
 
