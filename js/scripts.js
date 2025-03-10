@@ -139,32 +139,33 @@ function resetMenu() {
 * run when animation for first element in toggle-show group is over
 * 
 *****************************************************************************/
-document.getElementsByClassName('toggle-show')[0].addEventListener("animationend", function () {
+// document.getElementsByClassName('toggle-show')[0].addEventListener("animationend", function () {
+//     let navElem = document.getElementsByClassName('toggle-show');
+
+//     if (navElem[0].classList.contains('fadeOut-mod')) {
+//         for (var i = 0; i < navElem.length; i++) {
+//             let navStyle = window.getComputedStyle(navElem[i], null);
+//             let navStyleDisplay = navStyle.getPropertyValue('display');
+
+//             navElem[i].style.display = 'none';
+//         }
+//     }
+// }, false);
+
+const navToggleEl = document.getElementsByClassName('toggle-show')[0];
+
+function onAnimationEnd() {
     let navElem = document.getElementsByClassName('toggle-show');
-
     if (navElem[0].classList.contains('fadeOut-mod')) {
-        for (var i = 0; i < navElem.length; i++) {
-            let navStyle = window.getComputedStyle(navElem[i], null);
-            let navStyleDisplay = navStyle.getPropertyValue('display');
-
+        for (let i = 0; i < navElem.length; i++) {
             navElem[i].style.display = 'none';
         }
     }
-}, false);
+}
 
-// safari mobile
-document.getElementsByClassName('toggle-show')[0].addEventListener("webkitAnimationEnd", function () {
-    let navElem = document.getElementsByClassName('toggle-show');
+navToggleEl.addEventListener("animationend", onAnimationEnd, false);
+navToggleEl.addEventListener("webkitAnimationEnd", onAnimationEnd, false);
 
-    if (navElem[0].classList.contains('fadeOut-mod')) {
-        for (var i = 0; i < navElem.length; i++) {
-            let navStyle = window.getComputedStyle(navElem[i], null);
-            let navStyleDisplay = navStyle.getPropertyValue('display');
-
-            navElem[i].style.display = 'none';
-        }
-    }
-}, false);
 
 /******************************************************************************
 *
