@@ -125,6 +125,8 @@ function navigationBarToggle() {
             // force reflow
             void navElems[i].offsetWidth;
             navElems[i].classList.add('fadeOut-mod');
+
+            console.log("timeout start");
             // fallback: Remove the element from view after the animation
             setTimeout(function(elem) {
                 console.log("timeout complete");
