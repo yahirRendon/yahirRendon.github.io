@@ -75,7 +75,7 @@ const imgPath = "../img/projects/signIn/";
 // hold names for images. access via index
 const imgNames = [
   "pexels-ella-olsson-572949-1640777.jpg",
-  "pavel-kalenik-Ql_SWytd1C4-unsplash.jpg",
+  "pavel-kalenik-Ql_SWytd1C4-unsplash.JPG",
   "pexels-lum3n-44775-1028599.jpg",
   "pexels-tijana-drndarski-449691-1145977.jpg",
   "pexels-ella-olsson-572949-1640773.jpg",
