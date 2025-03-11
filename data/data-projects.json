@@ -3,7 +3,7 @@
         "id": 16,
         "name": "Event Sign In",    
         "description": "Event management system",
-        "color": "1",
+        "color": "0",
         "image": "../img/projects/event-sign-in-ex.jpg",
         "website": "https://yahirrendon.github.io/html/signIn.html",
         "tags": [
