@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- load general styles + sketch specific styles -->
+  <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+  <link rel="stylesheet" type="text/css" href="../css/styles-sketch.css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/addons/p5.sound.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/ismobilejs@1.1.1/dist/isMobile.min.js"></script>
+
+  <title>yahir | cup swap</title>
+</head>
+
+<body>
+  <!-- navigation bar section -->
+  <nav class="container-nav">
+    <!-- contains button and all expand/dropdown links -->
+    <div class="cont-nav-1">
+      <!-- menu button -->
+      <div class="cont-menu">
+        <div class="cont-neo" id="menu-button">
+          <div class="cont-bar">
+            <div class="bar-1"></div>
+            <div class="bar-2"></div>
+            <div class="bar-3"></div>
+          </div>
+        </div>
+      </div>
+      <!-- menu links -->
+      <div class="expand-nav">
+        <div class="exp-cont">
+          <div class="cont-nav-2 toggle-show">
+            <div class="cont-nav-links"><a class="nav-links" title="home page" href="../index.html">home</a></div>
+          </div>
+          <div class="cont-nav-3 toggle-show">
+            <div class="cont-nav-links"><a class="nav-links" title="yahir's github"
+                href="https://github.com/yahirRendon" target="_blank">github</a></div>
+          </div>
+          <div class="cont-nav-4 toggle-show">
+            <div class="cont-nav-links"><a class="nav-links" title="view projects" href="../projects.html">projects</a>
+            </div>
+          </div>
+          <div class="cont-nav-5 toggle-show">
+            <div class="cont-nav-links"><a class="nav-links" title="about yahir" href="../about.html">about</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- home/title link -->
+    <div class="cont-nav-6">
+      <div class="cont-nav-links"><a class="nav-links" title="home page" href="../index.html">yahir</a></div>
+    </div>
+  </nav>
+
+  <div class="spacer-small"></div>
+
+  <!-- title: sweeper -->
+  <!-- name of sketch and short summary -->
+  <div class="container-main">
+    <div class="main-h1-top">cup swap</div>
+  </div>
+  <div class="container-main">
+    <div class="main-p-bot">
+      a simple logic based cup swapping game
+    </div>
+  </div>
+
+  <!-- link to github -->
+  <div class="container-main">
+    <div class="main-p-even-small">
+      <p>view code on <a class="main-p-link"
+          href="https://github.com/yahirRendon/cup-swap-game/blob/main/cupSwap.pde">GitHub</a> for
+        more developement details</p>
+    </div>
+  </div>
+
+  <!-- hold a p5 canvas with 800 by 800 dim -->
+  <div class="container-main-p5">
+    <div id="p5-canvas" class="main-p5"></div>
+  </div>
+
+  <!-- three button display example-->
+  <div class="container-main">
+    <div class="container-p5-buttons">
+      <div class="p5-button-1">
+        <div class="pn_b" id="button-p5-1" title="">
+          <div class="neo_holder_menu">
+            <div class="cont-neo">
+              <div id="p5-button-1-symbol">&#65291</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="p5-button-2">
+        <div class="pn_b" id="button-p5-2" title="reset game">
+          <div class="neo_holder_menu">
+            <div class="cont-neo">
+              <div id="p5-button-2-symbol">&#11096</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="p5-button-3">
+        <div class="pn_b" id="button-p5-3" title="">
+          <div class="neo_holder_menu">
+            <div class="cont-neo">
+              <div id="p5-button-3-symbol">&#11118</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spacer-medium"></div>
+
+  <!-- instructions  -->
+  <div class="cont-text">
+    <div class="text-center text-h1">instructions</div>
+  </div>
+
+  <div class="container-main">
+    <div class="main-p-even">
+      <div class="main-p-instruction">
+        <div class="instruction-top">left click</div>
+        <div class="instruction-bot">select cups</div>
+      </div>
+      <div class="spacer-small"></div>
+      <div class="main-p-instruction">
+        <div class="instruction-top">&#65291</div>
+        <div class="instruction-bot">adjust number of cups</div>
+      </div>
+      <div class="spacer-small"></div>
+      <div class="main-p-instruction">
+        <div class="instruction-top">space key or &#11096</div>
+        <div class="instruction-bot">submit guess</div>
+      </div>
+      <div class="spacer-small"></div>
+      <div class="main-p-instruction">
+        <div class="instruction-top">&#11118</div>
+        <div class="instruction-bot">reset game</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spacer-large"></div>
+
+  <!-- discover more about the game  -->
+  <div class="container-main">
+    <div class="main-h1-even">learn more</div>
+  </div>
+  <div class="container-main">
+    <div class="main-p-even">
+      This Cup Swapping Game is a logic-based puzzle inspired by online videos. Individuals use two sets of real cups,
+      one set serving as the target pattern and the other as the player's attempt to match it. In these challenges, the
+      target set is hidden from the guesser and only visible to an observer or audience. After each attempt, the guesser
+      is told how many cups in their arrangement match the correct color and position of the target set. Using this
+      limited feedback, the player must deduce the exact sequence of the target pattern through logic and elimination.
+    </div>
+  </div>
+
+  <div class="container-main">
+    <div class="main-p-even">
+      I attempted to recreate the core mechanics of this game by simulating multiple distinct cups, each represented
+      visually and on the screen. One set of cups is randomly generated as the target sequence and remains hidden. The
+      player is then allowed to rearrange a second, visible set of cups. After each guess, the game calculates and
+      returns the number of correctly placed cups, helping guide the player toward the solution. The goal is to
+      correctly replicate the hidden sequence using the fewest number of guesses possible.
+    </div>
+  </div>
+
+  <div class="spacer-large"></div>
+
+  <!-- footer navigation section -->
+  <footer class="container-foot">
+    <div class="cont-foot-1">
+      <a class="foot-links" id="button-top" title="top of page" href="javascript:void(0)">top</a>
+    </div>
+    <div class="cont-foot-2">
+      <a class="foot-links" title="home page" href="../index.html">home</a>
+    </div>
+    <div class="cont-foot-3">
+      <a class="foot-links" title="yahir's github" target="_blank" href="https://github.com/yahirRendon">github</a>
+    </div>
+    <div class="cont-foot-4">
+      <a class="foot-links" title="view projects" href="../projects.html">projects</a>
+    </div>
+    <div class="cont-foot-5">
+      <a class="foot-links" title="about yahir" href="../about.html">about</a>
+    </div>
+  </footer>
+
+  <div class="spacer-small"></div>
+
+</body>
+<!-- general sripts + sketch scripts -->
+<script src="../js/scripts.js"></script>
+<script src="../js/scripts-cupSwap.js"></script>
+
+</html>
