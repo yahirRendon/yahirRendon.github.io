@@ -1,16 +1,17 @@
 [
     {
-        "id": 17,
-        "name": "score tracker",    
-        "description": "Keep score on game night",
+        "id": 18,
+        "name": "cup swap",    
+        "description": "logic based swapping game",
         "color": "0",
-        "image": "../img/projects/game-night-ex.jpg",
-        "website": "https://yahirrendon.github.io/html/gameNight.html",
+        "image": "../img/projects/cupSwapAnim.gif",
+        "website": "https://yahirrendon.github.io/html/cupSwap.html",
         "tags": [
+            "java",
             "javascript",
-            "ui design",
-            "local storage",
-            "api"
+            "processing",
+            "p5.js",
+            "game"
             ]
     },
     {
