@@ -1,0 +1,716 @@
+/* ==========================================================================
+   BOOK FOLDING WEB APP — MAIN STYLES
+   
+   Key Sections:
+   - Variables: theme colors, fonts, spacing
+   - Base: body, text, reset styles
+   - Layout: app grid, header, stage, HUD
+   - Controls: buttons, sliders, inputs
+   - Output: preview and export panel
+   ========================================================================== */
+
+:root {
+  --arrow-col: 50px;
+  --middle-col: 900px;
+  --font-family: 'Poppins', sans-serif;
+  --numTabs: 4;
+
+  --bg: #e6dfd7;
+  --text: #111;
+  --text-2: #222;
+  --text-3: #333;
+  --text-5: #555;
+  --text-6: #666;
+  --text-light: #f4f5f0;
+  --muted: #424953;
+
+  --hudbg: rgba(142, 156, 165, 0.5);
+  --hudTab: rgba(66, 73, 83, .8);
+  --hudTabActive: #424953;
+  --hudBtn: #dacdc4;
+  --hudBtnActive: #f4f5f0;
+  --hudThumb: #dacdc4;
+  --hudThumbActive: #f4f5f0;
+  --hudSliderFill: #424953;
+  --hudSliderLine: #8e9ca5;
+  --hudSliderLineActive: #c4c9cf;
+}
+
+/* ==========================================================================
+   BASE / RESET
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ==========================================================================
+   TYPOGRAPHY HELPERS
+   ========================================================================== */
+.para {
+  color: var(--text-3);
+  padding: 1em 0;
+  font-size: 14px;
+}
+
+.para-min-center {
+  color: var(--text-3);
+  font-size: 14px;
+  text-align: center;
+}
+
+/* ==========================================================================
+   APP SHELL
+   - Overall app grid container
+   ========================================================================== */
+.app {
+  min-height: 100%;
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  align-items: start;
+  align-content: start;
+  row-gap: 8px;
+  padding: 40px 16px 100px;
+}
+
+/* ==========================================================================
+   HEADER / TITLE
+   ========================================================================== */
+.app-header {
+  width: 100%;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 8px;
+}
+
+.app-header h1 {
+  font-size: 28px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  color: var(--text-2);
+  margin: 0;
+  opacity: 0.85;
+}
+
+.app-header p {
+  font-size: 11px;
+  color: var(--text-6);
+  font-weight: 500;
+  letter-spacing: 3px;
+  margin: 0px auto 16px;
+}
+
+/* ==========================================================================
+   STAGE LAYOUT (CENTER COLUMN + ARROWS)
+   - .canvas-wrapper 
+   - --middle-col width is updated by JS
+   ========================================================================== */
+.canvas-wrapper {
+  width: 100%;
+  max-width: 1600px;
+  display: grid;
+  grid-template-columns: 1fr var(--arrow-col) var(--middle-col) var(--arrow-col) 1fr;
+  align-items: start;
+  gap: 0;
+}
+
+/* Arrow buttons (prev/next) — live in columns 2 and 4 */
+.image-previous,
+.image-next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  cursor: pointer;
+  user-select: none;
+  color: var(--text-alt);
+  opacity: .9;
+  transition: transform 120ms ease, opacity 120ms ease;
+  background: transparent;
+  border: 0;
+  padding: 8px;
+}
+
+.image-previous:hover,
+.image-next:hover {
+  opacity: 1;
+  transform: scale(1.06);
+}
+
+.image-previous {
+  grid-column: 2;
+}
+
+.image-next {
+  grid-column: 4;
+}
+
+/* ==========================================================================
+   STAGE CARD
+   - #stageImage is the default image updated by JS
+   ========================================================================== */
+#stage {
+  grid-column: 3;
+  width: var(--middle-col);
+  background: #fff;
+  border-radius: 16px;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, .06),
+    0 12px 24px rgba(0, 0, 0, .07);
+  overflow: hidden;
+  position: relative;
+}
+
+#stageImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   DRAG & DROP OVERLAY
+   - #drop-overlay covers viewport while dragging files
+   ========================================================================== */
+#drop-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .18);
+  backdrop-filter: blur(1px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  pointer-events: none;
+}
+
+#drop-overlay.active {
+  display: flex;
+}
+
+#drop-overlay .drop-msg {
+  background: var(--text);
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, .25);
+  opacity: .95;
+}
+
+/* ==========================================================================
+   HUD CONTAINER (FIXED, CENTERED)
+   ========================================================================== */
+#hud {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: auto;
+  bottom: auto;
+  width: clamp(320px, 96vw, 1000px);
+  overflow: hidden;
+  /* clip inner edges to radius */
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  /* Safari support */
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .2);
+}
+
+/* ==========================================================================
+   HUD TAB BAR
+   - match data-tab="<key>" to #hud-<key>
+   ========================================================================== */
+#hud-tabbar {
+  display: grid;
+  grid-template-columns: 40px repeat(var(--numTabs), 1fr);
+  flex: 0 0 auto;
+}
+
+#hud-tabbar .hud-btn {
+  border: 0;
+  background: var(--hudTab);
+  color: var(--text-light);
+  padding: 10px 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: 0;
+}
+
+#hud-tabbar .hud-btn-line {
+  border-left: 1px solid var(--text-light);
+}
+
+#hud-tabbar .hud-btn.active {
+  background: transparent;
+  color: var(--text-2);
+}
+
+#hud-tabbar .hud-btn:not(.active):hover {
+  background: var(--hudTabActive);
+}
+
+#hud-tabbar #hudToggle.hud-btn.small.square {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+}
+
+/* ==========================================================================
+   HUD CONTENT WRAPPER
+   ========================================================================== */
+#hud-content {
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 1fr;
+  opacity: 1;
+  flex: 1 1 auto;
+  overflow: auto;
+  min-height: 0;
+}
+
+#hud.is-collapsed #hud-content {
+  display: none !important;
+}
+
+#hud-content section {
+  padding: 6px 0;
+}
+
+/* ==========================================================================
+   HUD PANELS
+   - Panels use #hud-<key>; one visible at a time via .active
+   ========================================================================== */
+#hud .hud-section {
+  display: none;
+}
+
+#hud .hud-section.active {
+  display: block;
+}
+
+#hud-tOne,
+#hud-tTwo,
+#hud-tThree,
+#hud-tAbout {
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(1, auto);
+}
+
+/* ==========================================================================
+   HUD ROW LAYOUT HELPERS
+   - Preset grids for common row patterns 
+   ========================================================================== */
+.hud-row-6 {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+}
+
+.hud-row-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.hud-row-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.hud-row-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.hud-row-1 {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+}
+
+.hud-row-1-para {
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+}
+
+/* ==========================================================================
+   FORM GROUP / LABEL / VALUE
+   - .stack wraps a control with a label (.lbl) and value/readout (.val-*)
+   ========================================================================== */
+.stack {
+  padding-top: 12px;
+  display: grid;
+  gap: 6px;
+}
+
+.lbl {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+
+.val-center {
+  font-size: 11px;
+  color: var(--text-5);
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.val-left {
+  font-size: 11px;
+  color: var(--text-5);
+  font-variant-numeric: tabular-nums;
+  text-align: left;
+}
+
+.val-right {
+  font-size: 11px;
+  color: var(--text-5);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+
+/* ==========================================================================
+   COLOR INPUT + CHIP
+   ========================================================================== */
+.colorPicker {
+  min-width: 100px;
+  max-width: 300px;
+  margin: 0;
+  padding: 0;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   RANGE SLIDERS (CROSS-BROWSER)
+   - .content-slider scopes slider styling
+   - Uses --pct to render the filled track via JS
+   ========================================================================== */
+.content-slider input[type="range"] {
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 4px;
+  background: linear-gradient(var(--hudSliderFill) 0 0) 0 / var(--pct, 0%) 100% no-repeat, var(--hudSliderLine);
+  cursor: grab;
+}
+
+.content-slider input[type="range"]:active {
+  cursor: grabbing;
+  background: var(--hudSliderFill);
+}
+
+/* WebKit thumb */
+.content-slider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--hudThumb);
+  border: 0;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .15);
+  margin-top: -5px;
+}
+
+.content-slider input[type="range"]::-webkit-slider-thumb:hover {
+  background: var(--hudThumbActive);
+}
+
+/* Firefox */
+.content-slider input[type="range"]::-moz-range-track {
+  height: 6px;
+  background: var(--hudSliderLine);
+  border-radius: 4px;
+}
+
+.content-slider input[type="range"]::-moz-range-progress {
+  height: 6px;
+  background: var(--hudSliderFill);
+  border-radius: 4px;
+}
+
+.content-slider input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--hudThumb);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .15);
+}
+
+.content-slider input[type="range"]::-moz-range-thumb:hover {
+  background: var(--hudThumbActive);
+}
+
+/* Edge/IE fallback */
+.content-slider input[type="range"]::-ms-track {
+  height: 6px;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+.content-slider input[type="range"]::-ms-fill-lower {
+  background: var(--hudSliderFill);
+}
+
+.content-slider input[type="range"]::-ms-fill-upper {
+  background: var(--hudSliderLine);
+}
+
+.content-slider input[type="range"]::-ms-thumb {
+  width: 16px;
+  height: 16px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--hudThumb);
+}
+
+/* ==========================================================================
+   INPUTS (SELECT / NUMBER)
+   - Common visual baseline for simple form fields
+   ========================================================================== */
+select,
+input[type="number"] {
+  width: 100%;
+  border: 1px solid var(--hudSliderLine);
+  border-radius: 8px;
+  padding: 8px;
+  background: var(--light);
+}
+
+/* ==========================================================================
+   INPUTS (SELECT / TEXT)
+   - Common visual baseline for simple form fields
+   ========================================================================== */
+select,
+input[type="text"] {
+  width: 100%;
+  border: 1px solid var(--hudSliderLine);
+  border-radius: 8px;
+  padding: 8px;
+  background: var(--light);
+}
+
+/* ==========================================================================
+   DISABLED STATES
+   - when controls are disabled
+   ========================================================================== */
+#hud [disabled],
+#hud .is-disabled {
+  opacity: .5;
+  pointer-events: none;
+  filter: grayscale(.6);
+}
+
+#hud .is-disabled .lbl {
+  opacity: .8;
+}
+
+#hud button[disabled] {
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   BUTTONS (PRIMARY HUD BUTTON STYLE)
+   ========================================================================== */
+.content-btn {
+  background: var(--accent);
+  border: 1px solid var(--hudSliderLine);
+  border-radius: 4px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* When the toggle is ON */
+.content-btn[aria-pressed="true"] {
+  background: var(--hudBtn);
+  color: var(--text-2);
+}
+
+/* OFF and ON hover states distinct */
+.content-btn[aria-pressed="false"]:hover {
+  background: var(--hudBtnActive);
+}
+
+.content-btn[aria-pressed="true"]:hover {
+  background: var(--hudBtnActive);
+}
+
+/* subtle busy state for action buttons */
+.content-btn.is-busy {
+  opacity: .75;
+  pointer-events: none;
+}
+
+.content-display {
+  background: var(--light);
+  border: none;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-weight: 400;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ==========================================================================
+   INPUTS (SELECT / NUMBER) — VARIANT
+   ========================================================================== */
+select,
+input[type="number"] {
+  width: 100%;
+  border: 1px solid var(--hudSliderFill);
+  border-radius: 8px;
+  padding: 8px;
+  background: var(--hudBtnActive);
+  color: var(--text);
+  line-height: 1.2;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+/* ==========================================================================
+   A11Y: HIDE INACTIVE TABPANELS ACCESSIBLY
+   - JS toggles [hidden] on inactive panels; keep this rule
+   ========================================================================== */
+[role="tabpanel"][hidden] {
+  display: none;
+}
+
+/* ============================
+   OUTPUT TAB — robust 50/50 layout (Flex)
+   ============================ */
+
+.hud-output-grid2 {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.hud-output-left,
+.hud-output-right-wrapper {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.hud-output-left {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: auto;
+  gap: 10px;
+  align-content: start;
+}
+
+.hud-output-left .span2 {
+  grid-column: 1 / span 2;
+}
+
+.hud-output-right-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.output-nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
+.output-nav .content-btn {
+  padding: 6px 10px;
+  white-space: nowrap;
+}
+
+.output-right {
+  width: 100%;
+  min-width: 0;
+  min-height: 600px;
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid var(--hudSliderLine, #d3d3d3);
+  border-radius: 8px;
+  padding: 10px;
+  overflow: auto;
+  align-self: stretch;
+}
+
+/* Small screens: stack columns */
+@media (max-width: 720px) {
+  .hud-output-grid2 {
+    flex-direction: column;
+  }
+
+  .hud-row-6 {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 1fr);
+  }
+
+  .hud-row-4 {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+  }
+
+  .hud-row-3 {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+  }
+
+  .hud-row-2 {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+  }
+}
