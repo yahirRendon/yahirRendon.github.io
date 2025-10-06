@@ -1,0 +1,323 @@
+<!--
+  Book Folding Web App
+
+  Structure:
+  - <header> : App title and subtitle
+  - .canvas-wrapper : Stage area to show the current input image with navigation arrows
+  - #drop-overlay : Drag-and-drop overlay for loading new images
+  - #hud : The Heads-Up Display (collapsible + tabbed interface for user controls)
+
+  HUD Tabs:
+  - Book   (#hud-tOne)   : Book details (title, pages, dimensions, fold position)
+  - Folds  (#hud-tTwo)   : Slice and fold detection settings
+  - Output (#hud-tThree) : Fold preview, navigation, and export to PDF
+  - About  (#hud-tAbout) : Info about the project
+
+  Each HUD section uses .hud-row-* containers to align labels, inputs, and controls.
+  All dynamic functionality is wired through app.js, while styling comes from styles.css.
+-->
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Book Folding</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- App font + base styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="styles-foldMeApp.css" /> -->
+  <link rel="stylesheet" href="../css/styles-foldMeApp.css">
+</head>
+
+<body>
+  <div class="app">
+    <!-- Title and subtitle -->
+    <header class="app-header">
+      <h1>Fold Me</h1>
+      <p>a book folding tool</p>
+    </header>
+
+    <!-- Stage for input image -->
+    <div class="canvas-wrapper">
+      <!-- Previous item -->
+      <button class="image-previous" aria-label="Previous">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <!-- Stage container -->
+      <div id="stage" aria-live="polite">
+        <img id="stageImage" alt="Stage image" draggable="false" />
+      </div>
+
+      <!-- Next item -->
+      <button class="image-next" aria-label="Next">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Drag & Drop Overlay -->
+  <div id="drop-overlay" aria-hidden="true">
+    <div class="drop-msg">Drop an image to update.</div>
+  </div>
+
+  <!--
+    HUD (Heads-Up Display)
+    - Collapsible, tabbed control surface.
+    - #hud-tabbar is the tablist; buttons use data-tab="<key>".
+    - Each panel is #hud-<key>. Keep keys in sync with button data-tab.
+  -->
+  <aside id="hud" class="">
+
+    <!-- Tab Bar: | +/- | Book | Folds | Output | about  -->
+    <div id="hud-tabbar">
+      <button id="hudToggle" class="hud-btn small square" aria-pressed="true" title="Toggle HUD">-</button>
+      <button id="tabOne" class="hud-btn hud-btn-line active" data-tab="tOne">Book</button>
+      <button id="tabTwo" class="hud-btn hud-btn-line" data-tab="tTwo">Folds</button>
+      <button id="tabThree" class="hud-btn hud-btn-line" data-tab="tThree">Output</button>
+      <!-- <button id="tabFour" class="hud-btn hud-btn-line" data-tab="tFour">Four</button> -->
+      <button id="tabAbout" class="hud-btn hud-btn-line" data-tab="tAbout">About</button>
+    </div>
+
+    <!--
+      HUD Content
+      - Group controls per tab.
+      - Labels (.lbl) and values (.val-*) provide accessible naming and echo fields.
+    -->
+    <div id="hud-content">
+
+      <!-- TAB ONE: BOOK DETAILS -->
+      <div id="hud-tOne" class="hud-section active">
+        <!-- ROW 1 -->
+        <section class="hud-row-1-para">
+          <div></div>
+          <div>
+            <p class="para-min-center">Set details of your book here.</p>
+          </div>
+          <div></div>
+        </section>
+
+        <!-- ROW 2 -->
+        <section class="hud-row-1">
+          <label class="stack">
+            <span class="lbl">Book or Project Title</span>
+            <input id="bookTitle" type="text" placeholder="The name of the book you are folding." />
+            <span class="val-left"></span>
+          </label>
+        </section>
+
+        <!-- ROW 3 -->
+        <section class="hud-row-2">
+          <label class="stack">
+            <span class="lbl">Pages in Book</span>
+            <input id="bookPages" type="number" value="50" />
+            <span class="val-left">The number of foldable pages</span>
+          </label>
+
+          <label class="stack content-slider">
+            <span class="lbl">Fold Position</span>
+            <input id="bookEdgeFoldPos" class="range-pct" type="range" min="0" max="1" step=".01" value=".5" />
+            <span id="bookEdgeFoldPosValue" class="val-left">50% from fore-edge </span>
+          </label>
+        </section>
+
+        <!-- ROW 4 -->
+        <section class="hud-row-2">
+          <label class="stack">
+            <span class="lbl">Page Width</span>
+            <input id="bookPageWidthMM" type="number" min="1" step="0.1" value="50" />
+            <span class="val-left">The width of pages of book in MM</span>
+          </label>
+
+          <label class="stack">
+            <span class="lbl">page Height</span>
+            <input id="bookPageHeightMM" type="number" value="800" />
+            <span class="val-left">The height of pages of book in MM</span>
+          </label>
+        </section>
+      </div>
+
+      <!-- TAB TWO: FOLD DETAILS -->
+      <div id="hud-tTwo" class="hud-section">
+        <!-- ROW 1 -->
+        <section class="hud-row-1-para">
+          <div></div>
+          <div>
+            <p class="para-min-center">Define slice and fold details here.</p>
+          </div>
+          <div></div>
+        </section>
+
+        <!-- ROW 2 -->
+        <section class="hud-row-3">
+          <!-- Column 1: button with aria-pressed state for toggles -->
+          <label class="stack">
+            <span class="lbl">Number of Slices</span>
+            <input id="numDesiredSlices" type="number" value="50" />
+            <span class="val-left">The desired slices for folds</span>
+          </label>
+
+          <label class="stack">
+            <span class="lbl">Max Auto Slice</span>
+            <button id="btnMaxSlice" class="content-btn" aria-pressed="false">Fit to Book</button>
+            <span id="btnMaxSliceStatus" class="val-left" aria-live="polite">&nbsp;</span>
+          </label>
+
+          <label class="stack content-slider">
+            <span class="lbl">Threshold Cutoff</span>
+            <input id="sliderThreshold" class="range-pct" type="range" min="0" max="1" step=".01" value=".25" />
+            <span id="sliderThresholdValue" class="val-left">.25</span>
+          </label>
+        </section>
+
+        <!-- ROW 3 -->
+        <section class="hud-row-2">
+          <label class="stack">
+            <span class="lbl">Multi-Segment Handling</span>
+            <select id="multiStrategy">
+              <option value="first">First</option>
+              <option value="cycle" selected>Cycle</option>
+              <option value="pingpong">Ping-Pong</option>
+              <option value="longest">Longest</option>
+            </select>
+            <span class="val-left">Define handling of multi-fold slices</span>
+          </label>
+
+          <label class="stack">
+            <span class="lbl">Invert Image</span>
+            <button id="btnInvertImage" class="content-btn" aria-pressed="false">Toggle: Off</button>
+            <span class="val-left">Invert image colors</span>
+          </label>
+        </section>
+      </div>
+
+
+      <!-- TAB THREE: OUTPUT AND VISUALIZATION -->
+      <div id="hud-tThree" class="hud-section">
+        <section class="hud-output-grid2">
+          <!-- LEFT: compact stats -->
+          <div class="hud-output-left">
+            <label class="stack">
+              <span class="lbl">Total Folds</span>
+              <div id="totalFoldsDisplay" class="content-display">0</div>
+              <span class="val-left"></span>
+            </label>
+
+            <label class="stack">
+              <span class="lbl">Fold Index</span>
+              <div id="foldIndexDisplay" class="content-display">1</div>
+              <span class="val-left"></span>
+            </label>
+
+            <label class="stack">
+              <span class="lbl">Suggested Start Page</span>
+              <div id="sugStartOageDisplay" class="content-display">—</div>
+              <span class="val-left"></span>
+            </label>
+
+            <label class="stack">
+              <span class="lbl">Current Fold Page</span>
+              <div id="curFoldPageDisplay" class="content-display">—</div>
+              <span class="val-left"></span>
+            </label>
+
+            <label class="stack">
+              <span class="lbl">Top Fold (MM)</span>
+              <div id="pageTopFoldDisplay" class="content-display">0</div>
+              <span class="val-left"></span>
+            </label>
+
+            <label class="stack">
+              <span class="lbl">Bottom Fold (MM)</span>
+              <div id="pageBotFoldDisplay" class="content-display">0</div>
+              <span class="val-left"></span>
+            </label>
+
+            <label class="stack span2">
+              <span class="lbl"></span>
+              <button id="btnExportPDF" class="content-btn" aria-pressed="false">Export PDF</button>
+              <span class="val-left"></span>
+            </label>
+          </div>
+
+          <!-- RIGHT: prev/next + visualization panel -->
+          <div class="hud-output-right-wrapper">
+            <div class="output-nav">
+              <button id="btnPreviousFoldPage" class="content-btn" aria-pressed="false">&lt; Prev</button>
+              <button id="btnNextFoldPage" class="content-btn" aria-pressed="false">Next &gt;</button>
+            </div>
+            <div class="output-right" role="img" aria-label="Fold visualization panel"></div>
+          </div>
+        </section>
+      </div>
+
+      <!-- TAB FOUR: ABOUT -->
+      <div id="hud-tAbout" class="hud-section">
+        <!-- ROW 1 -->
+        <section class="hud-row-1-para">
+          <div></div>
+          <div>
+            <p class="para-min-center">
+              This tool started as a way to make a gift for someone after seeing folded book art online. I wondered if I
+              could build something that made the process more accessible to those who didn't have the time to design
+              something or the money to pay for a design. Stock images are provided, but it also takes simple black and
+              white images of text or other shapes, slices it into vertical sections, and calculates exactly where to
+              fold pages given the actual book dimensions to recreate the design
+            </p>
+          </div>
+          <div></div>
+        </section>
+
+        <!-- ROW 2 -->
+        <section class="hud-row-1-para">
+          <div></div>
+          <div>
+            <p class="para-min-center">
+              I know there are other tools out there that do this, but I wanted to create something free, simple, and
+              approachable for other makers, crafters, and curious creatives while also growing my own skills as a
+              developer.
+            </p>
+          </div>
+          <div></div>
+        </section>
+
+        <!-- ROW 3 -->
+        <section class="hud-row-1-para">
+          <div></div>
+          <div>
+            <p class="para-min-center">
+              If you try it out, I'd love to hear what you think. Your feedback helps me learn and make the tool better.
+              If it happens to bring you some creative joy, please reach out and share your creation, If, and only if,
+              it feels right please feel free to make a donation if this tool brought value to you in some way.
+            </p>
+          </div>
+          <div></div>
+        </section>
+
+        <!-- ROW 4 -->
+        <section class="hud-row-1-para">
+          <div></div>
+          <div>
+            <p class="para-min-center">
+              -Enjoy
+            </p>
+          </div>
+          <div></div>
+        </section>
+      </div>
+    </div>
+    </div>
+  </aside>
+
+  <!-- App Script -->
+  <!-- <script src="scripts-foldMeApp.js" type="module"></script> -->
+  <script src="../js/scripts-foldMeApp.js" type="text/javascript"></script>
+</body>
+
+</html>
