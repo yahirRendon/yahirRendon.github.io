@@ -453,23 +453,42 @@ function updateCurrentFoldPage() {
 }
 
 /**
- * requestRender()
- * ------------------------------
- * Simple render scheduler used to manage visual updates.
- *
- * Behavior:
- * - Ensures only one requestAnimationFrame callback is queued at a time.
- * - Currently acts as a no-op placeholder (no drawing logic inside yet).
- *
- * - _raf is a flag (non-zero = already scheduled).
- * - The callback clears _raf so a new frame can be requested next tick.
+ * Global flag to prevent redundant frame requests.
+ * _raf stores the ID of the currently pending requestAnimationFrame() call.
+ * When _raf == 0, no redraw is queued.
  */
-
 let _raf = 0;
+
+/**
+ * Performs a full visual redraw of the app.
+ * 
+ * Called whenever the display geometry changes (e.g. window resize,
+ * orientation change, image loaded). It recalculates stage and HUD layout,
+ * then redraws the overlay and fold preview to keep them aligned.
+ */
+function redrawAll() {
+  applyStageLayoutForImage();
+  layoutHud();
+  if (_proc.result?.guide) {
+    drawOverlay();
+    drawFoldPreview();
+  }
+}
+
+/**
+ * Schedules a single redraw on the next animation frame.
+ * 
+ * - Prevents multiple redundant redraws within the same frame.
+ * - Batches expensive layout and drawing operations together.
+ * - Resets _raf to 0 after the frame has been rendered so new
+ *   updates can be scheduled later.
+ */
 function requestRender() {
-  // Batching hook if visual readouts need to be synced later.
-  if (_raf) return;
-  _raf = requestAnimationFrame(() => { _raf = 0; /* no-op */ });
+  if (_raf) return;           
+  _raf = requestAnimationFrame(() => {
+    _raf = 0;
+    redrawAll();               
+  });
 }
 
 /**
@@ -1557,23 +1576,27 @@ async function exportFoldGuidePDF_PagedBySegmentsJS({
     const yTop = margin + Math.max(0, (usableH - bandH_mm) * 0.5);
     const yBot = yTop + bandH_mm;
 
-    const contentW = (pCount > 1) ? gap * (pCount - 1) : 0;
-    const xL = margin, xR = margin + contentW;
-    doc.line(xL, yTop, xR, yTop);
-    doc.line(xL, yBot, xR, yBot);
-
     doc.setLineWidth(1);
+    doc.setDrawColor(0);      // black
     for (let j = 0; j < pCount; j++) {
       const i = firstIdx0 + pStart + j;
       const x = margin + j * gap;
       if (!inSpan(i)) continue;
 
       if (hasPick(i)) {
+        // draw gray line:
+        doc.setDrawColor(210);      // light gray
+        // doc.setLineWidth(0.3);      // thinner than the fold line
+        doc.line(x, yTop, x, yBot); // full-height guide
+
+
         const s = guide.spans[i];
         const topMM = pxToMM(s.y0);
         const botMM = pxToMM((s.y1 ?? s.y0));
         let y1 = yTop + clamp(topMM, 0, bandH_mm);
         let y2 = yTop + clamp(botMM, 0, bandH_mm);
+
+        doc.setDrawColor(0);      // BACK TO BLACK
         if (Math.abs(y2 - y1) < 0.2) { const mid = (y1 + y2) * 0.5; y1 = mid - 0.1; y2 = mid + 0.1; }
         doc.line(x, y1, x, y2);
       } else {
@@ -1581,6 +1604,12 @@ async function exportFoldGuidePDF_PagedBySegmentsJS({
       }
       drawn++;
     }
+
+    // draw top and bottom lines
+    const contentW = (pCount > 1) ? gap * (pCount - 1) : 0;
+    const xL = margin, xR = margin + contentW;
+    doc.line(xL - 1, yTop, xR + 1 , yTop);
+    doc.line(xL - 1, yBot, xR + 1, yBot);
 
     // Footer: title (left), page X/Y (center), QR only on first page (right)
     const footerBaseline = pageH - margin * 0.6;
@@ -1618,13 +1647,40 @@ nextBtn?.addEventListener("click", () => showIndex(currentIndex + 1));
  * browser window is resized.
  */
 window.addEventListener("resize", () => {
-  applyStageLayoutForImage();
-  layoutHud();
-  if (_proc.result?.guide) {
-    drawOverlay();
-    drawFoldPreview();
-  }
+  // applyStageLayoutForImage();
+  // layoutHud();
+  // if (_proc.result?.guide) {
+  //   drawOverlay();
+  //   drawFoldPreview();
+  // }
+  requestRender();
 });
+
+// Orientation can fire before sizes stabilize; do two passes.
+window.addEventListener("orientationchange", () => {
+  requestRender();
+  setTimeout(requestRender, 120);
+});
+
+// If user returns to tab after rotation / zoom, refresh once shown.
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden) requestRender();
+});
+
+// If your stage element resizes without a window resize, keep overlay in sync.
+const ro = new ResizeObserver(() => requestRender());
+ro.observe(stage); 
+
+// refresh overlay scaling on pixel rescaling
+let _lastDPR = window.devicePixelRatio || 1;
+setInterval(() => {
+  const dpr = window.devicePixelRatio || 1;
+  if (dpr !== _lastDPR) {
+    _lastDPR = dpr;
+    if (_overlay) _overlay.dpr = Math.max(1, dpr);
+    requestRender();
+  }
+}, 500);
 
 /**
  * Main initialization routine (runs once on page load).
