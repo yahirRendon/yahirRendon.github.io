@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- load general styles + sketch specific styles -->
+  <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+  <link rel="stylesheet" type="text/css" href="../css/styles-sketch-alt.css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/addons/p5.sound.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/ismobilejs@1.1.1/dist/isMobile.min.js"></script>
+
+  <title>yahir | sudoku</title>
+</head>
+
+<body>
+  <!-- navigation bar section -->
+  <nav class="container-nav">
+    <!-- contains button and all expand/dropdown links -->
+    <div class="cont-nav-1">
+      <!-- menu button -->
+      <div class="cont-menu">
+        <div class="cont-neo" id="menu-button">
+          <div class="cont-bar">
+            <div class="bar-1"></div>
+            <div class="bar-2"></div>
+            <div class="bar-3"></div>
+          </div>
+        </div>
+      </div>
+      <!-- menu links -->
+      <div class="expand-nav">
+        <div class="exp-cont">
+          <div class="cont-nav-2 toggle-show">
+            <div class="cont-nav-links"><a class="nav-links" title="home page" href="../index.html">home</a></div>
+          </div>
+          <div class="cont-nav-3 toggle-show">
+            <div class="cont-nav-links"><a class="nav-links" title="yahir's github"
+                href="https://github.com/yahirRendon" target="_blank">github</a></div>
+          </div>
+          <div class="cont-nav-4 toggle-show">
+            <div class="cont-nav-links"><a class="nav-links" title="view projects" href="../projects.html">projects</a>
+            </div>
+          </div>
+          <div class="cont-nav-5 toggle-show">
+            <div class="cont-nav-links"><a class="nav-links" title="about yahir" href="../about.html">about</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- home/title link -->
+    <div class="cont-nav-6">
+      <div class="cont-nav-links"><a class="nav-links" title="home page" href="../index.html">yahir</a></div>
+    </div>
+  </nav>
+
+  <div class="spacer-small"></div>
+
+  <!-- title: sudoku -->
+  <div class="container-main">
+    <div class="main-h1-top">sudoku</div>
+  </div>
+  <div class="container-main">
+    <div class="main-p-bot">
+      a minimal take on the classic Sudoku
+    </div>
+  </div>
+
+  <!-- link to github -->
+  <div class="container-main">
+    <div class="main-p-even-small">
+      <p>view code on
+        <a class="main-p-link" href="https://github.com/yahirRendon/yahirRendon.github.io/blob/main/js/scripts-sudoku.js" target="_blank">GitHub</a>
+        for more development details
+      </p>
+    </div>
+  </div>
+
+  <div class="spacer-small"></div>
+
+  <!-- sudoku sketch -->
+  <!-- p5 canvas container; canvas size set in scripts-sudoku.js -->
+  <div class="container-main-p5">
+    <div id="p5-canvas" class="main-p5"></div>
+  </div>
+
+  <!-- difficulty | mistakes | reset buttons -->
+  <div class="container-main">
+    <div class="container-p5-buttons">
+
+      <!-- difficulty button -->
+      <div class="p5-button-1">
+        <div class="pn_b" id="button-p5-1" title="change difficulty">
+          <div class="neo_holder_menu">
+            <div class="cont-neo">
+              <div id="p5-button-1-symbol">|</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- mistakes section -->
+      <div class="p5-button-2">
+        <div id="mistake-label">mistakes</div>
+        <div id="mistake-count">0</div>
+      </div>
+
+      <!-- reset button -->
+      <div class="p5-button-3">
+        <div class="pn_b" id="button-p5-3" title="reset puzzle">
+          <div class="neo_holder_menu">
+            <div class="cont-neo">
+              <div id="p5-button-3-symbol">&#11118</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spacer-medium"></div>
+
+  <!-- instructions  -->
+  <div class="cont-text">
+    <div class="text-center text-h1">instructions</div>
+  </div>
+
+  <div class="container-main">
+    <div class="main-p-even">
+      <div class="main-p-instruction">
+        <div class="instruction-top">click / tap cell</div>
+        <div class="instruction-bot">selects a cell in the grid</div>
+      </div>
+      <div class="spacer-small"></div>
+      <div class="main-p-instruction">
+        <div class="instruction-top">tap a number (1-9)</div>
+        <div class="instruction-bot">fills selected cell with that value</div>
+      </div>
+      <div class="spacer-small"></div>
+      <div class="main-p-instruction">
+        <div class="instruction-top">&#11118</div>
+        <div class="instruction-bot">reset current puzzle</div>
+      </div>
+      <div class="spacer-small"></div>
+      <div class="main-p-instruction">
+        <div class="instruction-top">given cells</div>
+        <div class="instruction-bot">pre-filled numbers cannot be changed</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spacer-large"></div>
+
+  <!-- discover more about the game  -->
+  <div class="container-main">
+    <div class="main-h1-even">learn more</div>
+  </div>
+  <div class="container-main">
+    <div class="main-p-even">
+      Sudoku is one of the world's most popular logic puzzles, but its modern form has a surprisingly international
+      history. While early predecessors existed the first modern implementation is credited to an American architect,
+      Howard Garns, in 1979 under the name Number Place. It later found its true home in Japan when the publisher Nikoli
+      introduced it as Sudoku which is a shortened phrase meaning “the digits must remain single.” From there, it spread
+      worldwide, becoming a staple of newspapers, puzzle books, and mobile games.
+    </div>
+  </div>
+
+  <div class="container-main">
+    <div class="main-p-even">
+      Today, Sudoku has a vibrant global community, complete with international championships and countless creative
+      variants. Despite its many forms, the fundamental challenge remains the same: fill a 9 x 9 grid so that each row,
+      column, and 3 x 3 box contains all digits from 1 to 9 exactly once. The result is an elegant blend of logic,
+      pattern recognition, and satisfying deduction which keeps millions of players coming back for more.
+    </div>
+  </div>
+
+  <div class="spacer-large"></div>
+
+  <!-- number overlay -->
+  <div id="input-overlay" class="overlay hidden">
+    <div class="overlay-backdrop"></div>
+    <div class="overlay-content">
+      <div class="overlay-title">enter number</div>
+
+      <div class="overlay-number-grid">
+        <button class="overlay-num-btn" data-num="1">1</button>
+        <button class="overlay-num-btn" data-num="2">2</button>
+        <button class="overlay-num-btn" data-num="3">3</button>
+
+        <button class="overlay-num-btn" data-num="4">4</button>
+        <button class="overlay-num-btn" data-num="5">5</button>
+        <button class="overlay-num-btn" data-num="6">6</button>
+
+        <button class="overlay-num-btn" data-num="7">7</button>
+        <button class="overlay-num-btn" data-num="8">8</button>
+        <button class="overlay-num-btn" data-num="9">9</button>
+      </div>
+
+      <div class="overlay-buttons">
+        <button id="overlay-clear">clear</button>
+        <button id="overlay-cancel">cancel</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- footer navigation section -->
+  <footer class="container-foot">
+    <div class="cont-foot-1">
+      <a class="foot-links" id="button-top" title="top of page" href="javascript:void(0)">top</a>
+    </div>
+    <div class="cont-foot-2">
+      <a class="foot-links" title="home page" href="../index.html">home</a>
+    </div>
+    <div class="cont-foot-3">
+      <a class="foot-links" title="yahir's github" target="_blank" href="https://github.com/yahirRendon">github</a>
+    </div>
+    <div class="cont-foot-4">
+      <a class="foot-links" title="view projects" href="../projects.html">projects</a>
+    </div>
+    <div class="cont-foot-5">
+      <a class="foot-links" title="about yahir" href="../about.html">about</a>
+    </div>
+  </footer>
+
+  <div class="spacer-small"></div>
+
+</body>
+<!-- general scripts + sudoku sketch script -->
+<script src="../js/scripts.js"></script>
+<script src="../js/scripts-sudoku.js"></script>
+
+</html>
