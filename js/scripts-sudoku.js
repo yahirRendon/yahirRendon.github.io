@@ -467,11 +467,20 @@ function mouseClicked() {
 
 function touchStarted() {
 
-    // use the current mouseX/mouseY, which p5 updates for touch
+    // If the overlay is open, don't handle the touch in p5.
+    // Let the DOM buttons (numbers, clear, cancel) receive the event.
+    if (isOverlayOpen()) {
+        return; // don't return false here
+    }
+
+    // Only respond if the touch is inside the canvas bounds
+    if (mouseX < 0 || mouseX > width || mouseY < 0 || mouseY > height) {
+        return;
+    }
+
+    // Otherwise, treat it like a tap on the grid
     handleGridTap(mouseX, mouseY);
 
-    // prevent the page from scrolling when tapping the canvas
-    return false;
 }
 
 function handleGridTap(x, y) {
@@ -997,5 +1006,6 @@ if (overlayCancelButton) {
 //         console.log(rowString);
 //     }
 // }
+
 
 
