@@ -460,24 +460,36 @@ function drawCells() {
  * click to select cell and open overlay
  *****************************************************************************/
 function mouseClicked() {
+    if (mouseButton === LEFT) {
+        handleGridTap(mouseX, mouseY);
+    }
+}
 
-    // if the overlay is open, ignore clicks on the grid completely
+function touchStarted() {
+
+    // use the current mouseX/mouseY, which p5 updates for touch
+    handleGridTap(mouseX, mouseY);
+
+    // prevent the page from scrolling when tapping the canvas
+    return false;
+}
+
+function handleGridTap(x, y) {
+
+    // ignore when overlay is open
     if (isOverlayOpen()) {
         return;
     }
 
-    if (mouseButton === LEFT) {
+    // only respond to taps inside the canvas area
+    if (x < 0 || x > width || y < 0 || y > height) {
+        return;
+    }
 
-        // only respond to clicks inside the canvas area
-        if (mouseX < 0 || mouseX > width || mouseY < 0 || mouseY > height) {
-            return;
-        }
+    selectCellAt(x, y);
 
-        selectCellAt(mouseX, mouseY);
-
-        if (selectedCell && !selectedCell.given) {
-            openInputOverlay();
-        }
+    if (selectedCell && !selectedCell.given) {
+        openInputOverlay();
     }
 }
 
@@ -985,4 +997,5 @@ if (overlayCancelButton) {
 //         console.log(rowString);
 //     }
 // }
+
 
